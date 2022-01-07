@@ -2129,5 +2129,300 @@ docker network inspect <nome>
 Vamos receber informações como: data de criação, driver, nome e muito mais;
 \end_layout
 
+\begin_layout Section
+YAML
+\end_layout
+
+\begin_layout Subsection
+O que é YAML?
+\end_layout
+
+\begin_layout Itemize
+Uma linguagem de serialização, seu nome é YAML ain't Markup Language (YAML
+ não é uma linguagem de marcação);
+\end_layout
+
+\begin_layout Itemize
+Usada geralmente para arquivos de configuração, inclusive do Docker, para
+ configurar o Docker Compose;
+\end_layout
+
+\begin_layout Itemize
+É de fácil leitura para nós humanos;
+\end_layout
+
+\begin_layout Itemize
+A extensão dos arquivos é yml ou yaml;
+\end_layout
+
+\begin_layout Subsection
+Vamos criar nosso arquivo YAML
+\end_layout
+
+\begin_layout Itemize
+O arquivo .yaml geralmente possui chaves e valores;
+\end_layout
+
+\begin_layout Itemize
+Que é de onde vamos retirar as configurações do nosso sistema;
+\end_layout
+
+\begin_layout Itemize
+Para definir uma chave apenas inserimos o nome dela, em seguida colocamos
+ dois pontos e depois o valor;
+\end_layout
+
+\begin_layout Subsection
+Espaçamento e indentação
+\end_layout
+
+\begin_layout Itemize
+O fim de uma linha indica o fim de uma instrução, não há ponto e vírgula;
+\end_layout
+
+\begin_layout Itemize
+A indentação deve conter um ou mais espaços, e não devemos utilizar tab;
+\end_layout
+
+\begin_layout Itemize
+E cada uma define um novo bloco;
+\end_layout
+
+\begin_layout Itemize
+O espaço é obrigatório após a declaração da chave;
+\end_layout
+
+\begin_layout Subsection
+Comentários
+\end_layout
+
+\begin_layout Itemize
+Podemos escrever comentários em YAML também utilizando o símbolo #;
+\end_layout
+
+\begin_layout Itemize
+O processador de YAML ignora comentários;
+\end_layout
+
+\begin_layout Itemize
+Eles são úteis para escrever como o arquivo funciona/foi configurado;
+\end_layout
+
+\begin_layout Subsection
+Dados numéricos
+\end_layout
+
+\begin_layout Itemize
+Em YAML podemos escrever dados numéricos com:
+\end_layout
+
+\begin_layout Itemize
+Inteiros=12;
+\end_layout
+
+\begin_layout Itemize
+Floats = 15.8;
+\end_layout
+
+\begin_layout Subsection
+Strings
+\end_layout
+
+\begin_layout Itemize
+Em YAML podemos escrever textos de duas formas:
+\end_layout
+
+\begin_layout Itemize
+Sem aspas: este é um texto válido;
+\end_layout
+
+\begin_layout Itemize
+Com aspas: 
+\begin_inset Quotes eld
+\end_inset
+
+e este também
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Dados nulos
+\end_layout
+
+\begin_layout Itemize
+Em YAML podemos definir um dado como nulo de duas formas:
+\end_layout
+
+\begin_layout Itemize
+~ ou null
+\end_layout
+
+\begin_layout Itemize
+Os dois vão resultar em None, após a interpretação
+\end_layout
+
+\begin_layout Subsection
+Booleanos
+\end_layout
+
+\begin_layout Itemize
+Podemos inserir booleanos em YAML da seguinte forma:
+\end_layout
+
+\begin_layout Itemize
+True e On = Verdadeiro;
+\end_layout
+
+\begin_layout Itemize
+False e Off = Falso;
+\end_layout
+
+\begin_layout Subsection
+Arrays
+\end_layout
+
+\begin_layout Itemize
+Os arrays, tipos de dados para listas, possuem duas sintaxes:
+\end_layout
+
+\begin_layout Itemize
+Primeira: [1,2,3,4,5]
+\end_layout
+
+\begin_layout Itemize
+Segunda
+\end_layout
+
+\begin_layout Standard
+Items:
+\end_layout
+
+\begin_layout Standard
+- 1
+\end_layout
+
+\begin_layout Standard
+- 2
+\end_layout
+
+\begin_layout Standard
+- 3
+\end_layout
+
+\begin_layout Subsection
+Dicionários
+\end_layout
+
+\begin_layout Itemize
+Os dicionários, tipo de dados para objetos ou listas com chaves e valores,
+ podem ser escritos assim:
+\end_layout
+
+\begin_layout Itemize
+obj: {a: 1, b: 2, c: 3}
+\end_layout
+
+\begin_layout Itemize
+E também com o nesting:
+\end_layout
+
+\begin_layout Standard
+objeto:
+\end_layout
+
+\begin_layout Standard
+chave: 1
+\end_layout
+
+\begin_layout Standard
+chave: 2
+\end_layout
+
+\begin_layout Section
+Docker Compose
+\end_layout
+
+\begin_layout Subsection
+O que é o Docker Compose?
+\end_layout
+
+\begin_layout Itemize
+O Docker Compose é uma ferramenta para rodar múltiplos containers;
+\end_layout
+
+\begin_layout Itemize
+Teremos apenas um arquivo de configuração, que orquestra totalmente esta
+ situação;
+\end_layout
+
+\begin_layout Itemize
+É uma forma de rodar múltiplos builds e runs com um comando;
+\end_layout
+
+\begin_layout Itemize
+Em projetos maiores é essencial o uso do Compose;
+\end_layout
+
+\begin_layout Subsection
+Criando nosso primeiro Compose
+\end_layout
+
+\begin_layout Itemize
+Primeiramente vamos criar um arquivo chamado docker-compose.yml na raiz do
+ projeto;
+\end_layout
+
+\begin_layout Itemize
+Este arquivo vai coordenar os containers e imagens e possui algumas chaves
+ muito utilizadas;
+\end_layout
+
+\begin_layout Itemize
+version: versão do Compose;
+\end_layout
+
+\begin_layout Itemize
+services: Containers/serviços que vão rodar nessa aplicação;
+\end_layout
+
+\begin_layout Itemize
+volumes: Possível adição de volumes;
+\end_layout
+
+\begin_layout Subsection
+Rodando o compose
+\end_layout
+
+\begin_layout Itemize
+Para rodar nossa estrutura em Compose vamos utilizar o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker-compose up
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Isso fará com que as instruções no arquivo seja executadas;
+\end_layout
+
+\begin_layout Itemize
+Da mesma forma que realizamos os builds e também os runs;
+\end_layout
+
+\begin_layout Itemize
+Podemos parar o Compose com ctrl+c no terminal;
+\end_layout
+
 \end_body
 \end_document
