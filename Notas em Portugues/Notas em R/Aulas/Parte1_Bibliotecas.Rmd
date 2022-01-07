@@ -1,0 +1,23 @@
+---
+Lucas Caramês R Notas: Bibliotecas
+
+Aqui, eu verifico alguns comandos iniciais em R, tais como instalar e chamar um pacote (ou biblioteca), também de descarregar esse pacote da memória do dispositivo. Também relizamos um plot utilizando o dataframe de iris nativo da linguagem. E também visualizamos o próprio dataframe, armazenando-o em uma nova variável.
+---
+
+```{r}
+install.packages("e1071")
+library(e1071)
+```
+
+
+```{r}
+detach("package:e1071", unload=TRUE)
+```
+
+```{r}
+plot(iris[, 1:4])
+```
+
+```{r}
+iris2=iris
+```

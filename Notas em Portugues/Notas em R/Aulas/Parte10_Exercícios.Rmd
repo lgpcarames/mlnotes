@@ -1,0 +1,83 @@
+---
+Lucas Caramês R Notas: Exercícios
+---
+
+1.
+```{r}
+Ana = 8L
+Paulo = 12L
+
+if(Ana>Paulo)
+{
+  print("A menina é mais velha")
+}else
+{
+  print("O menino é mais velho")
+}
+```
+2.
+```{r}
+class(BOD)
+```
+3.
+```{r}
+vetor = c(1,2,3,4,5,6,7,8,9,10)
+
+for(i in vetor)
+  {if(i%%2==0)
+  print(i)}
+```
+4.
+```{r}
+tail(women, n=10)
+```
+
+5.
+```{r}
+x = iris$Sepal.Width[50:100]
+y = iris$Petal.Length[50:100]
+
+plot(x,y)
+```
+
+6.
+```{r}
+v1 = c(1, 2, 3, 4, 5)
+v2 = c(6, 7, 8, 9, 10)
+soma = 0
+
+for(i in 1:5)
+{
+  soma = soma + v1[i] + v2[i]
+}
+
+soma
+```
+
+```{r}
+v1 = c(1, 2, 3, 4, 5)
+v2 = c(6, 7, 8, 9, 10)
+soma = 0
+
+for(i in 1:5)
+{
+  soma = soma + v1[i] + v2[i]
+}
+
+soma
+```
+7.
+```{r}
+# numero de linhas
+dim(CO2)[1]
+
+# numero de colunas
+dim(CO2)[2]
+
+# nome das linhas
+row.names(CO2)
+
+# nome das colunas
+
+colnames(CO2)
+```

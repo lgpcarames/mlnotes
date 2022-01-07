@@ -1,0 +1,71 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+dpois(x=12, lambda=10)
+```
+
+
+
+```{r}
+jogo = matrix(c(41,34,18,7),nrow=2, byrow=T)
+rownames(jogo) = c("Masculino","Feminino")
+colnames(jogo) = c("Joga","NaoJoga")
+chisq.test(jogo)
+```
+
+Distribuição t de Student
+--
+O salário médio de um cientista de dados é de 75 por hora.Temos uma amostra num total de 9 cientistas, com o desvio padrão da amostra sendo S=10. Qual a probabilidade de um salário ser menor que 80 por hora?
+
+```{r}
+# Vamos definir primeiro o t
+media_pop <- 75
+amostra <- 9
+desv_padr <- 10
+x <- 80
+
+t = (x - media_pop)/(desv_padr/sqrt(amostra))
+
+pt(t, amostra-1)
+```
+Qual a probabilidade de ser maior que 80?
+
+```{r}
+# Vamos definir primeiro o t
+media_pop <- 75
+amostra <- 9
+desv_padr <- 10
+x <- 80
+
+t = (x - media_pop)/(desv_padr/sqrt(amostra))
+
+pt(t, amostra-1,lower.tail = F)
+```
+
+
+Somando as duas caudas
+```{r}
+
+
+pt(t, amostra-1,lower.tail = F) + pt(t,amostra-1)
+```
+
+Distribuição Binomial
+--
+
+x = eventos, p = probabilidades, size = eventos
+Se jogar uma moeda 5 vezes, qual a prob. de dar cara 3 vezes?
+
+```{r}
+dbinom(x=3, size=5, prob=0.5)
+```
+
+Se eu passar 4 sinais de quatro tempos cada. Qual a probabilidade de eu pegar 0, 1, 2, 3, 4 sinais verdes?
+```{r}
+# Usado para calcular a probabilidade cumulativa
+pbinom(q=4, size=4, prob=0.25)
+```

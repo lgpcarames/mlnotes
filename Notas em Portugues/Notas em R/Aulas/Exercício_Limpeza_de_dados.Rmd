@@ -1,0 +1,59 @@
+---
+Lucas Caramês R Notas: Exercício Limpeza de dados
+---
+Domínio dos dados:
+Aparência: sol, nublado, chuva
+Temperatura: -130~130F
+Umidade: 0~100
+Jogar: sim/nao
+tratar valores NAs
+---
+
+Definindo o ambiente de trabalho e chamando a tabela de dados
+```{r}
+setwd("C:\\Users\\Lucas\\Downloads\\FormaçãoCD2 (1)\\todos os arquivos\\9.Prática em R\\dados")
+
+dados = read.csv("tempo.csv", sep = ";", na.strings="", stringsAsFactors = T)
+head(dados)
+summary(dados)
+```
+Valores Faltantes
+```{r}
+dados[!complete.cases(dados),]
+```
+Tratando valores faltantes: Umidade
+```{r}
+dados[!complete.cases(dados$Umidade)]
+dados[is.na(dados$Umidade),]$Umidade = median(dados$Umidade, na.rm = T)
+dados[!complete.cases(dados$Umidade)]
+```
+
+Tratanddo valores faltantes: Vento
+```{r}
+unique(dados$Vento)
+summary(dados$Vento)
+dados[is.na(dados$Vento),]$Vento = "FALSO"
+dados[!complete.cases(dados$Vento)]
+summary(dados$Vento)
+
+```
+Tratando o atributo aparência
+```{r}
+dados[dados$Aparencia == "menos",]$Aparencia = "chuva"
+dados$Aparencia = factor(dados$Aparencia)
+summary(dados)
+```
+Tratando o atributo temperatura
+```{r}
+hist(dados$Temperatura)
+boxplot(dados$Temperatura, outline = F)
+head(dados)
+
+dados[dados$Temperatura>130.0,]$Temperatura = median(dados$Temperatura)
+
+```
+Umidade
+```{r}
+dados[dados$Umidade>100,]$Umidade = median(dados$Umidade)
+head(dados)
+```

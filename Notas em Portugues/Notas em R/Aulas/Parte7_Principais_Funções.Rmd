@@ -1,0 +1,52 @@
+---
+Lucas Caramês R Notas: Principais Funções
+---
+
+
+Head e Tail
+```{r}
+
+# Default 6 linhas
+
+esoph
+
+# head
+
+head(esoph)
+
+# tail
+
+tail(esoph)
+
+# 10 linhas
+
+head(esoph, n=10)
+```
+
+Dimensões
+```{r}
+dim(esoph)
+```
+Comprimento
+```{r}
+# se usar com objeto bidimensional vai retornar colunas
+
+length(islands)
+```
+Nome de Colunas
+```{r}
+colnames(esoph)
+```
+Nome de Linhas
+```{r}
+rownames(esoph)
+```
+Resumo
+```{r}
+summary(esoph)
+```
+Escolher arquivo
+```{r}
+x = file.choose()
+x
+```

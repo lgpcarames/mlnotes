@@ -1,0 +1,54 @@
+---
+Lucas Caramês R Notas: Tipos de dados e Operadores
+
+
+---
+
+Declaração implícita de uma variável numérica
+
+```{r}
+delta=8
+class(delta)
+```
+
+Declaração de um inteiro
+
+```{r}
+delta = 8L
+class(delta)
+```
+Tipo lógico
+```{r}
+logico = TRUE
+logico = F
+class(logico)
+```
+
+```{r}
+caractere = "Texto"
+caractere = 'Texto'
+
+class(caractere)
+```
+
+Operações Matemáticas
+```{r}
+c = 2
+d = 4
+(c + d)*d
+
+e = (c + d)*d
+e
+```
+
+Teste lógicos
+```{r}
+a = 1
+b = 2
+a < b
+a == b
+```
+Raíz Quadrada
+```{r}
+sqrt(2500)
+```

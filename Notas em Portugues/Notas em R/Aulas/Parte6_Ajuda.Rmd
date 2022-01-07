@@ -1,0 +1,11 @@
+---
+Lucas Caramês R Notas: Ajuda
+---
+
+
+```{r}
+help(sd)
+
+#colocar o curso em cima e apertar f1
+```
+

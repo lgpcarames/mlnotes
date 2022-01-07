@@ -1,0 +1,23 @@
+---
+Lucas Caramês R Notas: Importando Dados
+---
+
+```{r}
+install.packages("xlsx")
+library(xlsx)
+```
+
+Texto
+
+```{r}
+x = read.csv(file.choose(), header = TRUE, sep = ",")
+x
+x = read.csv("Credit.csv", header=TRUE, sep = ",")
+x
+```
+
+Excel
+```{r}
+dados = read.xlsx("credit.xlsx", sheetIndex = 1)
+dados
+```

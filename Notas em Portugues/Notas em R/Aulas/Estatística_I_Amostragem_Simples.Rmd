@@ -1,0 +1,41 @@
+---
+Lucas Caramês R Notas: Estatística I - Amostragem Simples
+---
+150 amostras, de zero e 1, com reposição, probabilidades equivalentes
+
+```{r}
+amostra = sample(c(0,1), 150, replace=T, prob=c(0.5,0.5))
+amostra
+summary(as.factor(amostra))
+```
+```{r}
+amostra = sample(c(1:1000), 150, replace=FALSE)
+amostra
+summary(as.factor(amostra))
+```
+Gerando amostra de conjunto de dados
+30% dos dados de íris
+
+```{r}
+amostra = sample(c(0,1), 150, replace = T, prob=c(0.7, 0.3))
+summary(as.factor(amostra))
+```
+Gera a amostra
+```{r}
+amostrairis = iris[amostra==1,]
+amostrairis
+dim(amostrairis)
+```
+Repetir experimento
+```{r}
+set.seed(2345)
+sample(c(1000), 1)
+```
+Repetindo
+```{r}
+set.seed(2345)
+sample(c(1000), 1)
+```
+
+
+

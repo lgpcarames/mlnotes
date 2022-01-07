@@ -1,0 +1,54 @@
+---
+Lucas Caramês R Notas: Aspectos diversos
+
+Mapeamos alguns dos comandos mais básicos do R, dentre estes, vemos como visualizar o diretório atual de trabalho e também como modificá-lo, como verificar a qual classe um objeto em questão pertence, também verificamos como clonar, salvar, remover e carregar um objeto, assim como também visualizamos como criar vetores e, a partir deles, gerar um gráfico de dispersão.
+---
+
+Diretório de trabalho
+
+```{r}
+getwd() #-> obtém o diretório atual de trabalho
+setwd("C:\\Users\\Lucas\\Documents\\Formação Cientista de dados\\Notas em R") #-> Definie um novo diretório de trabalho
+getwd()
+```
+
+Verificar o tipo de objeto
+
+```{r}
+class(iris) #-> retorna o tipo do objeto desejado
+
+```
+
+Clonar
+```{r}
+iristeste=iris #-> cria uma nova variável alocada em mum novo endereço de memória porém com o mesmo valor da variável recebida
+
+```
+
+Salvar
+```{r}
+save(iristeste, file = "iristeste.Rdata") #-> Salva o dataframe em um formato de arquivo R
+
+```
+
+Remover
+```{r}
+rm(iristeste) #-> remove a variável da memória do dispositivo
+iristeste
+
+```
+
+Carregar
+```{r}
+load(file="iristeste.Rdata") #-> carrega  o objeto em disco na memória
+iristeste
+
+```
+
+Vetor e gráfico básicos
+```{r}
+x = c(12, 34, 56, 79)
+y = c(1, 6, 9, 14)
+plot(x,y)
+
+```
