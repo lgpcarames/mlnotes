@@ -1,0 +1,2526 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notas sobre o Docker
+\end_layout
+
+\begin_layout Section
+Containers
+\end_layout
+
+\begin_layout Subsection
+Rodando um container no Docker
+\end_layout
+
+\begin_layout Itemize
+Utilizar o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Neste comando podemos passar diversos parâmetros;
+\end_layout
+
+\begin_layout Itemize
+Neste exemplo, vamos passar apenas o nome da imagem que é 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker/whalesay
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Um comando chamado cowsay e uma mensagem;
+\end_layout
+
+\begin_layout Subsection
+Sobre Containers
+\end_layout
+
+\begin_layout Itemize
+Def.
+ Um pacote de código que pode executar uma ação;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex.
+ Rodar uma aplicação em node.js, PHP, Python e etc.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nossos projetos serão executado dentro dos containers que criamos/utilizamos;
+\end_layout
+
+\begin_layout Itemize
+Containers utilizam imagens para serem executados;
+\end_layout
+
+\begin_layout Itemize
+Múltiplos containers podem rodar juntos;
+\end_layout
+
+\begin_layout Itemize
+Imagem e container são recursos fundamentais do docker;
+\end_layout
+
+\begin_layout Itemize
+Imagem é o 
+\begin_inset Quotes eld
+\end_inset
+
+projeto
+\begin_inset Quotes erd
+\end_inset
+
+ que será executado pelo container, todas as instruções estarão declaradas
+ nela;
+\end_layout
+
+\begin_layout Itemize
+Container é o docker rodando alguma imagem, consequentemente, executando
+ algum código proposto por ela;
+\end_layout
+
+\begin_layout Itemize
+O fluxo é: programamos uma imagem e executamos por meio de um container;
+\end_layout
+
+\begin_layout Subsection
+Onde encontrar as imagens?
+\end_layout
+
+\begin_layout Itemize
+Vamos encontras as imagens no repositório do Docker;
+\end_layout
+
+\begin_layout Itemize
+Neste site podemos verificar quais imagens existem da tecnologia que estamos
+ procurando, por exemplo, node.js e também aprender como utilizá-las;
+\end_layout
+
+\begin_layout Itemize
+Vamos executar uma imagem em um container com o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run <imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Verificar containers executados
+\end_layout
+
+\begin_layout Itemize
+O comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker ps 
+\end_layout
+
+\end_inset
+
+ ou 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker container ls
+\end_layout
+
+\end_inset
+
+ exibe quais containers estão sendo executados no momento;
+\end_layout
+
+\begin_layout Itemize
+Utilizando a flag
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-a
+\end_layout
+
+\end_inset
+
+, temos também todos os containers já executados na máquina;
+\end_layout
+
+\begin_layout Itemize
+Este comando é útil para entender o que está sendo executado e acontece
+ no nosso ambiente;
+\end_layout
+
+\begin_layout Subsection
+Executar container com iteração
+\end_layout
+
+\begin_layout Itemize
+Podemos executar um container e deixá-lo executando no terminal;
+\end_layout
+
+\begin_layout Itemize
+Para isso, basta utilizarmos a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+it
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Desta maneira, podemos executar comandos disponíveis no container que estamos
+ utilizando o comando run;
+\end_layout
+
+\begin_layout Itemize
+Podemos utilizar a imagem do ubuntu para isso, como exemplo;
+\end_layout
+
+\begin_layout Subsection
+Container x Virtual Machine
+\end_layout
+
+\begin_layout Itemize
+Container é uma aplicação que serve para um determinado fim, não possui
+ sistema operacional, seu tamanho é de alguns MBs;
+\end_layout
+
+\begin_layout Itemize
+VM possui sistema operacional próprio, tamanho de GBs, pode executar diversas
+ funções ao mesmo tempo;
+\end_layout
+
+\begin_layout Itemize
+Containers acabam gastando menos recursos para serem executados, por causa
+ de seu uso específico;
+\end_layout
+
+\begin_layout Itemize
+VMs gastam mais recursos, porém podem exercer mais funções;
+\end_layout
+
+\begin_layout Subsection
+Executar container em background;
+\end_layout
+
+\begin_layout Itemize
+Quando iniciamos um container que persiste, ele fica ocupando o terminal;
+\end_layout
+
+\begin_layout Itemize
+Podemos executar um container em background, para não precisar ficar com
+ diversas abas do terminal aberto, utilizamos a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-d
+\end_layout
+
+\end_inset
+
+ (detached);
+\end_layout
+
+\begin_layout Itemize
+Verificamos containers em background com 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker ps
+\end_layout
+
+\end_inset
+
+ também;
+\end_layout
+
+\begin_layout Itemize
+Podemos utilizar o nginx para este exemplo;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run nginx
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Para parar um container docker, executamos o código abaixo no terminal 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker stop <nome-do-container>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Expondo porta de container
+\end_layout
+
+\begin_layout Itemize
+Os containers de docker não possuem conexão com nada de fora deles;
+\end_layout
+
+\begin_layout Itemize
+Por isso, precisamos expor portas, a flag é a 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-p
+\end_layout
+
+\end_inset
+
+ e podemos fazer assim: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-p 80:80
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Desta maneira o container será acessível na porta 80;
+\end_layout
+
+\begin_layout Itemize
+Podemos testar este exemplo com o nginx;
+\end_layout
+
+\begin_layout Standard
+-p a:b
+\end_layout
+
+\begin_layout Standard
+onde a-> é a porta que estou expondo no pc
+\end_layout
+
+\begin_layout Standard
+b-> é a porta que desejo receber do container
+\end_layout
+
+\begin_layout Subsection
+Reiniciando um container
+\end_layout
+
+\begin_layout Itemize
+Aprendemos a parar um container usando o 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker stop
+\end_layout
+
+\end_inset
+
+, para voltar a rodar um container podemos usar o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker start <id>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lembre-se que o run sempre cria um novo container;
+\end_layout
+
+\begin_layout Itemize
+Então, caso seja necessário aproveitar um antigo, opte pelo start;
+\end_layout
+
+\begin_layout Subsection
+Definindo nome do container
+\end_layout
+
+\begin_layout Itemize
+Podemos definir um nome do container com a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+--name
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se não colocamos, recebemos um nome aleatório, que pode ser um problema
+ para uma aplicação profissional;
+\end_layout
+
+\begin_layout Itemize
+A flag é inserida junto do comando run;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ex.
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run --name nome_container
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Verificando os logs
+\end_layout
+
+\begin_layout Itemize
+Podemos verificar o que aconteceu em um container com o comando logs;
+\end_layout
+
+\begin_layout Itemize
+Utilizamos da seguinte maneira:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker logs <id>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+As últimas ações realizadas no container serão exibidas no temrinal;
+\end_layout
+
+\begin_layout Itemize
+A flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-f
+\end_layout
+
+\end_inset
+
+ exibe continuamente os logs do container.
+ Aperte Ctrl+C para parar de seguir;
+\end_layout
+
+\begin_layout Subsection
+Removendo containers
+\end_layout
+
+\begin_layout Itemize
+POdemos remover um container de uma máquina que estamos executando o Docker;
+\end_layout
+
+\begin_layout Itemize
+O comando é 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker rm <id>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se o container estiver rodando ainda, podemos utilizar a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-f
+\end_layout
+
+\end_inset
+
+ (force);
+\end_layout
+
+\begin_layout Itemize
+O container removido não é mais listado em 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker ps -a
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Imagens
+\end_layout
+
+\begin_layout Subsection
+O que são imagens?
+\end_layout
+
+\begin_layout Itemize
+Imagens são originadas de arquivos que programamos para que o Docker crie
+ uma estrutura que execute determinadas ações em containers;
+\end_layout
+
+\begin_layout Itemize
+Elas contém informações como: imagens base, diretório base, comando a serem
+ executados, porta da aplicação, etc;
+\end_layout
+
+\begin_layout Itemize
+Ao rodar um container baseado na imagem, as instruções serão executadas
+ em camadas;
+\end_layout
+
+\begin_layout Subsection
+Como escolher uma boa imagem?
+\end_layout
+
+\begin_layout Itemize
+Podemos fazer download das imagens;
+\end_layout
+
+\begin_layout Itemize
+Porém qualquer um pode fazer upload de uma imagem, e isso pode ser um problema;
+\end_layout
+
+\begin_layout Itemize
+Devemos então nos atentar às imagens oficiais;
+\end_layout
+
+\begin_layout Itemize
+Outro parâmetro interessante é a quantidade de downloads e a quantidade
+ de stars;
+\end_layout
+
+\begin_layout Subsection
+Criando uma imagem
+\end_layout
+
+\begin_layout Itemize
+Para criar uma imagem vamos precisar de um arquivo: Dockerfile em uma pasta
+ que ficará o projeto;
+\end_layout
+
+\begin_layout Itemize
+Este arquivo vai precisar de algumas instruções para poder ser executado;
+\end_layout
+
+\begin_layout Itemize
+FROM: imagem base;
+\end_layout
+
+\begin_layout Itemize
+WORKDIR: diretorio de aplicação;
+\end_layout
+
+\begin_layout Itemize
+EXPOSE: Porta da aplicação;
+\end_layout
+
+\begin_layout Itemize
+COPY: Quais arquivos precisam ser copiados;
+\end_layout
+
+\begin_layout Subsection
+Executando uma imagem
+\end_layout
+
+\begin_layout Itemize
+Para executar a imagem, primeiramente, vamos precisar fazer o build;
+\end_layout
+
+\begin_layout Itemize
+O comando é 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker build <diretorio-da-imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Depois vamos utilizar o 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run <imagem>
+\end_layout
+
+\end_inset
+
+ para executá-la;
+\end_layout
+
+\begin_layout Itemize
+Cria uma cachê p/ cada camada;
+\end_layout
+
+\begin_layout Itemize
+Tem de especificar a porta que será acessada, para ter acesso ao container;
+\end_layout
+
+\begin_layout Subsection
+Alterando uma imagem
+\end_layout
+
+\begin_layout Itemize
+Sempre que alteramos o código de uma imagem vamos precisar fazer o build
+ novamente;
+\end_layout
+
+\begin_layout Itemize
+Para o Docker é como se fosse uma imagem completamente nova;
+\end_layout
+
+\begin_layout Itemize
+Após fazer o build, vamos executá-la pelo o outro id único criada com o
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Camadas das imagens
+\end_layout
+
+\begin_layout Itemize
+As imagens são divididas em camadas (layers);
+\end_layout
+
+\begin_layout Itemize
+Cada instrução no Dockerfile representa um layer;
+\end_layout
+
+\begin_layout Itemize
+Quando algo é atualizado, apenas as layers depois da linha atualizada são
+ refeitas;
+\end_layout
+
+\begin_layout Itemize
+O resto permanece em cache, tornando o build mais rápido;
+\end_layout
+
+\begin_layout Subsection
+Download de imagens
+\end_layout
+
+\begin_layout Itemize
+Podemos fazer o download de imagem do hub e deixá-la disponível em nosso
+ ambiente ;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker pull <imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira, caso use em outro container, a imagem já estará pronta para
+ ser utilizada;
+\end_layout
+
+\begin_layout Subsection
+Aprender mais sobre os comandos
+\end_layout
+
+\begin_layout Itemize
+Todo comando no Docker tem acesso a uma flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+--help
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Utilizando desta maneira, podemos ver todas as opções disponíveis nos comandos;
+\end_layout
+
+\begin_layout Itemize
+Para relembrar algo ou executar uma tarefa diferente com o mesmo;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ex.
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run --help
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Múltiplas aplicações, mesmo container
+\end_layout
+
+\begin_layout Itemize
+Podemos inicializar vários containers com a mesma imagem;
+\end_layout
+
+\begin_layout Itemize
+As aplicações funcionarão em paralelo;
+\end_layout
+
+\begin_layout Itemize
+Para testar isso, podemos determinar uma porta diferente para cada uma,
+ e rodar no modo detached;
+\end_layout
+
+\begin_layout Subsection
+Alterando o nome da imagem e a tag
+\end_layout
+
+\begin_layout Itemize
+POdemos nomear a imagem que criamos;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker tag <nome>
+\end_layout
+
+\end_inset
+
+ para isso;
+\end_layout
+
+\begin_layout Itemize
+Também podemos modificar a tag, que seria como uma versão da imagem, semelhante
+ ao git;
+\end_layout
+
+\begin_layout Itemize
+Para inserir a tag, utilizamos:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker tag <nome>:<tag>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Iniciando imagem com um nome
+\end_layout
+
+\begin_layout Itemize
+Podemos nomear a imagem já na sua criação;
+\end_layout
+
+\begin_layout Itemize
+Vamos usar a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-t
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+É possível inserir o nome e a tag na sintaxe: nome:tag;
+\end_layout
+
+\begin_layout Itemize
+Isso torna o processo de nomeação mais simples;
+\end_layout
+
+\begin_layout Subsection
+Comando start interativo
+\end_layout
+
+\begin_layout Itemize
+A flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-it
+\end_layout
+
+\end_inset
+
+ pode ser utilizada com o comando start também;
+\end_layout
+
+\begin_layout Itemize
+Ou seja, não precisamos criar um novo container para utilizá-lo no terminal;
+\end_layout
+
+\begin_layout Itemize
+O comando é: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker start -it <container>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Removendo imagens
+\end_layout
+
+\begin_layout Itemize
+Assim como nos containers, podemos remover imagens com um comando;
+\end_layout
+
+\begin_layout Itemize
+Ele é o 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker rmi <imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Imagens que estão sendo utilizadas por um container, apresentarão um erro
+ no terminal;
+\end_layout
+
+\begin_layout Itemize
+Podemos usar a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+-f
+\end_layout
+
+\end_inset
+
+ para forçar a remoção;
+\end_layout
+
+\begin_layout Subsection
+Removendo imagens e containers
+\end_layout
+
+\begin_layout Itemize
+Com o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker system prune
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Podemos remover imagens, container e networks não utilizados;
+\end_layout
+
+\begin_layout Itemize
+O sistema irá exigir uma confirmação para realizar a remoção;
+\end_layout
+
+\begin_layout Subsection
+Removendo container após utilizar
+\end_layout
+
+\begin_layout Itemize
+Um container pode ser automaticamente deletado após sua utilização;
+\end_layout
+
+\begin_layout Itemize
+Para isso, vamos utilizar a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+--rm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+O comando seria:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run --rm <container>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira economizamos espaço no computador e deixamos o ambiente mais
+ organizado;
+\end_layout
+
+\begin_layout Subsection
+Copiando arquivos entre containers
+\end_layout
+
+\begin_layout Itemize
+Para cópia de arquivos entre containers utilizamos o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker cp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pode ser utilizado para copiar um arquivo de um diretório para um container;
+\end_layout
+
+\begin_layout Itemize
+Ou de um container para um diretório determinado;
+\end_layout
+
+\begin_layout Subsection
+Verificar informações de processamento
+\end_layout
+
+\begin_layout Itemize
+Para verificar dados de execução de um container utilizamos:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker top <container>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira temos acesso a quando ele foi iniciado, id do processo, descrição
+ do comando CMD;
+\end_layout
+
+\begin_layout Subsection
+Verificar dados de um container
+\end_layout
+
+\begin_layout Itemize
+Para verificar diversas informações como: id, data de criação, imagem e
+ muito mais;
+\end_layout
+
+\begin_layout Itemize
+Utilizamos o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker inspect <container>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira conseguimos entender como o container está configurado;
+\end_layout
+
+\begin_layout Subsection
+Verificar Processamento
+\end_layout
+
+\begin_layout Itemize
+Para verificar os processos que estão sendo executados em um container,
+ utilizamos o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker stats
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira temos acesso ao andamento do processamento e memória gasta
+ pelo mesmo;
+\end_layout
+
+\begin_layout Subsection
+Autenticação no Docker Hub
+\end_layout
+
+\begin_layout Itemize
+Para concluir esta aula, vamos precisar criar uma conta no Docker Hub;
+\end_layout
+
+\begin_layout Itemize
+Para autenticar-se pelo terminal, vamos utilizar o comando
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker login
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+E então inserir o usuário e senha;
+\end_layout
+
+\begin_layout Itemize
+Agora podemos enviar nossas próprias imagens para o HUB;
+\end_layout
+
+\begin_layout Subsection
+Logout no Docker HUB
+\end_layout
+
+\begin_layout Itemize
+Para remover a conexão entre nossa máquina e o docker HUB, vamos utilizar
+ o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker logout
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Agora não podemos mais enviar imagens, pois não estamos autenticados;
+\end_layout
+
+\begin_layout Subsection
+Enviando imagem para o Docker HUB
+\end_layout
+
+\begin_layout Itemize
+Para enviar uma imagem nossa ao Docker HUB utilizamos o comando
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker push <imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Porém, antes vamos precisar criar um repositório para a mesma no site do
+ HUB;
+\end_layout
+
+\begin_layout Itemize
+Também será necessário estar autenticado;
+\end_layout
+
+\begin_layout Subsection
+Enviando atualização de imagem
+\end_layout
+
+\begin_layout Itemize
+Para enviar uma atualização vamos primeiramente fazer o build;
+\end_layout
+
+\begin_layout Itemize
+Trocando a tag da imagem para a versão atualizada;
+\end_layout
+
+\begin_layout Itemize
+Depois vamos fazer o push novamente para o repositório;
+\end_layout
+
+\begin_layout Itemize
+Assim, todas as versões estarão disponíveis para serem usadas;
+\end_layout
+
+\begin_layout Subsection
+Baixando e utilizando a imagem
+\end_layout
+
+\begin_layout Itemize
+Para baixar a imagem podemos utilizar o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker pull <imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+E depois criar um novo container com 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run <imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+E pronto! Estaremos utilizando a nossa imagem com um container;
+\end_layout
+
+\begin_layout Section
+Volumes
+\end_layout
+
+\begin_layout Subsection
+O que são volumes?
+\end_layout
+
+\begin_layout Itemize
+Uma forma prática de persistir dados em aplicações e não depender de containers
+ para isso;
+\end_layout
+
+\begin_layout Itemize
+Todo dado criado por um container é salvo nele, quando o container é removido,
+ perdemos os dados;
+\end_layout
+
+\begin_layout Itemize
+Então precisamos dos volumes para gerenciar os dados e também conseguir
+ fazer backups de forma mais simples;
+\end_layout
+
+\begin_layout Subsection
+Tipos de volumes
+\end_layout
+
+\begin_layout Itemize
+Anônimos (anonymous):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+diretórios criados pela flag -v, porém com um nome aleatório;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nomeados (named): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+São volumes com nomes, podemos nos referir a estes facilmente e saber para
+ que são utilizados no nosso ambiente;
+\end_layout
+
+\begin_layout Itemize
+Bird Mounts: Uma forma de salvar dados na nossa máquina, sem o gerenciamento
+ do docker, informamos um diretório para este fim;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+O problema da persistência
+\end_layout
+
+\begin_layout Itemize
+Se criamos um container com alguma imagem, todos os arquivos que geramos
+ dentro dele serão do container;
+\end_layout
+
+\begin_layout Itemize
+Quando o container for removido, perderemos estes arquivos;
+\end_layout
+
+\begin_layout Itemize
+Por isso, precisamos dos volumes;
+\end_layout
+
+\begin_layout Subsection
+Volumes anônimos
+\end_layout
+
+\begin_layout Itemize
+Podemos criar um volume anônimo (anonymous) da seguinte maneira: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run -v /data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Onde /data será o diretório que contém o volume anônimo;
+\end_layout
+
+\begin_layout Itemize
+E este container estará atrelado ao volume anônimo;
+\end_layout
+
+\begin_layout Itemize
+Com o comando 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker volume ls
+\end_layout
+
+\end_inset
+
+ podemos ver todos os volumes do nosso ambiente;
+\end_layout
+
+\begin_layout Subsection
+Volumes nomeados
+\end_layout
+
+\begin_layout Itemize
+Podemos criar um volume nomeado (named) da seguinte maneira:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run -v nomedovolume:/data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Agora o volume tem um nome e pode ser facilmente referenciado;
+\end_layout
+
+\begin_layout Itemize
+Em 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker volume ls
+\end_layout
+
+\end_inset
+
+ podemos verificar o container nomeado criado;
+\end_layout
+
+\begin_layout Itemize
+Da mesma maneira que o anônimo, este volume tem como função armazenar arquivos;
+\end_layout
+
+\begin_layout Subsection
+Bind mounts
+\end_layout
+
+\begin_layout Itemize
+Bind mount também é um volume, porém ele fica em diretório que nós especificamos
+;
+\end_layout
+
+\begin_layout Itemize
+Então não criamos um volume e sim, apontamos um diretório;
+\end_layout
+
+\begin_layout Itemize
+O comando para criar um bind mount é:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run /dir/data:/data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira o diretório /dir/data no nosso computador, será o volume deste
+ container;
+\end_layout
+
+\begin_layout Subsection
+Atualização de projeto com bind mount
+\end_layout
+
+\begin_layout Itemize
+Bind mount não serve apenas para volumes;
+\end_layout
+
+\begin_layout Itemize
+Podemos utilizar esta técnica para atualização em tempo real do projeto;
+\end_layout
+
+\begin_layout Itemize
+Sem ter que refazer o build a cada atualização do mesmo;
+\end_layout
+
+\begin_layout Subsection
+Criar um volume
+\end_layout
+
+\begin_layout Itemize
+Podemos criar volumes manualmente também;
+\end_layout
+
+\begin_layout Itemize
+Utilizamos o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker volume create <nome>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira temos um named volume criado, podemos atrelar a algum container
+ na execução do mesmo;
+\end_layout
+
+\begin_layout Subsection
+Listando todos os volumes
+\end_layout
+
+\begin_layout Itemize
+Com o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker volume ls
+\end_layout
+
+\end_inset
+
+ listamos todos os volumes;
+\end_layout
+
+\begin_layout Itemize
+Desta maneira temos acesso aos anonymous e os named volumes;
+\end_layout
+
+\begin_layout Itemize
+Interessante para saber quais volumes estão criados no nosso ambiente;
+\end_layout
+
+\begin_layout Subsection
+Checar um volume
+\end_layout
+
+\begin_layout Itemize
+Podemos verificar os detalhes de um volume em específico com o comando:
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker volime inspect nome
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma temos acesso ao local em que o volume guarda dados, nome, escopo
+ e muito mais;
+\end_layout
+
+\begin_layout Itemize
+O docker, os dados dos volumes em algum diretório do nosso computador, desta
+ forma podemos saber qual é;
+\end_layout
+
+\begin_layout Subsection
+Removendo volumes não utilizados
+\end_layout
+
+\begin_layout Itemize
+Podemos remover todos os volumes que não estão sendo utilizados com apenas
+ um comando;
+\end_layout
+
+\begin_layout Itemize
+O comando é:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker volume prune
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Semelhante ao prune que remove imagens e containers, visto anteriormente;
+\end_layout
+
+\begin_layout Subsection
+Volume apenas de leitura
+\end_layout
+
+\begin_layout Itemize
+Podemos criar um volume que tem apenas permissão de leitura, isso é útil
+ em algumas aplicações;
+\end_layout
+
+\begin_layout Itemize
+Para realizar esta configuração devemos utilizar o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker run -v volume:/data:ro
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Este :ro é a abreviação de read only;
+\end_layout
+
+\begin_layout Section
+Networks
+\end_layout
+
+\begin_layout Subsection
+O que são Networks no Docker?
+\end_layout
+
+\begin_layout Itemize
+Uma forma de gerenciar a conexão do Docker com outras plataformas ou até
+ mesmo entre containers;
+\end_layout
+
+\begin_layout Itemize
+As redes ou networks são criadas separadas do containers, como os volumes;
+\end_layout
+
+\begin_layout Itemize
+Além disso exitem alguns drivers de rede, que veremos em seguida;
+\end_layout
+
+\begin_layout Itemize
+Uma rede deixa muito simples a comunicação entre containers;
+\end_layout
+
+\begin_layout Subsection
+Tipos de conexão
+\end_layout
+
+\begin_layout Itemize
+Os containers costumam ter três principais tipos de comunicação:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Externa
+\series default
+: conexão com uma API de um servidor remoto;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Com o host
+\series default
+: comunicação com a máquina que está executando o Docker;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Entre containers
+\series default
+: comunicação que utiliza o driver bridge e permite a comunicação entre
+ dois ou mais containers;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Tipos de rede (drivers)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bridge
+\series default
+: o mais comum e default do Docker, utilizado quando containers precisam
+ se conectar (na maioria das vezes optamos por este driver);
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+host
+\series default
+: permite a conexão entre um container a máquina que está hosteando o Docker;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+macvlan
+\series default
+: permite a conexão a um container por um MAC address;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+none
+\series default
+: remove todas as conexões de rede de um container;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+plugins
+\series default
+: permite extensões de terceiros para criar outras redes;
+\end_layout
+
+\begin_layout Subsection
+Listando redes
+\end_layout
+
+\begin_layout Itemize
+Podemos verificar todas as redes do nosso ambiente com:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network ls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Algumas redes já estão criadas, estas fazem parte da configuração incial
+ do docker;
+\end_layout
+
+\begin_layout Subsection
+Criando redes
+\end_layout
+
+\begin_layout Itemize
+Para criar uma rede vamos utilizar o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network create <nome>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Esta rede será do tipo bridge, que é o mais utilizado;
+\end_layout
+
+\begin_layout Itemize
+Podemos criar diversas redes;
+\end_layout
+
+\begin_layout Itemize
+Para criar uma rede com driver diferente, você pode usar o comando
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network -d <nome-do-driver> <nome-da-rede>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Removendo redes
+\end_layout
+
+\begin_layout Itemize
+Podemos remover redes de forma simples também: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network rm <nome>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assim a rede não estará mais disponível para utilizarmos;
+\end_layout
+
+\begin_layout Itemize
+Devemos tomar cuidado com containers já conectados;
+\end_layout
+
+\begin_layout Subsection
+Removendo redes em massa
+\end_layout
+
+\begin_layout Itemize
+Podemos remover redes de forma simples também:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network prune
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assim todas as redes não utilizadas no momento serão removidas;
+\end_layout
+
+\begin_layout Itemize
+Receberemos uma mensagem de confirmação do Docker antes da ação a ser executada;
+\end_layout
+
+\begin_layout Subsection
+Instalação do Postman
+\end_layout
+
+\begin_layout Itemize
+Vamos criar uma API para testar a conexão entre containers;
+\end_layout
+
+\begin_layout Itemize
+Para isso, vamos utilizar o software Postman, que é o mais utilizado do
+ mercado para desenvolvimento de APIs;
+\end_layout
+
+\begin_layout Itemize
+Link: https://www.postman.com
+\end_layout
+
+\begin_layout Subsection
+Conexão externa
+\end_layout
+
+\begin_layout Itemize
+Os containers podem se conectar livremente ao mundo externo;
+\end_layout
+
+\begin_layout Itemize
+Um caso seria: uma API de código aberto;
+\end_layout
+
+\begin_layout Itemize
+Podemos acessá-la livremente e utilizar seus dados;
+\end_layout
+
+\begin_layout Subsection
+Conexão com o host
+\end_layout
+
+\begin_layout Itemize
+Podemos também conectar um container com o host do Docker;
+\end_layout
+
+\begin_layout Itemize
+Host é a máquina que está executando o Docker;
+\end_layout
+
+\begin_layout Itemize
+Como ip de host utilizamos: host.docker.internal
+\end_layout
+
+\begin_layout Subsection
+Conexão entre containers
+\end_layout
+
+\begin_layout Itemize
+Podemos também estabelecer uma conexão entre containers;
+\end_layout
+
+\begin_layout Itemize
+Duas imagens distintas rodando em containers separados que precisam se conectar
+ para inserir um dado no banco, por exemplo;
+\end_layout
+
+\begin_layout Itemize
+Vamos precisar de uma rede bridge, para fazer esta conexão;
+\end_layout
+
+\begin_layout Itemize
+Agora nosso container de flask vai inserir dados em um MySQL que roda pelo
+ Docker também;
+\end_layout
+
+\begin_layout Subsection
+Conextar container
+\end_layout
+
+\begin_layout Itemize
+Podemos conectar um container a uma rede;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network connect <rede> <container>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Após o comando o container estará dentro da rede;
+\end_layout
+
+\begin_layout Subsection
+Desconectar container
+\end_layout
+
+\begin_layout Itemize
+Podemos descontectar um container a uma rede também;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network disconnect <rede> <container>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Após o comando o container estará fora da rede;
+\end_layout
+
+\begin_layout Subsection
+Inspecionando redes
+\end_layout
+
+\begin_layout Itemize
+Podemosm analisar os detalhes de uma rede com o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network inspect <nome>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vamos receber informações como: data de criação, driver, nome e muito mais;
+\end_layout
+
+\begin_layout Section
+YAML
+\end_layout
+
+\begin_layout Subsection
+O que é YAML?
+\end_layout
+
+\begin_layout Itemize
+Uma linguagem de serialização, seu nome é YAML ain't Markup Language (YAML
+ não é uma linguagem de marcação);
+\end_layout
+
+\begin_layout Itemize
+Usada geralmente para arquivos de configuração, inclusive do Docker, para
+ configurar o Docker Compose;
+\end_layout
+
+\begin_layout Itemize
+É de fácil leitura para nós humanos;
+\end_layout
+
+\begin_layout Itemize
+A extensão dos arquivos é yml ou yaml;
+\end_layout
+
+\begin_layout Subsection
+Vamos criar nosso arquivo YAML
+\end_layout
+
+\begin_layout Itemize
+O arquivo .yaml geralmente possui chaves e valores;
+\end_layout
+
+\begin_layout Itemize
+Que é de onde vamos retirar as configurações do nosso sistema;
+\end_layout
+
+\begin_layout Itemize
+Para definir uma chave apenas inserimos o nome dela, em seguida colocamos
+ dois pontos e depois o valor;
+\end_layout
+
+\begin_layout Subsection
+Espaçamento e indentação
+\end_layout
+
+\begin_layout Itemize
+O fim de uma linha indica o fim de uma instrução, não há ponto e vírgula;
+\end_layout
+
+\begin_layout Itemize
+A indentação deve conter um ou mais espaços, e não devemos utilizar tab;
+\end_layout
+
+\begin_layout Itemize
+E cada uma define um novo bloco;
+\end_layout
+
+\begin_layout Itemize
+O espaço é obrigatório após a declaração da chave;
+\end_layout
+
+\begin_layout Subsection
+Comentários
+\end_layout
+
+\begin_layout Itemize
+Podemos escrever comentários em YAML também utilizando o símbolo #;
+\end_layout
+
+\begin_layout Itemize
+O processador de YAML ignora comentários;
+\end_layout
+
+\begin_layout Itemize
+Eles são úteis para escrever como o arquivo funciona/foi configurado;
+\end_layout
+
+\begin_layout Subsection
+Dados numéricos
+\end_layout
+
+\begin_layout Itemize
+Em YAML podemos escrever dados numéricos com:
+\end_layout
+
+\begin_layout Itemize
+Inteiros=12;
+\end_layout
+
+\begin_layout Itemize
+Floats = 15.8;
+\end_layout
+
+\begin_layout Subsection
+Strings
+\end_layout
+
+\begin_layout Itemize
+Em YAML podemos escrever textos de duas formas:
+\end_layout
+
+\begin_layout Itemize
+Sem aspas: este é um texto válido;
+\end_layout
+
+\begin_layout Itemize
+Com aspas: 
+\begin_inset Quotes eld
+\end_inset
+
+e este também
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Dados nulos
+\end_layout
+
+\begin_layout Itemize
+Em YAML podemos definir um dado como nulo de duas formas:
+\end_layout
+
+\begin_layout Itemize
+~ ou null
+\end_layout
+
+\begin_layout Itemize
+Os dois vão resultar em None, após a interpretação
+\end_layout
+
+\begin_layout Subsection
+Booleanos
+\end_layout
+
+\begin_layout Itemize
+Podemos inserir booleanos em YAML da seguinte forma:
+\end_layout
+
+\begin_layout Itemize
+True e On = Verdadeiro;
+\end_layout
+
+\begin_layout Itemize
+False e Off = Falso;
+\end_layout
+
+\begin_layout Subsection
+Arrays
+\end_layout
+
+\begin_layout Itemize
+Os arrays, tipos de dados para listas, possuem duas sintaxes:
+\end_layout
+
+\begin_layout Itemize
+Primeira: [1,2,3,4,5]
+\end_layout
+
+\begin_layout Itemize
+Segunda
+\end_layout
+
+\begin_layout Standard
+Items:
+\end_layout
+
+\begin_layout Standard
+- 1
+\end_layout
+
+\begin_layout Standard
+- 2
+\end_layout
+
+\begin_layout Standard
+- 3
+\end_layout
+
+\begin_layout Subsection
+Dicionários
+\end_layout
+
+\begin_layout Itemize
+Os dicionários, tipo de dados para objetos ou listas com chaves e valores,
+ podem ser escritos assim:
+\end_layout
+
+\begin_layout Itemize
+obj: {a: 1, b: 2, c: 3}
+\end_layout
+
+\begin_layout Itemize
+E também com o nesting:
+\end_layout
+
+\begin_layout Standard
+objeto:
+\end_layout
+
+\begin_layout Standard
+chave: 1
+\end_layout
+
+\begin_layout Standard
+chave: 2
+\end_layout
+
+\begin_layout Section
+Docker Compose
+\end_layout
+
+\begin_layout Subsection
+O que é o Docker Compose?
+\end_layout
+
+\begin_layout Itemize
+O Docker Compose é uma ferramenta para rodar múltiplos containers;
+\end_layout
+
+\begin_layout Itemize
+Teremos apenas um arquivo de configuração, que orquestra totalmente esta
+ situação;
+\end_layout
+
+\begin_layout Itemize
+É uma forma de rodar múltiplos builds e runs com um comando;
+\end_layout
+
+\begin_layout Itemize
+Em projetos maiores é essencial o uso do Compose;
+\end_layout
+
+\begin_layout Subsection
+Criando nosso primeiro Compose
+\end_layout
+
+\begin_layout Itemize
+Primeiramente vamos criar um arquivo chamado docker-compose.yml na raiz do
+ projeto;
+\end_layout
+
+\begin_layout Itemize
+Este arquivo vai coordenar os containers e imagens e possui algumas chaves
+ muito utilizadas;
+\end_layout
+
+\begin_layout Itemize
+version: versão do Compose;
+\end_layout
+
+\begin_layout Itemize
+services: Containers/serviços que vão rodar nessa aplicação;
+\end_layout
+
+\begin_layout Itemize
+volumes: Possível adição de volumes;
+\end_layout
+
+\begin_layout Subsection
+Rodando o compose
+\end_layout
+
+\begin_layout Itemize
+Para rodar nossa estrutura em Compose vamos utilizar o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker-compose up
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Isso fará com que as instruções no arquivo seja executadas;
+\end_layout
+
+\begin_layout Itemize
+Da mesma forma que realizamos os builds e também os runs;
+\end_layout
+
+\begin_layout Itemize
+Podemos parar o Compose com ctrl+c no terminal;
+\end_layout
+
+\begin_layout Subsection
+Compose em background
+\end_layout
+
+\begin_layout Itemize
+O Compose também pode ser executado em modo detached;
+\end_layout
+
+\begin_layout Itemize
+Para isso, vamos utilizar a flag -d no comando;
+\end_layout
+
+\begin_layout Itemize
+E então os containers estarão rodando em background;
+\end_layout
+
+\begin_layout Itemize
+Podemeos ver sua execução com 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker ps
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Parando o compose
+\end_layout
+
+\begin_layout Itemize
+Podemos parar o compose que roda em background com:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker-compose down
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira o serviço para e temos os containers adicionados no docker
+ ps -a;
+\end_layout
+
+\begin_layout Subsection
+Variáveis de ambiente
+\end_layout
+
+\begin_layout Itemize
+Podemos definir variáveis de ambiente para o Docker Compose;
+\end_layout
+
+\begin_layout Itemize
+Para isso vamos definir um arquivo base em env_file;
+\end_layout
+
+\begin_layout Itemize
+As variáveis podem ser chamadas pela sintaxe: ${VARIAVEL};
+\end_layout
+
+\begin_layout Itemize
+Esta técnica é útil quando o dado a ser inserido é sensível/não pode ser
+ compartilhado, como uma senha;
+\end_layout
+
+\begin_layout Subsection
+Redes no compose
+\end_layout
+
+\begin_layout Itemize
+O Compose cria uma rede básica Bridge entre os containers da aplicação;
+\end_layout
+
+\begin_layout Itemize
+Porém podemos isolar as redes com a chave networks;
+\end_layout
+
+\begin_layout Itemize
+Desta maneira podemos conectar apenas os containers que optarmos;
+\end_layout
+
+\begin_layout Itemize
+E podemos definir drivers diferentes também;
+\end_layout
+
+\end_body
+\end_document
