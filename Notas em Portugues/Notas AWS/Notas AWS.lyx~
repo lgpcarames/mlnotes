@@ -2308,5 +2308,403 @@ Você não pode simplesmente inserir dados brutos e esperar bons resultados;
 Esta é a arte do aprendizado de máquina, onde a experiência é aplicada;
 \end_layout
 
+\begin_layout Subsubsection*
+A Maldição da Dimensionalidade
+\end_layout
+
+\begin_layout Itemize
+Muitas características podem ser um problema - leva a dados esparsos;
+\end_layout
+
+\begin_layout Itemize
+Cada característica é uma nova dimensão
+\end_layout
+
+\begin_layout Itemize
+Grande parte da engenharia de atributos é selecionar os atributos mais relevante
+s para o problema em questão
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Muitas vezezé aqui que o conhecimento do domínio entra em jogo
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Técnicas de redução de dimensionalidade não supervisionadas também podem
+ ser empregadas para transformar muitas características em menos características
+;
+\end_layout
+
+\begin_layout Itemize
+PCA;
+\end_layout
+
+\begin_layout Itemize
+K-Means;
+\end_layout
+
+\begin_layout Subsubsection*
+Imputando dados ausentes: substituição pela média
+\end_layout
+
+\begin_layout Itemize
+Substituir os valores ausentes pelo valor médio das colunas (colunas, não
+ linhas! Uma coluna representa um único atributo.
+ Só faz sentido tirar a média de outras amostras do mesmo atributo);
+\end_layout
+
+\begin_layout Itemize
+Rápido e fácil, não afeta a média ou o tamanho da amostra do conjunto de
+ dados geral;
+\end_layout
+
+\begin_layout Itemize
+A mediana pode ser uma escolha melhor do que a média quando há outliers;
+\end_layout
+
+\begin_layout Itemize
+De uma maneira geral pode não ser uma boa ideia:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Funciona apenas a nível da coluna, perde correlações entre as características;
+\end_layout
+
+\begin_layout Itemize
+Não pode ser usado em características categóricas (inputar com valor mais
+ frequente pode funcionar neste caso, no entando...);
+\end_layout
+
+\begin_layout Itemize
+Não muito preciso;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Imputando dados ausentes: Machine Learning
+\end_layout
+
+\begin_layout Itemize
+kNN: Encontre K linhas 
+\begin_inset Quotes eld
+\end_inset
+
+mais próximas
+\begin_inset Quotes erd
+\end_inset
+
+ (mais semelhantes) e calcula a média de seus valores;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Requer dados numéricos, não categóricos;
+\end_layout
+
+\begin_layout Itemize
+Existem maneiras de lidar com dados categóricos (distância de Hamming),
+ mas os dados categóricos provavelmente são mais bem servidos por...
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Deep Learning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Crie um modelo de aprendizado de máquina para imputar dados para seu modelo
+ de aprendizado de máquina;
+\end_layout
+
+\begin_layout Itemize
+Funciona bem para dados categóricos.
+ Funciona bem, mas é complexo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Regressão
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Encontre relações lineares ou não-lineares entre a característica ausente
+ e outras características;
+\end_layout
+
+\begin_layout Itemize
+Técnica mais avançada: MICE (Multiple Imputation de Chained Equations)
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Imputando dados ausentes: basta obter mais dados
+\end_layout
+
+\begin_layout Itemize
+O que é melhor do que imputar dados? Obtendo mais dados reais!
+\end_layout
+
+\begin_layout Itemize
+Às vezes, você só precisa se esforçar mais ou coletar mais dados;
+\end_layout
+
+\begin_layout Subsubsection*
+O que são dados não balanceados?
+\end_layout
+
+\begin_layout Itemize
+Grande discrepância entre casos 
+\begin_inset Quotes eld
+\end_inset
+
+positivos
+\begin_inset Quotes erd
+\end_inset
+
+ e 
+\begin_inset Quotes eld
+\end_inset
+
+negativos
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, detecção de fraude.
+ A fraude é rara e a maioria das linhas não será fraude;
+\end_layout
+
+\begin_layout Itemize
+Não deixe que a terminologia o confunda, 
+\begin_inset Quotes eld
+\end_inset
+
+Positivo
+\begin_inset Quotes erd
+\end_inset
+
+ não significa 
+\begin_inset Quotes eld
+\end_inset
+
+bom
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Isso significa que o que você está testando foi o que aconteceu;
+\end_layout
+
+\begin_layout Itemize
+Se seu modelo de aprendizado de máquina é feito para detectar fraude, então
+ fraude é o caso positivo;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Um problema com redes neurais: não aprende corretamente;
+\end_layout
+
+\begin_layout Subsubsection*
+Oversampling
+\end_layout
+
+\begin_layout Itemize
+Amostras duplicadas da classe minoritária;
+\end_layout
+
+\begin_layout Itemize
+Pode ser feito aleatoriamente;
+\end_layout
+
+\begin_layout Subsubsection*
+Undersampling
+\end_layout
+
+\begin_layout Itemize
+Em vez de criar mais amostras positivas, remova as negativas;
+\end_layout
+
+\begin_layout Itemize
+Jogar dados fora geralmente não é a resposta certa;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A menos que você esteja especificamente tentando evitar problemas de escala
+ de 
+\begin_inset Quotes eld
+\end_inset
+
+big data
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+SMOTE
+\end_layout
+
+\begin_layout Itemize
+É o acrônimo para Synthetic Minority Oversampling Technique;
+\end_layout
+
+\begin_layout Itemize
+Gera artificialmente novas amostras da classe minoritária usando os vizinhos
+ mais próximos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Execute K-vizinhos mais próximos de cada amostra da classe minoritária;
+\end_layout
+
+\begin_layout Itemize
+Crie uma nova amostra a partir do resultado kNN (média dos vizinhos);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ambos geram novas amostras e classes de maioria de subamostras;
+\end_layout
+
+\begin_layout Itemize
+Geralmente melhor do que apenas oversampling;
+\end_layout
+
+\begin_layout Subsubsection*
+Ajustando os limites
+\end_layout
+
+\begin_layout Itemize
+Ao fazer previsões sobre uma classificação (fraude/não-fraude), você tem
+ algum tipo de limite de probabilidade em que sinalizará como o caso positivo
+ (fraude);
+\end_layout
+
+\begin_layout Itemize
+Se você tiver muitos falsos positivos, uma maneira de corrigir isso é simplesmen
+te aumentar esse limite;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Garante a redução de falsos positivos;
+\end_layout
+
+\begin_layout Itemize
+Mas pode resultar em mais falsos negativos;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Outliers
+\end_layout
+
+\begin_layout Itemize
+São valores que fogem muito do padrão dos demais dados;
+\end_layout
+
+\begin_layout Itemize
+Quando falamos de outlier, sempre temos que falar de variância e desvio
+ padrão, pois elas são métricas importantes para entender quando um dado
+ se apresenta como um outlier;
+\end_layout
+
+\begin_layout Subsubsection*
+Variância
+\end_layout
+
+\begin_layout Itemize
+A variância mede o quão 
+\begin_inset Quotes eld
+\end_inset
+
+espalhados
+\begin_inset Quotes erd
+\end_inset
+
+ os dados estão;
+\end_layout
+
+\begin_layout Itemize
+Variância (
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+) é simplesmente a me´dia das diferenças ao quadrado da média;
+\end_layout
+
+\begin_layout Itemize
+Exemplo: Qual é a variação do conjunto de dados (1, 4, 5, 4, 8)?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Primeiro encontre a média
+\begin_inset Formula 
+\[
+\overline{x}=\frac{\left(1+4+5+4+8\right)}{5}=4.4
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Agora encontre as diferenças da média: 
+\begin_inset Formula 
+\[
+x_{i}-\overline{x}=\left(-3.4,-0.4,0.6,-0.4,3.6\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Encontre as diferenças ao quadrado:
+\begin_inset Formula 
+\[
+\left(x_{i}-\overline{x}\right)^{2}=\left(11.56,0.16,0.36,0.16,12.96\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Encontre a média das diferenças ao quadrado:
+\begin_inset Formula 
+\[
+\sigma^{2}=\frac{11.56+0.16+0.36+0.16+12.96}{5}=5.04
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
