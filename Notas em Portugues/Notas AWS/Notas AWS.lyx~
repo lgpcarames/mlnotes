@@ -2308,5 +2308,80 @@ Você não pode simplesmente inserir dados brutos e esperar bons resultados;
 Esta é a arte do aprendizado de máquina, onde a experiência é aplicada;
 \end_layout
 
+\begin_layout Subsubsection*
+A Maldição da Dimensionalidade
+\end_layout
+
+\begin_layout Itemize
+Muitas características podem ser um problema - leva a dados esparsos;
+\end_layout
+
+\begin_layout Itemize
+Cada característica é uma nova dimensão
+\end_layout
+
+\begin_layout Itemize
+Grande parte da engenharia de atributos é selecionar os atributos mais relevante
+s para o problema em questão
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Muitas vezezé aqui que o conhecimento do domínio entra em jogo
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Técnicas de redução de dimensionalidade não supervisionadas também podem
+ ser empregadas para transformar muitas características em menos características
+;
+\end_layout
+
+\begin_layout Itemize
+PCA;
+\end_layout
+
+\begin_layout Itemize
+K-Means;
+\end_layout
+
+\begin_layout Subsubsection*
+Imputando dados ausentes: substituição pela média
+\end_layout
+
+\begin_layout Itemize
+Substituir os valores ausentes pelo valor médio das colunas (colunas, não
+ linhas! Uma coluna representa um único atributo.
+ Só faz sentido tirar a média de outras amostras do mesmo atributo);
+\end_layout
+
+\begin_layout Itemize
+Rápido e fácil, não afeta a média ou o tamanho da amostra do conjunto de
+ dados geral;
+\end_layout
+
+\begin_layout Itemize
+A mediana pode ser uma escolha melhor do que a média quando há outliers;
+\end_layout
+
+\begin_layout Itemize
+De uma maneira geral pode não ser uma boa ideia:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Funciona apenas a nível da coluna, perde correlações entre as características;
+\end_layout
+
+\begin_layout Itemize
+Não pode ser usado em características categóricas (inputar com valor mais
+ frequente pode funcionar neste caso, no entando...);
+\end_layout
+
+\begin_layout Itemize
+Não muito preciso;
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
