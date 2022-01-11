@@ -2502,5 +2502,25 @@ Esta técnica é útil quando o dado a ser inserido é sensível/não pode ser
  compartilhado, como uma senha;
 \end_layout
 
+\begin_layout Subsection
+Redes no compose
+\end_layout
+
+\begin_layout Itemize
+O Compose cria uma rede básica Bridge entre os containers da aplicação;
+\end_layout
+
+\begin_layout Itemize
+Porém podemos isolar as redes com a chave networks;
+\end_layout
+
+\begin_layout Itemize
+Desta maneira podemos conectar apenas os containers que optarmos;
+\end_layout
+
+\begin_layout Itemize
+E podemos definir drivers diferentes também;
+\end_layout
+
 \end_body
 \end_document

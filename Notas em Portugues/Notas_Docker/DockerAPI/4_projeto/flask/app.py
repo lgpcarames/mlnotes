@@ -9,7 +9,7 @@ app.config["DEBUG"] = True
 
 mysql = MySQL(app)
 
-app.config["MYSQL_HOST"] = 'mysql_api_container'
+app.config["MYSQL_HOST"] = 'db'
 app.config["MYSQL_USER"] = 'root'
 app.config["MYSQL_PASSWORD"] = ''
 app.config['MYSQL_DB'] = 'flaskdocker'
