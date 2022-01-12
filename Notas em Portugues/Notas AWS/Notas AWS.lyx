@@ -3270,5 +3270,1324 @@ LSTM, GRU;
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+Funções de ativação
+\end_layout
+
+\begin_layout Itemize
+Define a saída de um nó/neurônio de acordo com seus 
+\begin_inset Quotes eld
+\end_inset
+
+sinais
+\begin_inset Quotes erd
+\end_inset
+
+ de entrada;
+\end_layout
+
+\begin_layout Itemize
+A definição da função de ativação é importante, pois diferentes funções
+ de ativação podem render performances bastantes diferentes da rede neural;
+\end_layout
+
+\begin_layout Itemize
+Exemplos de função de ativação impróprias:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Função de ativação linear;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Uma rede neural deve ter uma função de ativação não-linear para que possa
+ tratar de problemas complexos (não-lineares), se não a função de ativação
+ não consegue ser aprimorada.
+ Logo, uma função de ativação linear não interfere no resultado da rede
+ neural no final;
+\end_layout
+
+\begin_layout Itemize
+Não pode executar backpropagation;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Binary step function;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A solução será de ligado ou desligado;
+\end_layout
+
+\begin_layout Itemize
+Sendo assim, não é possível lidar com múltiplas classes, pois sua natureza
+ é completamente binária;
+\end_layout
+
+\begin_layout Itemize
+Inclinações verticais, elas não funcionam bem quando você precisa realizar
+ o backpropagation;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Em vez disso, precisamos de funções de ativação não-lineares;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pois, elas podem criar mapeamentos complexos entre entradas e saídas;
+\end_layout
+
+\begin_layout Itemize
+Permitem backpropagation, ou seja, a derivada delas possui valor útil;
+\end_layout
+
+\begin_layout Itemize
+Permite várias camadas, pois funções lineares degeneram em uma única camada;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Algumas funções de ativação não-lineares:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sigmoid/tanh;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gera 0-1 (sigmoide/logística)
+\end_layout
+
+\begin_layout Itemize
+-1 a 1 (tanh / tangente hiperbólica)
+\end_layout
+
+\begin_layout Itemize
+Mas mudam lentamente para valores altos ou baixos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Problema do 
+\begin_inset Quotes eld
+\end_inset
+
+vanishing gradient
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Computacionalmente caro;
+\end_layout
+
+\begin_layout Itemize
+tanh geralmente é preferível em relação à sigmóide;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rectified Linear Unit (ReLU);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Muito popular;
+\end_layout
+
+\begin_layout Itemize
+Fácil e rápida de calcular
+\end_layout
+
+\begin_layout Itemize
+Mas quando as entradas são zero ou negativas, temos uma função linear e
+ consequentemente os mesmo problemas vistos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O 
+\begin_inset Quotes eld
+\end_inset
+
+Dying ReLU problem
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Leaky ReLU;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Resolve o problema do 
+\begin_inset Quotes eld
+\end_inset
+
+Dying ReLU
+\begin_inset Quotes erd
+\end_inset
+
+ introduzindo uma inclinação negativa abaixo de 0 (geralmente não tão íngreme);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Parametric ReLU (PReLU)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ReLU, mas a inclinação na parte negativa é 
+\begin_inset Quotes eld
+\end_inset
+
+aprendida
+\begin_inset Quotes erd
+\end_inset
+
+ por backpropagation;
+\end_layout
+
+\begin_layout Itemize
+Pode ser bastante complicada;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Outras variações de ReLU;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exponential Linear Unit (ELU);
+\end_layout
+
+\begin_layout Itemize
+Swish;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Do Google, tem um desempenho muito bom;
+\end_layout
+
+\begin_layout Itemize
+Mas é do Google, não da Amazon;
+\end_layout
+
+\begin_layout Itemize
+Traz benefício com redes muito profundas (mais de 40 camadas);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Maxout;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Produz o máximo das entradas;
+\end_layout
+
+\begin_layout Itemize
+Tecnicamente, ReLU é um caso especial da maxout;
+\end_layout
+
+\begin_layout Itemize
+Mas duplica os parâmetros que precisam ser treinados, muitas vezes ela não
+ é viável;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Softmax;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Usado na camada de saída (final) de um problema de classificação múltipla;
+\end_layout
+
+\begin_layout Itemize
+Converte basicamente os resultados em probabilidades para cada classificação;
+\end_layout
+
+\begin_layout Itemize
+Não é possível produzir mais de um rótulo para algo (sigmóide pode);
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Escolhendo uma função de ativação;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Para classificação múltipla, use softmax na camada de saída;
+\end_layout
+
+\begin_layout Itemize
+RNN's se 
+\begin_inset Quotes eld
+\end_inset
+
+dão bem
+\begin_inset Quotes erd
+\end_inset
+
+ com tanh;
+\end_layout
+
+\begin_layout Itemize
+Para todas as outras:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Comece com ReLU;
+\end_layout
+
+\begin_layout Itemize
+Para tentar melhorar, experimente Leaky ReLU;
+\end_layout
+
+\begin_layout Itemize
+Último recurso: PReLU, Maxout;
+\end_layout
+
+\begin_layout Itemize
+Swish para redes realmente profundas;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Redes Neurais Convolucionais
+\end_layout
+
+\begin_layout Subsubsection*
+CNN's: Para que servem?
+\end_layout
+
+\begin_layout Itemize
+Quando você tem dados que não se alinham perfeitamente em colunas;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Imagens nas quais você deseja encontrar características;
+\end_layout
+
+\begin_layout Itemize
+Tradução;
+\end_layout
+
+\begin_layout Itemize
+Classificação de sentenças;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Podem encontrar características que não estão em um local específico;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Como uma placa de pare em uma foto;
+\end_layout
+
+\begin_layout Itemize
+Ou palavras dentro de uma frase;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+São 
+\begin_inset Quotes eld
+\end_inset
+
+invariáveis na localização de características
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Inspirado na biologia do córtex visual;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Os campos receptivos locais são grupos de neurônios que respondem apenas
+ a uma parte do que seus olhos veem (sub-amostragem);
+\end_layout
+
+\begin_layout Itemize
+Eles se sobrepõem para cobrir todo o campo visual (convoluções);
+\end_layout
+
+\begin_layout Itemize
+Eles alimentam camadas superiores que identificam imagens cada vez mais
+ complexas;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Alguns campos receptivos identificam linhas horizontais, linhas em ângulos
+ diferentes, etc.
+ (que são os filtros);
+\end_layout
+
+\begin_layout Itemize
+Eles alimentariam uma camada que identifica as formas;
+\end_layout
+
+\begin_layout Itemize
+Que pode alimentar uma camada que identifica objetos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Para imagens coloridas, camadas extras para vermelho, verde e azul;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Como sabemos que é um sinal de pare?
+\end_layout
+
+\begin_layout Itemize
+Campos receptivos locais individuais examinam a imagem procurando bordas
+ e colocam as bordas do sinal de parada em uma camada;
+\end_layout
+
+\begin_layout Itemize
+Essas bordas, por sua vez, são captada por uma convolução de nível superior
+ que identifica a forma do sinal de Pare (e as letras também);
+\end_layout
+
+\begin_layout Itemize
+Esta forma, então, é comparada ao padrão de como é um sinal de parada, também
+ usando o sinal vermelho forte proveniente de suas camadas vermelhas;
+\end_layout
+
+\begin_layout Itemize
+Essas informações continuam sendo processadas em níveis superiores até que
+ seu pé pise no freio!
+\end_layout
+
+\begin_layout Itemize
+Uma CNN funciona da mesma forma;
+\end_layout
+
+\begin_layout Subsubsection*
+CNN's com Keras/Tensorflow
+\end_layout
+
+\begin_layout Itemize
+Os dados de origem devem ter dimensões adequadas;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, largura x comprimento x canais de cores
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+O tipo de camada Conv2D faz a convolução real em uma imagem 2D;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conv1D e Conv3D também estão disponíveis - não precisam ser dados de imagens
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Camadas MaxPooling2D podem ser usadas para reduzir uma camada 2D pegando
+ o valor máximo em um determinado bloco;
+\end_layout
+
+\begin_layout Itemize
+As camadas 
+\begin_inset Quotes eld
+\end_inset
+
+Flatten
+\begin_inset Quotes erd
+\end_inset
+
+ irão converter uma camada 2D em uma camada 1D para passar em uma camada
+ de vetor oculta de neurônios;
+\end_layout
+
+\begin_layout Itemize
+Uso típico:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conv2D -> MaxPooling2D -> Dropout -> Flatten -> Dense -> Dropout -> Softmax;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+CNNs são difíceis
+\end_layout
+
+\begin_layout Itemize
+Consome muitos recursos (CPU, GPU e RAM);
+\end_layout
+
+\begin_layout Itemize
+Muitos hiperparâmetros;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kernel sizes, muitas camadas com diferentes números de unidades, quantidade
+ de pooling...
+ além das coisas usuais como número de camadas, escolha do otimizador;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Obter os dados de treinamento costuma ser a parte mais difícil, bem como
+ armazená-lo e acessá-lo;
+\end_layout
+
+\begin_layout Subsubsection*
+Arquiteturas CNN especializadas
+\end_layout
+
+\begin_layout Itemize
+Define o arranjo específico de camadas, preenchimento e hiperparâmetros;
+\end_layout
+
+\begin_layout Itemize
+LeNet-5;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bom para reconhecimento de escrita;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+AlexNet;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Classificação de imagem, mais profunda do que o LeNet;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+GoogLeNet;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ainda mais profundo, mas com melhor desempenho;
+\end_layout
+
+\begin_layout Itemize
+Apresenta módulos de iniciação (grupos de camadas de convolução);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ResNet (rede residual);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ainda mais profundo - mantém o desempenho por meio skip connections;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Redes neurais recorrentes e LSTM
+\end_layout
+
+\begin_layout Subsubsection*
+RNN's: Para que servem?
+\end_layout
+
+\begin_layout Itemize
+Dados de série temporal;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Quando você deseja prever o comportamento futuro com base no comportamento
+ do passado;
+\end_layout
+
+\begin_layout Itemize
+Logs da web, logs de sensores, negociações de ações;
+\end_layout
+
+\begin_layout Itemize
+Onde dirigir seu carro autônomo com base em trajetórias anteriores;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dados que consistem em sequências de comprimento arbitrário;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tradução;
+\end_layout
+
+\begin_layout Itemize
+Legendas de imagens;
+\end_layout
+
+\begin_layout Itemize
+Música gerada por máquina;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Neurônio Recorrente
+\end_layout
+
+\begin_layout Itemize
+Um neurônio recorrente é muito similar ao neurônio visto anteriormente;
+\end_layout
+
+\begin_layout Itemize
+A grande diferença está no laço que liga o neurônio com ele mesmo;
+\end_layout
+
+\begin_layout Itemize
+Então, conforme executamos uma estapa de treinamento neste neurônio, alguns
+ dados de treinamento são inseridos nesse neurônio, ou talvez uma entrada
+ de uma camada anterior da nossa rede neural;
+\end_layout
+
+\begin_layout Itemize
+Normalmente, é apenas gerado o resultado de saída da função de ativação
+ desse neurônio, mas o neurônio recorrente permite que o alimentemos novamente
+ com esse dado de saída, então da próxima vez que os dados forem processados
+ através deste neurônio, então os dados da execução anterior também são
+ somados nos resultados como uma entrada extra;
+\end_layout
+
+\begin_layout Itemize
+Então, a medida que continuamos executando esse processamento de forma contínua,
+ teremos alguns novos dados chegando que serão combinados com a saída anterior
+ deste neurônio e isso ocorre continuamente;
+\end_layout
+
+\begin_layout Itemize
+Logo, o passado nesse neurônio influência o futuro de como esse neurônio
+ aprende;
+\end_layout
+
+\begin_layout Subsubsection*
+Célula de memória
+\end_layout
+
+\begin_layout Itemize
+Outra forma também de aplicar esse tipo de arquitetura é utilizando células
+ de memória;
+\end_layout
+
+\begin_layout Itemize
+Uma célula de memória, é um neurônio que inicia com uma entrada e que produz
+ duas saídas;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Uma saída alimenta a rede neural e a outra saída alimenta este neurônio
+ no próximo passo, que pode ser interpretado como um tempo futuro;
+\end_layout
+
+\begin_layout Itemize
+Então o neurônio que recebeu a informação do neurônio no tempo passado,
+ passará a receber duas entradas, uma referente aos dados de entrada de
+ processamento e outra referente à saída do neurônio do tempo passado, com
+ isso ele produzirá mais duas saídas, uma para alimentar a rede neural e
+ outra como entrada para este mesmo neurônio em um outro tempo futuro;
+\end_layout
+
+\begin_layout Itemize
+Este processo ocorre de maneira contínua e recorrente;
+\end_layout
+
+\begin_layout Itemize
+Ela é chamada de célula de memória pois mantém a sua memória com o passar
+ do tempo do processamento;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Uma camada de neurônios recorrentes
+\end_layout
+
+\begin_layout Itemize
+De maneira similar, então você pode construir uma camada de neurônios recorrente
+s;
+\end_layout
+
+\begin_layout Itemize
+Onde essa camada possui duas saídas, uma para alimentar o resto da rede
+ neural e outra para alimentar novamente a camada de neurônios;
+\end_layout
+
+\begin_layout Subsubsection*
+Topologias de RNN
+\end_layout
+
+\begin_layout Itemize
+Sequência para sequência;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, preveja os preços das ações com base em uma série de dados históricos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sequência para vetor;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, palavras em uma frase para sentimento;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vetor para sequência;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, criar legendas a partir de uma imagem;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Codificador -> Decodificador;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sequência -> Vetor -> Sequência;
+\end_layout
+
+\begin_layout Itemize
+Ou seja, tradução automática;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Treinando RNN
+\end_layout
+
+\begin_layout Itemize
+Backpropagation através do tempo;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Assim como a backpropagation em MLPs, mas aplicada a cada etapa de tempo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Todas essas etapas de tempo aumentam rapidamente;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Acaba parecendo uma rede neural muito, muito profunda;
+\end_layout
+
+\begin_layout Itemize
+Pode limitar a backpropagation a um número limitado de estapas de tempo
+ (Backpropagation truncada ao longo do tempo);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Estado de etapas de tempo anteriores se dilui ao longo do tempo;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Isso pode ser um problema, por exemplo, ao aprender estruturas de frases;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Célula LSTM;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(Long Short-Term Memory Cell) Célula de Memória Longa de Curto Prazo;
+\end_layout
+
+\begin_layout Itemize
+Mantém estados separados de curto e longo prazo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Célula GRU;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Unidade recorrente bloqueada - Gated Recurrent Unit;
+\end_layout
+
+\begin_layout Itemize
+Célula LSTM simplificada com desempenho quase igual;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+É realmente difícil;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Muito sensível a topologias, escolha de hiperparâmetros;
+\end_layout
+
+\begin_layout Itemize
+Uso intensivo de recursos;
+\end_layout
+
+\begin_layout Itemize
+Uma escolha errada pode levar a uma RNN que não converge;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Deep Learning no EC2/EMR
+\end_layout
+
+\begin_layout Itemize
+EMR é compatível com Apache MXNet e tipos de instância GPU;
+\end_layout
+
+\begin_layout Itemize
+Tipos de instância apropriados para aprendizado profundo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+P3: 8 GPUs Tesla V100;
+\end_layout
+
+\begin_layout Itemize
+P2: 16 GPUs K80;
+\end_layout
+
+\begin_layout Itemize
+G3: 4GPUs M60 (todos os chips Nvidia);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Deep Learning AMI's (TensorFlow, PyTorch, Apache MXNet, Chainer, Gluon e
+ Keras);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Não tem custo adicional;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sagemaker;
+\end_layout
+
+\begin_layout Subsection
+Tuning de redes neurais
+\end_layout
+
+\begin_layout Subsubsection*
+Taxa de aprendizagem (Learning Rate)
+\end_layout
+
+\begin_layout Itemize
+As redes neurais são treinadas por gradiente descent (ou técnicas semelhantes);
+\end_layout
+
+\begin_layout Itemize
+Começamos em algum ponto aleatório, e amostramos soluções diferentes (pesos)
+ buscando minimizar alguma função de custo, ao longo de muitas epochs;
+\end_layout
+
+\begin_layout Itemize
+A distância entre essas amostras é a taxa de aprendizagem;
+\end_layout
+
+\begin_layout Subsubsection*
+Efeito da taxa de aprendizagem
+\end_layout
+
+\begin_layout Itemize
+Uma taxa de aprendizado muito alta significa que você pode ultrapassar a
+ solução ideal;
+\end_layout
+
+\begin_layout Itemize
+Uma taxa de aprendizado muito pequena demorará muito para encontrar a solução
+ ideal;
+\end_layout
+
+\begin_layout Itemize
+A taxa de aprendizagem é um exemplo de um hiperparâmetro;
+\end_layout
+
+\begin_layout Subsubsection*
+Batch size
+\end_layout
+
+\begin_layout Itemize
+Define quantas amostras de treinamento são usada em cada epoch;
+\end_layout
+
+\begin_layout Itemize
+Um tanto contra-intuitivo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Batch size pequenos podemo ultrapassar os 
+\begin_inset Quotes eld
+\end_inset
+
+mínimos locais
+\begin_inset Quotes erd
+\end_inset
+
+ mais facilmente;
+\end_layout
+
+\begin_layout Itemize
+Batch size muito grandes podem acabar ficando presos na solução errada;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Para recapitular
+\end_layout
+
+\begin_layout Itemize
+Batch sizes pequenos tendem a não ficar presos nos mínimos locais;
+\end_layout
+
+\begin_layout Itemize
+Batch sizes grandes podem convergir para a solução errada aleatoriamente;
+\end_layout
+
+\begin_layout Itemize
+Grandes taxas de aprendizagem podem ultrapassar a solução correta;
+\end_layout
+
+\begin_layout Itemize
+Pequenas taxas de aprendizagem aumentam o tempo de treinamento;
+\end_layout
+
+\begin_layout Subsection
+Técnicas de regularização
+\end_layout
+
+\begin_layout Subsubsection*
+O que é regularização?
+\end_layout
+
+\begin_layout Itemize
+Prevenindo o overfitting;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Modelos que são bons em fazer previsões sobre os dados em que foram treinados,
+ mas não sobre novos dados que não tenham visto antes;
+\end_layout
+
+\begin_layout Itemize
+Modelos superdimensionados aprenderam padrões nos dados de treinamento que
+ não se generalizam para o mundo real;
+\end_layout
+
+\begin_layout Itemize
+Frequentemente visto como alta precisão no conjunto de dados de treinamento,
+ mas menor precisão no conjunto de dados de teste ou avaliação;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ao treinar e avaliar um modelo, usamos conjunto de dados de treinamento,
+ avaliação e teste;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+As técnicas de regularização têm como objetivo evitar o overfitting;
+\end_layout
+
+\begin_layout Subsubsection*
+Algumas técnicas de regularização
+\end_layout
+
+\begin_layout Itemize
+Simplificação do modelo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Muitas vezes um modelo pode estar sendo construído de uma maneira muito
+ mais complexa do que deveria ser, por um exemplo, imagine que numa rede
+ neural nós temos centenas de camadas ocultas e cada comada oculta possui
+ milhares de neurônios, tudo isso para obter um simples modelo de classificação
+ binária que poderia ser feito utilizando uma árvore de decisão;
+\end_layout
+
+\begin_layout Itemize
+É claro que isso é uma maneira um tanto quanto exagerada de expor o problema
+ e na vida real, a linha entre o quão complexo e o mínimo de simplificação
+ que ele tem que ter para ser eficiente não é tão evidente.
+ Mas num caso como esse, diminuir o número de camadas e o número de neurônios
+ por camada pode ajudar e muito em reduzir as chances de o modelo superajustar;
+\end_layout
+
+\begin_layout Itemize
+Isso porque reduzir a complexidade do modelo também reduz as chances de
+ ele aprender padrões complexos (lê-se ruídos) da base de treinamento;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dropout:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O dropout é uma técnica que remove neurônios da sua rede de maneira completament
+e aleatória;
+\end_layout
+
+\begin_layout Itemize
+Isso força a sua rede neural a aprender padrões genéricos da base de dados,
+ pois diminui a possibilidade de algum desses neurônios aprenderem padrões
+ específicos (provavelmente associados a ruídos) da base de treinamento;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Parada Antecipada;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O que podemos observar no treinamento de uma rede neural é que ao decorrer
+ das suas epochs, as suas métricas de classificação podem acabar por estabilizar
+ em um valor específico, sem apresentar melhoras reais com novos treinamentos;
+\end_layout
+
+\begin_layout Itemize
+Nesses casos, você continuar o treinamento pode acarretar em problemas para
+ o seu algoritmo, pois este pode acabar por gerar um modelo superajustado;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Gradientes
+\end_layout
+
+\begin_layout Itemize
+Apenas recordando, uma rede neural ela funciona através do ajuste de pesos,
+ então num processo de treinamento os dados passam pela rede neural, as
+ funções de ativação vão produzir valores e na camada de saída, uma loss
+ function vai calcular o erro e esse erro vai ser propagado de volta e neste
+ processo de propagação, os pesos devem ser ajustados;
+\end_layout
+
+\begin_layout Itemize
+Os pesos eles devem ser ajustados de quê forma? Mais ou menos? Qual é o
+ valor do ajuste?
+\end_layout
+
+\begin_layout Itemize
+Nesse aspecto, o gradiente descendente tem um papel fundamental, pois ele
+ vai responder essa pergunta;
+\end_layout
+
+\begin_layout Subsubsection*
+O problema do 
+\begin_inset Quotes eld
+\end_inset
+
+Vanishing Gradient
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Quando a inclinação da curva de aprendizado se aproxima de zero, o processamento
+ pode 
+\begin_inset Quotes eld
+\end_inset
+
+travar
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Acabamos trabalhando com números muito pequenos que tornam o treinamento
+ mais lento, ou mesmo introduzem erros numéricos;
+\end_layout
+
+\begin_layout Itemize
+Torna-se um problema com redes mais profundas e RNNs à medida que se propagam
+ para camadas mais profundas;
+\end_layout
+
+\begin_layout Itemize
+Problema oposto: 
+\begin_inset Quotes eld
+\end_inset
+
+exploding gradients
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Subsubsection*
+Corrigindo o problema do 
+\begin_inset Quotes eld
+\end_inset
+
+Vanishing Gradient
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hierarquia multinível;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Divida em níveis com suas próprias sub-redes, treinando individualmente;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Long Short-Term Memory (LSTM);
+\end_layout
+
+\begin_layout Itemize
+Residual Networks;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ResNet;
+\end_layout
+
+\begin_layout Itemize
+Conjunto de redes mais curtas;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Melhor escolha da função de ativação;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ReLU é uma boa escolha;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Verificação de gradiente
+\end_layout
+
+\begin_layout Itemize
+Uma técnica de depuração;
+\end_layout
+
+\begin_layout Itemize
+Verifica numericamente as derivadas calculadas durante o treinamento;
+\end_layout
+
+\begin_layout Itemize
+Útil para validar o código de treinamento de rede neural;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mas provavelmente você não vai querer escrever este código;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Regularização L1 e L2
+\end_layout
+
+\begin_layout Subsubsection*
+O que é?
+\end_layout
+
+\begin_layout Itemize
+Prevenir overfitting em ML em geral;
+\end_layout
+
+\begin_layout Itemize
+Um 
+\begin_inset Quotes eld
+\end_inset
+
+termo
+\begin_inset Quotes erd
+\end_inset
+
+ de regularização é adicionado à medida que os pesos são aprendidos;
+\end_layout
+
+\begin_layout Itemize
+O termos L1 é a soma dos pesos
+\begin_inset Formula 
+\begin{equation}
+\lambda\sum_{i=1}^{k}\left|w_{i}\right|,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+O termo L2 é a soma do quadrado dos pesos
+\begin_inset Formula 
+\begin{equation}
+\lambda\sum_{i=1}^{k}w_{i}^{2},
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+A mesma ideia pode ser aplicada a funções de perda;
+\end_layout
+
+\begin_layout Subsubsection*
+Qual é a diferença?
+\end_layout
+
+\begin_layout Itemize
+L1: soma dos pesos
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Executa a seleção de atributos - atributos inteiros vão para 0;
+\end_layout
+
+\begin_layout Itemize
+Computacionalmente ineficiente;
+\end_layout
+
+\begin_layout Itemize
+Saída esparsa;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+L2: soma do quadrado dos pesos
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Todos os atributos permanecem, são apenas podenrados;
+\end_layout
+
+\begin_layout Itemize
+Computacionalmente eficiente;
+\end_layout
+
+\begin_layout Itemize
+Saída densa;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Por que você iria usar o L1?
+\end_layout
+
+\begin_layout Itemize
+A seleção de atributos pode reduzir a dimensionalidade;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+De 100 atributos, talvez apenas 10 acabem com coeficientes diferentes de
+ zero;
+\end_layout
+
+\begin_layout Itemize
+A dispersão resultante pode compesar sua ineficiência computacional;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Mas se você acha que todos os seus recursos são importantes, L2 é provavelmente
+ é uma escolha melhor;
+\end_layout
+
 \end_body
 \end_document
