@@ -2522,5 +2522,17 @@ Desta maneira podemos conectar apenas os containers que optarmos;
 E podemos definir drivers diferentes também;
 \end_layout
 
+\begin_layout Subsection
+Build no compose
+\end_layout
+
+\begin_layout Itemize
+Podemos gerar o build durante o compose também;
+\end_layout
+
+\begin_layout Itemize
+Isso vai eliminar o processo de gerar o build da imagem a cada atualização;
+\end_layout
+
 \end_body
 \end_document
