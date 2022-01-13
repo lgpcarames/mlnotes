@@ -2522,5 +2522,133 @@ Desta maneira podemos conectar apenas os containers que optarmos;
 E podemos definir drivers diferentes também;
 \end_layout
 
+\begin_layout Section
+Docker Swarm
+\end_layout
+
+\begin_layout Standard
+O Docker Swarm é uma forma de orquestrar containers, até agora falamos apenas
+ de processos isolados.
+ Porém nem sempre é assim, na realidade precisaremos lidar com aplicações
+ que terão milhares de acesso, então o docker swarm será responsável por
+ fazer isso.
+\end_layout
+
+\begin_layout Subsection
+O que é orquestração de containers?
+\end_layout
+
+\begin_layout Itemize
+Orquestração é o ato de conseguir gerenciar e escalar os containers da nossa
+ aplicação;
+\end_layout
+
+\begin_layout Itemize
+Temos um serviço que rege sobre outros serviços, verificando se os mesmos
+ estão funcionando como deveriam;
+\end_layout
+
+\begin_layout Itemize
+Desta forma, conseguimos garantir uma aplicação saudável e também que esteja
+ sempre disponível;
+\end_layout
+
+\begin_layout Itemize
+Alguns serviços: Docker Swarm, Kubernetes e Apache Mesos;
+\end_layout
+
+\begin_layout Subsection
+O que é Docker Swarm?
+\end_layout
+
+\begin_layout Itemize
+Uma ferramenta do Docker para orquestrar containers;
+\end_layout
+
+\begin_layout Itemize
+Podendo escalar horizontalmente nossos projetos de maneira simples;
+\end_layout
+
+\begin_layout Itemize
+O famoso cluster;
+\end_layout
+
+\begin_layout Itemize
+A facilidade do Swarm para outros orquestradores é que todos os comando
+ são muito semelhantes ao do Docker;
+\end_layout
+
+\begin_layout Itemize
+Toda instalação do Docker já vem com Swarm, porém desabilitado;
+\end_layout
+
+\begin_layout Subsection
+Conceitos fundamentais
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Nodes
+\series default
+: é uma instância (máquina) que participa do Swarm;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Manager Node
+\series default
+: Node que gerencia os demais Nodes;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Worker Node
+\series default
+: Nodes que trabalham em função do Manager;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Service
+\series default
+: um conjunto de Tasks que o Manager Node manda o Work Node executar;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Task
+\series default
+: comandos que são executados nos Nodes;
+\end_layout
+
+\begin_layout Subsection
+Maneira de executar o Swarm
+\end_layout
+
+\begin_layout Itemize
+Para exemplificar corretamente o Swarm vamos precisar de Nodes, ou seja,
+ mais máquinas;
+\end_layout
+
+\begin_layout Itemize
+Então temos duas soluções:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+AWS: criar a conta e rodar alguns servidores (precisa de cartão de crédito,
+ mas é gratuito);
+\end_layout
+
+\begin_layout Itemize
+Docker Labs: gratuito também, roda no navegador, porém expira a cada 4 horas;
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
