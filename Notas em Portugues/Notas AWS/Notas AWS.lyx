@@ -2383,893 +2383,10 @@ Não muito preciso;
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection*
-Imputando dados ausentes: Machine Learning
-\end_layout
-
-\begin_layout Itemize
-kNN: Encontre K linhas 
-\begin_inset Quotes eld
-\end_inset
-
-mais próximas
-\begin_inset Quotes erd
-\end_inset
-
- (mais semelhantes) e calcula a média de seus valores;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Requer dados numéricos, não categóricos;
-\end_layout
-
-\begin_layout Itemize
-Existem maneiras de lidar com dados categóricos (distância de Hamming),
- mas os dados categóricos provavelmente são mais bem servidos por...
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Deep Learning
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Crie um modelo de aprendizado de máquina para imputar dados para seu modelo
- de aprendizado de máquina;
-\end_layout
-
-\begin_layout Itemize
-Funciona bem para dados categóricos.
- Funciona bem, mas é complexo;
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Regressão
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Encontre relações lineares ou não-lineares entre a característica ausente
- e outras características;
-\end_layout
-
-\begin_layout Itemize
-Técnica mais avançada: MICE (Multiple Imputation de Chained Equations)
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-Imputando dados ausentes: basta obter mais dados
-\end_layout
-
-\begin_layout Itemize
-O que é melhor do que imputar dados? Obtendo mais dados reais!
-\end_layout
-
-\begin_layout Itemize
-Às vezes, você só precisa se esforçar mais ou coletar mais dados;
-\end_layout
-
-\begin_layout Subsubsection*
-O que são dados não balanceados?
-\end_layout
-
-\begin_layout Itemize
-Grande discrepância entre casos 
-\begin_inset Quotes eld
-\end_inset
-
-positivos
-\begin_inset Quotes erd
-\end_inset
-
- e 
-\begin_inset Quotes eld
-\end_inset
-
-negativos
-\begin_inset Quotes erd
-\end_inset
-
-;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Ou seja, detecção de fraude.
- A fraude é rara e a maioria das linhas não será fraude;
-\end_layout
-
-\begin_layout Itemize
-Não deixe que a terminologia o confunda, 
-\begin_inset Quotes eld
-\end_inset
-
-Positivo
-\begin_inset Quotes erd
-\end_inset
-
- não significa 
-\begin_inset Quotes eld
-\end_inset
-
-bom
-\begin_inset Quotes erd
-\end_inset
-
-;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Isso significa que o que você está testando foi o que aconteceu;
-\end_layout
-
-\begin_layout Itemize
-Se seu modelo de aprendizado de máquina é feito para detectar fraude, então
- fraude é o caso positivo;
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Um problema com redes neurais: não aprende corretamente;
-\end_layout
-
-\begin_layout Subsubsection*
-Oversampling
-\end_layout
-
-\begin_layout Itemize
-Amostras duplicadas da classe minoritária;
-\end_layout
-
-\begin_layout Itemize
-Pode ser feito aleatoriamente;
-\end_layout
-
-\begin_layout Subsubsection*
-Undersampling
-\end_layout
-
-\begin_layout Itemize
-Em vez de criar mais amostras positivas, remova as negativas;
-\end_layout
-
-\begin_layout Itemize
-Jogar dados fora geralmente não é a resposta certa;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-A menos que você esteja especificamente tentando evitar problemas de escala
- de 
-\begin_inset Quotes eld
-\end_inset
-
-big data
-\begin_inset Quotes erd
-\end_inset
-
-;
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-SMOTE
-\end_layout
-
-\begin_layout Itemize
-É o acrônimo para Synthetic Minority Oversampling Technique;
-\end_layout
-
-\begin_layout Itemize
-Gera artificialmente novas amostras da classe minoritária usando os vizinhos
- mais próximos;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Execute K-vizinhos mais próximos de cada amostra da classe minoritária;
-\end_layout
-
-\begin_layout Itemize
-Crie uma nova amostra a partir do resultado kNN (média dos vizinhos);
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Ambos geram novas amostras e classes de maioria de subamostras;
-\end_layout
-
-\begin_layout Itemize
-Geralmente melhor do que apenas oversampling;
-\end_layout
-
-\begin_layout Subsubsection*
-Ajustando os limites
-\end_layout
-
-\begin_layout Itemize
-Ao fazer previsões sobre uma classificação (fraude/não-fraude), você tem
- algum tipo de limite de probabilidade em que sinalizará como o caso positivo
- (fraude);
-\end_layout
-
-\begin_layout Itemize
-Se você tiver muitos falsos positivos, uma maneira de corrigir isso é simplesmen
-te aumentar esse limite;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Garante a redução de falsos positivos;
-\end_layout
-
-\begin_layout Itemize
-Mas pode resultar em mais falsos negativos;
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-Outliers
-\end_layout
-
-\begin_layout Itemize
-São valores que fogem muito do padrão dos demais dados;
-\end_layout
-
-\begin_layout Itemize
-Quando falamos de outlier, sempre temos que falar de variância e desvio
- padrão, pois elas são métricas importantes para entender quando um dado
- se apresenta como um outlier;
-\end_layout
-
-\begin_layout Subsubsection*
-Variância
-\end_layout
-
-\begin_layout Itemize
-A variância mede o quão 
-\begin_inset Quotes eld
-\end_inset
-
-espalhados
-\begin_inset Quotes erd
-\end_inset
-
- os dados estão;
-\end_layout
-
-\begin_layout Itemize
-Variância (
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
-) é simplesmente a me´dia das diferenças ao quadrado da média;
-\end_layout
-
-\begin_layout Itemize
-Exemplo: Qual é a variação do conjunto de dados (1, 4, 5, 4, 8)?
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Primeiro encontre a média
-\begin_inset Formula 
-\[
-\overline{x}=\frac{\left(1+4+5+4+8\right)}{5}=4.4
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Agora encontre as diferenças da média: 
-\begin_inset Formula 
-\[
-x_{i}-\overline{x}=\left(-3.4,-0.4,0.6,-0.4,3.6\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Encontre as diferenças ao quadrado:
-\begin_inset Formula 
-\[
-\left(x_{i}-\overline{x}\right)^{2}=\left(11.56,0.16,0.36,0.16,12.96\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Encontre a média das diferenças ao quadrado:
-\begin_inset Formula 
-\[
-\sigma^{2}=\frac{11.56+0.16+0.36+0.16+12.96}{5}=5.04
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-O desvio padrão 
-\begin_inset Formula $\sigma$
-\end_inset
-
- é apenas a raiz quadrada da variância
-\end_layout
-
-\begin_layout Itemize
-No nosso exemplo, considerando que 
-\begin_inset Formula $\sigma^{2}=5.04$
-\end_inset
-
-, logo, o desvio padrão é 
-\begin_inset Formula $\sigma=\sqrt{5.04}=2.24$
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-Portanto, o desvio padrão de 
-\begin_inset Formula $x=\left(1,4,5,4,8\right)$
-\end_inset
-
- é 
-\begin_inset Formula $2.24$
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-Geralmente é usado como uma forma de identificar valores discrepantes;
-\end_layout
-
-\begin_layout Itemize
-Os pontos de dados que se encontram a mais de um desvio padrão da média
- podem ser c onsiderados incomuns;
-\end_layout
-
-\begin_layout Itemize
-Você pode falar sobre o quão extremo é um ponto de dados falando sobre 
-\begin_inset Quotes eld
-\end_inset
-
-quantos sigmas
-\begin_inset Quotes erd
-\end_inset
-
- de distância da média ele está;
-\end_layout
-
-\begin_layout Subsubsection*
-Lidando com Outliers
-\end_layout
-
-\begin_layout Itemize
-Às vezes é apropriado remover outliers de seus dados de treinamento;
-\end_layout
-
-\begin_layout Itemize
-Faça isso com responsabilidade.
- Entenda porque você está fazendo isso.
-\end_layout
-
-\begin_layout Itemize
-Por exemplo: na filtragem colaborativa, um único usuário que avalia milhares
- de filmes pode ter um grande efeito nas avaliações de todos os outros.
- Isso pode não ser bom;
-\end_layout
-
-\begin_layout Itemize
-Outro exemplo: em dados de log da web, outliers podem representar bots ou
- outros agentes que devem ser descartados;
-\end_layout
-
-\begin_layout Itemize
-Mas se alguém realmente quer a renda média de cidadãos americanos, por exemplo,
- não tire os bilionários só porque você quer;
-\end_layout
-
-\begin_layout Itemize
-Desvio padrão fornece uma maneira fundamentada para classificar valores
- discrepantes;
-\end_layout
-
-\begin_layout Itemize
-Encontre pontos de dados mais do que alguns múltiplos de um desvio padrão
- em seus dados de treinamento;
-\end_layout
-
-\begin_layout Itemize
-Que múltiplo? Você apenas tem que usar o bom senso;
-\end_layout
-
-\begin_layout Itemize
-Lembre-se do algoritmo Random Cut Forest da AWS é feito para detecção de
- outliers;
-\end_layout
-
-\begin_layout Itemize
-Encontrado no QuickSight, Kinesis Analytics, SageMaker e mais;
-\end_layout
-
-\begin_layout Subsubsection*
-Binning
-\end_layout
-
-\begin_layout Itemize
-Agrupe as observações com base em intervalos de valores;
-\end_layout
-
-\begin_layout Itemize
-Exemplo: idades estimadas das pessoas;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Coloque todos os 20 e poucos anos em uma categoria, 30 e poucos em outra,
- etc.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-O binning de quantis categoriza os dados por seu lugar na distribuição de
- dados;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Garante tamanhos uniformes dos 
-\begin_inset Quotes eld
-\end_inset
-
-bins
-\begin_inset Quotes erd
-\end_inset
-
-;
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Transforma dados numéricos em dados ordinais;
-\end_layout
-
-\begin_layout Itemize
-Especialmente útil quando há incerteza nas medições;
-\end_layout
-
-\begin_layout Subsubsection*
-Transformando
-\end_layout
-
-\begin_layout Itemize
-Aplicar alguma função a um atributo para torná-lo mais adequado para o treinamen
-to;
-\end_layout
-
-\begin_layout Itemize
-Dados de atributos com tendência exponencial podem se beneficiar de uma
- transformação logarítmica;
-\end_layout
-
-\begin_layout Itemize
-Exemplo: recomendações do YouTube;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Um atributo numérico 
-\begin_inset Formula $x$
-\end_inset
-
- também é representada por 
-\begin_inset Formula $x^{2}$
-\end_inset
-
- e 
-\begin_inset Formula $\sqrt{x}$
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-Isso permite o aprendizado de funções super e sublineares;
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-Codificação - Encoding
-\end_layout
-
-\begin_layout Itemize
-Transformar dados em alguma nova representação exigida pelo modelo;
-\end_layout
-
-\begin_layout Itemize
-Um dos mais famosos é o One-Hot Encoding;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Crie 
-\begin_inset Quotes eld
-\end_inset
-
-intervalos
-\begin_inset Quotes erd
-\end_inset
-
- para cada categoria;
-\end_layout
-
-\begin_layout Itemize
-O intervalo para sua categoria tem 1;
-\end_layout
-
-\begin_layout Itemize
-Todos os outros têm 0;
-\end_layout
-
-\begin_layout Itemize
-Muito comum no aprendizado profundo, onde as categorias são representadas
- por 
-\begin_inset Quotes eld
-\end_inset
-
-neurônios
-\begin_inset Quotes erd
-\end_inset
-
- de saída individual;
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection*
-Escala / Normalização
-\end_layout
-
-\begin_layout Itemize
-Alguns modelos preferem que os dados de atributos sejam normalmente distribuídos
- em torno de 0 (a maioria das redes neurais);
-\end_layout
-
-\begin_layout Itemize
-A maioria dos modelos exige que os atributos sejam, pelo menos, dimensionados
- para valores comparáveis;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Caso contrário, atributos com magnitudes maiores terão mais peso do que
- deveriam;
-\end_layout
-
-\begin_layout Itemize
-Exemplo: modelagem de idade e renda como atributos - as rendas serão valores
- muito maiores do que as idades;
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Scikit-learn tem um módulo de pré-processamento (MinMaxScaler, etc);
-\end_layout
-
-\begin_layout Itemize
-Lembre-se de escalar seus resultados de volta;
-\end_layout
-
-\begin_layout Subsubsection*
-Shuffling
-\end_layout
-
-\begin_layout Itemize
-Muitos algoritmos se beneficiam de 
-\begin_inset Quotes eld
-\end_inset
-
-embaralhar
-\begin_inset Quotes erd
-\end_inset
-
- seus dados de treinamento;
-\end_layout
-
-\begin_layout Itemize
-Caso contrário, eles podem aprender com os sinais residuais dos dados de
- treinamento resultante da ordem em que foram coletados;
-\end_layout
-
-\begin_layout Subsection
-SageMaker Ground Truth
-\end_layout
-
-\begin_layout Subsubsection*
-O que é o Ground Truth?
-\end_layout
-
-\begin_layout Itemize
-Às vezes, você não tem dados de treinamento, e eles precisam ser gerados
- primeiro por humanos;
-\end_layout
-
-\begin_layout Itemize
-Exemplo: treinar um modelo de classificação de imagens.
- Alguém precisa marcar um monte de imagens com o que são imagens antes de
- treinar uma rede neural;
-\end_layout
-
-\begin_layout Itemize
-Ground Truth gerencia humanos que rotularação seus dados para fins de treinament
-o;
-\end_layout
-
-\begin_layout Subsubsection*
-Mas é mais do que isso
-\end_layout
-
-\begin_layout Itemize
-Ground Truth cria seu próprio modelo à medida que as imagens são rotuladas
- por pessoas;
-\end_layout
-
-\begin_layout Itemize
-Conforme este modelo aprende, apenas as imagens sobre as quais o modelo
- não tem certeza são enviadas para rotuladores humanos;
-\end_layout
-
-\begin_layout Itemize
-Isso pode reduzir o custo dos trabalhos de etiquetagem em 70%;
-\end_layout
-
-\begin_layout Subsubsection*
-Quem são esses rotuladores humanos?
-\end_layout
-
-\begin_layout Itemize
-Mechanicala Turk;
-\end_layout
-
-\begin_layout Itemize
-Sua própria equipe interna;
-\end_layout
-
-\begin_layout Itemize
-Empresas profissionais de rotulagem;
-\end_layout
-
-\begin_layout Subsubsection*
-Outras maneiras de gerar rótulos de treinamento;
-\end_layout
-
-\begin_layout Itemize
-Rekognition;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Serviço AWS para reconhecimento de imagem;
-\end_layout
-
-\begin_layout Itemize
-Classificar imagens automaticamente;
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Compreender
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Serviço AWS para análise de texto e modelagem de tópicos;
-\end_layout
-
-\begin_layout Itemize
-Classifique automaticamente o texto por tópicos, sentimento;
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Qualquer modelo pré-treinado ou técnica não-supervisionada que pode ser
- útil;
-\end_layout
-
 \begin_layout Section
 Modelagem
 \end_layout
 
-\begin_layout Subsection
-Introdução ao Deep Learning
-\end_layout
-
-\begin_layout Subsubsection*
-A inspiração biológica
-\end_layout
-
-\begin_layout Itemize
-Neurônios em seu córtex cerebral são conectados por meio de axônios;
-\end_layout
-
-\begin_layout Itemize
-Um neurônio 
-\begin_inset Quotes eld
-\end_inset
-
-dispara
-\begin_inset Quotes erd
-\end_inset
-
- para os neurônios aos quais está conectado, quando uma quantidade suficiente
- de seus sinais de entrada é ativada;
-\end_layout
-
-\begin_layout Itemize
-Muito simples no nível do neurônio individual - mas camadas de neurônios
- conectadas dessa forma podem gerar comportamento de aprendizagem;
-\end_layout
-
-\begin_layout Itemize
-Bilhões de neurônios, cada um com milhares de conexões, geram uma mente;
-\end_layout
-
-\begin_layout Subsection*
-Colunas corticais
-\end_layout
-
-\begin_layout Itemize
-Os neurônios em seu córtex parecem ser or ganizados em muitas pilhas, ou
- 
-\begin_inset Quotes eld
-\end_inset
-
-colunas
-\begin_inset Quotes erd
-\end_inset
-
- que processam informações em paralelo;
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Mini-colunas
-\begin_inset Quotes erd
-\end_inset
-
- de cerca de 100 neurônios são organizadas em 
-\begin_inset Quotes eld
-\end_inset
-
-hiper-colunas
-\begin_inset Quotes erd
-\end_inset
-
- maiores.
- Existem 100 milhões de mini-colunas em seu córtex;
-\end_layout
-
-\begin_layout Itemize
-Isso é coincidentemente semelhante a como a GPU funciona;
-\end_layout
-
-\begin_layout Subsubsection*
-Deep Learning Frameworks
-\end_layout
-
-\begin_layout Itemize
-Tensorflow / Keras;
-\end_layout
-
-\begin_layout Itemize
-MXNet; 
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-model = Sequential()
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Dense(64, activation='relu', input_dim=20))
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Dropout(0.5))
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Dense(64, activation='relu))
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Dropout(0.5))
-\end_layout
-
-\begin_layout Plain Layout
-
-model.add(Dense(10, activation='softmax'))
-\end_layout
-
-\begin_layout Plain Layout
-
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-\end_layout
-
-\begin_layout Plain Layout
-
-model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'
-])
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-Tipos de redes neurais
-\end_layout
-
-\begin_layout Itemize
-Feedforward Neural Networks;
-\end_layout
-
-\begin_layout Itemize
-Convolutional Neural Networks (CNN);
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Classificação da imagem (há uma placa de pare nesta imagem?);
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Recurrent Neural Networks (RNNs);
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Lida com sequências no tempo (prever preços de ações, entender palavras
- em uma frase, tradução, etc);
-\end_layout
-
-\begin_layout Itemize
-LSTM, GRU;
-\end_layout
-
-\end_deeper
 \begin_layout Subsection
 Funções de ativação
 \end_layout
@@ -4589,5 +3706,3289 @@ Mas se você acha que todos os seus recursos são importantes, L2 é provavelmen
  é uma escolha melhor;
 \end_layout
 
+\begin_layout Subsection
+Matriz de confusão
+\end_layout
+
+\begin_layout Subsubsection*
+Às vezes, precisão não mostra tudo
+\end_layout
+
+\begin_layout Itemize
+Um teste para uma doença rara pode ter 99.9% de precisão, bastando adivinhar
+ 
+\begin_inset Quotes eld
+\end_inset
+
+não
+\begin_inset Quotes erd
+\end_inset
+
+ o tempo todo;
+\end_layout
+
+\begin_layout Itemize
+Precisamos entender os verdadeiros positivos e verdadeiros negativos, bem
+ como os falsos positivos e falsos negativos;
+\end_layout
+
+\begin_layout Itemize
+Uma matriz de confusão mostra isso.
+\end_layout
+
+\begin_layout Subsubsection*
+Matriz de confusão binária
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename confusion_matrix.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matriz de confusão binária.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Matriz de confusão multiclasse + heatmap
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename multiclass_matrix.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matriz de confusão multiclasse visualizada a partir de um heatmap.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Métricas de classificação
+\end_layout
+
+\begin_layout Subsubsection*
+Recall ou Sensibilidade
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{\text{Verdadeiros Positivos}}{\text{Verdadeiros Positivos}+\text{Falsos Negativos}}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Sensbilidade, taxa de verdadeiro positivo, integridade;
+\end_layout
+
+\begin_layout Itemize
+Porcentagem de positivos previstos corretamente;
+\end_layout
+
+\begin_layout Itemize
+Boa escolha de métrica quando você se preocupa muito com falsos negativos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, detecção de fraude;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Precision/Precisão
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{\text{Verdadeiros Positivos}}{\text{Verdadeiros Positivos}+\text{Falsos Positivos}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Positivos corretos;
+\end_layout
+
+\begin_layout Itemize
+Porcentagem de resultados relevantes
+\end_layout
+
+\begin_layout Itemize
+Boa escolha de métrica quando você se preocupa muito com falsos positivos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, triagem médica, teste de drogas;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Outras métricas
+\end_layout
+
+\begin_layout Itemize
+Especificidade
+\begin_inset Formula 
+\[
+=\frac{\text{VN}}{\text{VN}+\text{FP}}=\text{”Taxa de verdadeiros negativos”}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+F1-Score
+\begin_inset Formula 
+\[
+\frac{2\text{VP}}{2\text{VP}+\text{FP}+\text{FN}}=2\frac{\text{Precisão}\times\text{Recall}}{\text{Precisão}+\text{Recall}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Média harmônica de precisão e sensibilidade;
+\end_layout
+
+\begin_layout Itemize
+Quando você se preocupa com precisão e recall;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RMSE
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Raiz do erro quadrático médio;
+\end_layout
+
+\begin_layout Itemize
+Medição de precisão;
+\end_layout
+
+\begin_layout Itemize
+Só se preocupa com as respostas certas e erradas;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Curva ROC
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Receiver Operating Characteristic Curve (Curva de Característica de Operação
+ do Receptor);
+\end_layout
+
+\begin_layout Itemize
+Gráfico da taxa de verdadeiro positivo (recall) vs taxa de falso positivo
+ em várias configurações;
+\end_layout
+
+\begin_layout Itemize
+Os pontos acima da diagonal representam uma boa classificação (melhor do
+ que aleatória);
+\end_layout
+
+\begin_layout Itemize
+A curva ideal seria apenas um ponto no canto superior esquerdo;
+\end_layout
+
+\begin_layout Itemize
+Quanto mais 
+\begin_inset Quotes eld
+\end_inset
+
+dobrado
+\begin_inset Quotes erd
+\end_inset
+
+ em direção ao canto superior esquerdo, melhor;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Curva AUC
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A área sob a curva ROC - Area Under the Curve (AUC);
+\end_layout
+
+\begin_layout Itemize
+Probabilidade de um classificador classificar uma instância positiva escolhida
+ aleatoriamente melhor do que uma negativa escolhida aleatoriamente;
+\end_layout
+
+\begin_layout Itemize
+ROC AUC de 0.5 é um classificador inútil, já 1.0 é perfeito.
+\end_layout
+
+\begin_layout Itemize
+Métrica comumente usada pra comparar classificadores;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Ensemble Learning
+\end_layout
+
+\begin_layout Subsubsection*
+Métodos de grupo
+\end_layout
+
+\begin_layout Itemize
+Exemplo comum: floresta aleatória.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Árvores de decisão são propensas a overfitting;
+\end_layout
+
+\begin_layout Itemize
+Então, faça várias árvores de decisão e deixe que todos votem no resultado;
+\end_layout
+
+\begin_layout Itemize
+Esta é uma floresta aleatória;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Bagging
+\end_layout
+
+\begin_layout Itemize
+Gere N novos conjuntos de treinamento por amostragem aleatória com reposição;
+\end_layout
+
+\begin_layout Itemize
+Cada modelo reamostrado pode ser treinado em paralelo;
+\end_layout
+
+\begin_layout Subsubsection*
+Boosting
+\end_layout
+
+\begin_layout Itemize
+As observações são ponderadas;
+\end_layout
+
+\begin_layout Itemize
+Alguns participarão de novos conjuntos de treinamento com mais frequência;
+\end_layout
+
+\begin_layout Itemize
+O treinamento é sequencial;
+\end_layout
+
+\begin_layout Itemize
+Cada classificador leva em consideração o sucesso do anterior;
+\end_layout
+
+\begin_layout Subsubsection*
+Bagging vs Boosting
+\end_layout
+
+\begin_layout Itemize
+Boosting:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+XGBoost é a 
+\begin_inset Quotes eld
+\end_inset
+
+última moda
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Boosting geralmlente produz melhor precisão;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bagging
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Evita overfitting;
+\end_layout
+
+\begin_layout Itemize
+Mais fácil de paralelizar;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Então, depende do seu objetivo;
+\end_layout
+
+\begin_layout Subsection
+Amazon SageMaker
+\end_layout
+
+\begin_layout Subsubsection*
+O SageMaker foi desenvolvido para lidar com todo o workflow de ML
+\end_layout
+
+\begin_layout Itemize
+Implantar modelo, avaliar resultados na produção;
+\end_layout
+
+\begin_layout Itemize
+Buscar, limpar e preparar os dados;
+\end_layout
+
+\begin_layout Itemize
+Treine e avalie um modelo;
+\end_layout
+
+\begin_layout Subsubsection*
+Treinamento e implantação do SageMaker
+\end_layout
+
+\begin_layout Itemize
+Em termos de arquitetura, como isso funcionará?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Você vai ter dados de treinamento, que eles devem estar no S3 do Amazon;
+\end_layout
+
+\begin_layout Itemize
+Você vai ter o treinamento do seu modelo a partir dos dados de treinamento;
+\end_layout
+
+\begin_layout Itemize
+O código de treinamento deste modelo vai estar no ECR (Elastic Container
+ Register), que vem num container em Docker;
+\end_layout
+
+\begin_layout Itemize
+Uma vez o modelo treinado, você vai fazer o deploy deste modelo, e ele também
+ vai ficar no S3, os artefatos desse modelo estará no S3;
+\end_layout
+
+\begin_layout Itemize
+Então, você pode fazer a implantação e hospedagem desse modelo e aí você
+ vai ter lá seu código de previsão, que também vai vir de um container em
+ docker;
+\end_layout
+
+\begin_layout Itemize
+Uma vez implantado, o modelo estará pronto para servir uma aplicação do
+ cliente via endpoint;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Notebooks SageMaker podem direcionar o processo
+\end_layout
+
+\begin_layout Itemize
+Instâncias de notebook no EC2 são executadas a partir do console;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Acesso a dados S3;
+\end_layout
+
+\begin_layout Itemize
+Scikit_learn, Spark, Tensorflow;
+\end_layout
+
+\begin_layout Itemize
+Grande variedade de modelos integrados;
+\end_layout
+
+\begin_layout Itemize
+Capacidade de acelerar instâncias de treinamento;
+\end_layout
+
+\begin_layout Itemize
+Capacidade de implantar modelos treinados para fazer previsões em escala;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Preparação de dados no SageMaker
+\end_layout
+
+\begin_layout Itemize
+Os dados devem vir do S3;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O formato ideal varia com o algoritmo
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Geralmente é RecordIO/Protobuf
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Apache Spark integra-se ao SageMaker
+\end_layout
+
+\begin_layout Itemize
+Scikit_learn, numpy, pandas, tudo à sua disposição dentro de um notebook;
+\end_layout
+
+\begin_layout Subsubsection*
+Treinamento em SageMaker
+\end_layout
+
+\begin_layout Itemize
+Crie um job de treinamento;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+URL do bucket S3 com dados de treinamento;
+\end_layout
+
+\begin_layout Itemize
+Recursos de computação de ML;
+\end_layout
+
+\begin_layout Itemize
+URL do bucket S3 para saída;
+\end_layout
+
+\begin_layout Itemize
+Caminho ECR para o código de treinamento;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Opções de treinamento;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Algoritmos de treinamento integrados;
+\end_layout
+
+\begin_layout Itemize
+Spark MLLib
+\end_layout
+
+\begin_layout Itemize
+Código Python Tensorflow/MXNet personalizado;
+\end_layout
+
+\begin_layout Itemize
+Sua própria imagem do Docker;
+\end_layout
+
+\begin_layout Itemize
+Algoritmo adquirido do Marketplace do AWS;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Impantando modelos treinados
+\end_layout
+
+\begin_layout Itemize
+Salve seu modelo treinado no S3;
+\end_layout
+
+\begin_layout Itemize
+Pode implantar de duas maneiras:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Endpoint persistente para fazer previsões individuais sob demanda;
+\end_layout
+
+\begin_layout Itemize
+SageMaker Batch Transform para obter previsões para todo um conjunto de
+ dados;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Muitas opções legais:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pipelines de inferência para processamento mais complexo;
+\end_layout
+
+\begin_layout Itemize
+SageMaker Neo para implantação em dispositivos na ponta;
+\end_layout
+
+\begin_layout Itemize
+Elastic Inference para acelerar modelos de aprendizado profundo;
+\end_layout
+
+\begin_layout Itemize
+Escalonamento automático (aumente o número de endpoints conforme necessário);
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Algoritmos integrados do SageMaker
+\end_layout
+
+\begin_layout Subsubsection*
+Aprendizado linear
+\end_layout
+
+\begin_layout Itemize
+Regressão Linear
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ajusta uma linha para seus dados de treinamento (linha de regressão);
+\end_layout
+
+\begin_layout Itemize
+Predicações baseadas nessa linha;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pode lidar com previsões de regressão (númericas) e classificação;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Para classificação, uma função de limite linear é usada;
+\end_layout
+
+\begin_layout Itemize
+Pode ser binária ou multiclasse;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Que tipo de treinamento se espera?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RecordIO/Protobuf;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Somente dados Float32;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CSV;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A primeira coluna é considerada o rótulo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Suporta o modo file ou pipe;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+File: copia todos os dados de treino em um único arquivo;
+\end_layout
+
+\begin_layout Itemize
+Pipe: stream do S3 conforme necessário - mais eficiente;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Como é usado?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pré-processando:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Os dados de treinamento devem ser normalizados (para que todos os atributos
+ tenham o mesmo peso);
+\end_layout
+
+\begin_layout Itemize
+O linear learner pode fazer isso para você automaticamente;
+\end_layout
+
+\begin_layout Itemize
+Os dados de entrada devem ser 
+\begin_inset Quotes eld
+\end_inset
+
+misturados
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Treinamento:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Usa stochastic gradient descent;
+\end_layout
+
+\begin_layout Itemize
+Escolha um algoritmo de otimização (Adam, AdaGrad, SGD, etc.);
+\end_layout
+
+\begin_layout Itemize
+Vários modelos são otimizados em paralelo;
+\end_layout
+
+\begin_layout Itemize
+Regularização L1, L2 para ajuste;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Validação:
+\end_layout
+
+\begin_layout Itemize
+O modelo mais otimizado é selecionado;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hiperparâmetros importantes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Balance_multiclass_weights
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dá a cada classe igual importância nas funções de perda (loss function);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Learning_rate, mini_batch_size;
+\end_layout
+
+\begin_layout Itemize
+L1;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Regularização;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wd;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Weight decay (Regularização L2);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aprendizado linear: tipos de instância
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Treinamento
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CPU ou GPU de uma ou várias máquinas;
+\end_layout
+
+\begin_layout Itemize
+Multi-GPU não melhora a performance do modelo;
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+XGBoost
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+O eXtreme Gradient Boosting:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Grupo de árvores de decisão;
+\end_layout
+
+\begin_layout Itemize
+Novas árvores feitas para corrigir os erros das árvores anteriores;
+\end_layout
+
+\begin_layout Itemize
+Usa gradient descent para minimizar a perda conforme novas árvores são adicionad
+as;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tem ganhado muitas competições do Kaggle;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+E também é muito rápido;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pode ser usado para classificação;
+\end_layout
+
+\begin_layout Itemize
+E também para regressão;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Usando árvores de regressão;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+XGBoost não foi feito para o SageMaker, XGBoost Open Source;
+\end_layout
+
+\begin_layout Itemize
+Portanto, é necessária a entrada CSV ou lbsvm;
+\end_layout
+
+\begin_layout Itemize
+O AWS recentemente melhorou para aceitar também RecordIO/Protubuf e Parquet;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Os modelos são serializados/desserializados com Pickle;
+\end_layout
+
+\begin_layout Itemize
+Pode ser usado comom uma estrutura em notebooks;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sagemaker.xgboost
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ou como um algoritmo SageMaker integrado;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Existem muitos, alguns exemplos são:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Subsample:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Previne o overfitting;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ETA:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reduz o tamanho do step, evitando overfitting;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gama:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Redução de perda mínima para criar uma partição; maior=mais conservador;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Alfa:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Termo de regularização L1; maior = mais conservador;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Lambda:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Termo de regularização L2; maior = mais conservador;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Usa apenas CPU;
+\end_layout
+
+\begin_layout Itemize
+É limitado pela memória, não pelo computador;
+\end_layout
+
+\begin_layout Itemize
+Então, M4 é uma boa opção;
+\end_layout
+
+\begin_layout Subsection
+Seq2Seq
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+A entrada é uma sequência de tokens, a saída é uma sequência de tokens;
+\end_layout
+
+\begin_layout Itemize
+Tradução por máquina;
+\end_layout
+
+\begin_layout Itemize
+Resumo de texto;
+\end_layout
+
+\begin_layout Itemize
+Fala para texto;
+\end_layout
+
+\begin_layout Itemize
+Implementado com RNNs e CNNs
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+RecordIO/Protobuf:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Os tokens devem ser inteiros (isso é incomum pois a maioria dos algoritmos
+ espera dados de pontos flutuante);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Comece com arquivos de texto tokenizados;
+\end_layout
+
+\begin_layout Itemize
+Converter para protobuf usando código de exemplo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pacotes de tensores inteiros com arquivos de vocabulário;
+\end_layout
+
+\begin_layout Itemize
+Muito parecido com o lab TF/IDF que fizemos anteriormente;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Deve fornecer dados de treinamento, dados de vallidação e arquivos de vocabulári
+o;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+O treinamento para tradução automática pode levar dias, mesmo no SageMaker;
+\end_layout
+
+\begin_layout Itemize
+Modelos pré-treinados estão disponíveis:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Veja o notebook de exemplo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Conjunto de dados de treinamento públicos estão disponíveis para tarefas
+ de tradução específicas;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Batch_size;
+\end_layout
+
+\begin_layout Itemize
+Optimizer_type(adam, sgd, rmsprop);
+\end_layout
+
+\begin_layout Itemize
+Learning_rate;
+\end_layout
+
+\begin_layout Itemize
+Num_layers_encoder;
+\end_layout
+
+\begin_layout Itemize
+Num_layers_decoder;
+\end_layout
+
+\begin_layout Itemize
+Pode otimizar em:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Precisão:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Vs.
+ conjunto de dados de validação fornecido
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+BLEU score:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compara com várias traduções de referência
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Perplexity:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cross-entropy
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Só pode usar tipos de instância de GPU (P3 por exemplo)
+\end_layout
+
+\begin_layout Itemize
+Pode usar uma única máquina para treinamento;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mas pode usar multi-GPUs em uma máquina;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+DeepAR
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Previsão de dados de série temporal unidimensionais;
+\end_layout
+
+\begin_layout Itemize
+Usa RNN's;
+\end_layout
+
+\begin_layout Itemize
+Permite treinar o mesmo modelo em várias séries temporais relacionadas;
+\end_layout
+
+\begin_layout Itemize
+Encontra frequências e sazonalidade;
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+JSON
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gzip ou Parquet;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cada registro deve conter:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Início: a hora de início;
+\end_layout
+
+\begin_layout Itemize
+Objetivo: os valores da série temporal;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cada registro pode conter:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dynamic_feat: recursos dinâmicos (como uma promoção aplicada a um produto
+ em uma série temporal de compras de produtos);
+\end_layout
+
+\begin_layout Itemize
+Cat: características categóricas;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Sempre inclua séries temporais inteiras para treinamento, teste e inferência;
+\end_layout
+
+\begin_layout Itemize
+Use o conjunto de dados inteiro como conjunto de treinamento, remova os
+ últimos dados de tempo para teste.
+ Avalie os valores retidos;
+\end_layout
+
+\begin_layout Itemize
+Não use valores muito grandes para previsão (>400)
+\end_layout
+
+\begin_layout Itemize
+Treine em várias séries temporais e não apenas em uma, quando possível;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Context_length
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Número de dados temporais que o modelo vê antes de fazer uma previsão;
+\end_layout
+
+\begin_layout Itemize
+Pode ser menor do que sazonalidades; o modelo vai ter um atraso de um ano
+ de qualquer maneira;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Epochs;
+\end_layout
+
+\begin_layout Itemize
+Mini_batch_size;
+\end_layout
+
+\begin_layout Itemize
+Learning_rate;
+\end_layout
+
+\begin_layout Itemize
+Num_cells;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Pode usar CPU ou GPU;
+\end_layout
+
+\begin_layout Itemize
+Máquina única ou multi-máquina;
+\end_layout
+
+\begin_layout Itemize
+Comece com CPU (C4.2xlarge, C4.4xlarge);
+\end_layout
+
+\begin_layout Itemize
+Mova para GPU, se necessário;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Só ajuda com modelos maiores;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Apenas CPU para inferência;
+\end_layout
+
+\begin_layout Itemize
+Pode precisar de instâncias maiores para ajuste;
+\end_layout
+
+\begin_layout Subsection
+BlazingText
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Classificação de texto:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prever textos para uma frase;
+\end_layout
+
+\begin_layout Itemize
+Útil em pesquisas na web, recuperação de informações;
+\end_layout
+
+\begin_layout Itemize
+Supervisionado;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Word2vec:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cria uma representação vetorial de palavras;
+\end_layout
+
+\begin_layout Itemize
+Palavras com semânticas semelhantes são representadas por vetores próximos
+ uns dos outros;
+\end_layout
+
+\begin_layout Itemize
+Isso é chamado de incorporação de palavras;
+\end_layout
+
+\begin_layout Itemize
+É útil para PLN, mas não é um algoritmo de PLN em si;
+\end_layout
+
+\begin_layout Itemize
+Usado em tradução automática, análise de sentimento;
+\end_layout
+
+\begin_layout Itemize
+Funciona com palavras individuais, mas não com frases ou documentos;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Para modo supervisionado (classificação de texto):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Uma frase por linha;
+\end_layout
+
+\begin_layout Itemize
+A primeira 
+\begin_inset Quotes eld
+\end_inset
+
+palavra
+\begin_inset Quotes erd
+\end_inset
+
+ na frase é a string __label__ seguida pelo rótulo de fato da sentença;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Além disso, 
+\begin_inset Quotes eld
+\end_inset
+
+augmented manifest text format
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+O Word2vec espera apenas um arquivo de texto com uma frase de treinamento
+ por linha;
+\end_layout
+
+\begin_layout Subsubsection*
+Como isso é usado?
+\end_layout
+
+\begin_layout Itemize
+Word2vec tem várias formas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cbow (Bag of words);
+\end_layout
+
+\begin_layout Itemize
+Skip-gram;
+\end_layout
+
+\begin_layout Itemize
+Batch skip-gram:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Computação distribuída em muitos nós;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Word2vec:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mode (batch_skipgram, skipgram, cbow);
+\end_layout
+
+\begin_layout Itemize
+Learning_rate;
+\end_layout
+
+\begin_layout Itemize
+Window_size;
+\end_layout
+
+\begin_layout Itemize
+Vector_dim;
+\end_layout
+
+\begin_layout Itemize
+Negative_samples;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Classificação de texto:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Epochs;
+\end_layout
+
+\begin_layout Itemize
+Learning_rate;
+\end_layout
+
+\begin_layout Itemize
+Word_ngrams;
+\end_layout
+
+\begin_layout Itemize
+Vector_dim;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instâncias
+\end_layout
+
+\begin_layout Itemize
+Para cbow e skipgram, recomenda-se um único ml.p3.2xlarge;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Qualquer CPU ou instância única de GPU funcionará;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Para batch_skipgram, pode usar uma ou várias instâncias de CPU;
+\end_layout
+
+\begin_layout Itemize
+Para classificação de texto, é recomendado C5 se tiver menos de 2GB de dado
+ de treinamento;
+\end_layout
+
+\begin_layout Itemize
+Para conjuntos de dados maiores, use uma única instância de GPU (ml.p2.xlarge
+ ou ml.p3.2xlarge);
+\end_layout
+
+\begin_layout Subsection
+Object2Vec
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Lembra do word2vec do BlazingText? É semelhante, mas serve também para objetos
+ arbitrários;
+\end_layout
+
+\begin_layout Itemize
+Ele cria 
+\begin_inset Quotes eld
+\end_inset
+
+embeddings
+\begin_inset Quotes erd
+\end_inset
+
+ densos de baixa dimensão de objetos de alta dimensão;
+\end_layout
+
+\begin_layout Itemize
+É basicamente um word2vec generalizado, para lidar com outras coisas além
+ de palavras;
+\end_layout
+
+\begin_layout Itemize
+Calcula os vizinhos mais próximos de objetos;
+\end_layout
+
+\begin_layout Itemize
+Visualiza clusters;
+\end_layout
+
+\begin_layout Itemize
+Previsão de gênero;
+\end_layout
+
+\begin_layout Itemize
+Recomendações (itens ou usuários semelhantes)
+\end_layout
+
+\begin_layout Itemize
+Não supervisionado;
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Os dados devem ser tokenizados em inteiros;
+\end_layout
+
+\begin_layout Itemize
+Os dados de treinamento consistem em pares de tokens e/ou sequências de
+ tokens;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sentença-sentença;
+\end_layout
+
+\begin_layout Itemize
+Sequência de rótulos (gênero para descrição);
+\end_layout
+
+\begin_layout Itemize
+Cliente-cliente;
+\end_layout
+
+\begin_layout Itemize
+Produto-produto;
+\end_layout
+
+\begin_layout Itemize
+Item de usuário;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Processa dados em linhas JSON e os embaralha;
+\end_layout
+
+\begin_layout Itemize
+Treina com dois canais de entrada, dois encoders e um comparador;
+\end_layout
+
+\begin_layout Itemize
+Opções de encoders:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Embeddings com pool médio;
+\end_layout
+
+\begin_layout Itemize
+CNN's
+\end_layout
+
+\begin_layout Itemize
+LSTM bidirecional;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+O comparador é seguido por uma rede neural feed-forward;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Os usuais de deep learning;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dropout, early stopping, epochs, learning rate, batch size, layers, activation
+ function, optimizer, weight decay;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Enc1_network, enc2_network
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Opções de hcnn, bilstm, pooled_embedding;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Só pode treinar em uma única máquina (CPU ou GPU, multi-GPU)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ml.m5.2xlarge;
+\end_layout
+
+\begin_layout Itemize
+Ml.p2.xlarge;
+\end_layout
+
+\begin_layout Itemize
+Se necessário, vá até ml.m5.4xlarge ou ml.m5.12xlarge;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Inferência: use ml.p2.2xlarge;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Use a variável de ambiente INFERENCE_PREFERRED_MODE para otimizar para embedding
+s do codificador em vez de classificação ou regressão;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Detecção de objetos
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Identifique todos os objetos de uma imagem com caixas delimitadoras;
+\end_layout
+
+\begin_layout Itemize
+Detecta e classifica objetos com uma única rede neural profunda;
+\end_layout
+
+\begin_layout Itemize
+As classes são acompanhadas por pontuações de confiança;
+\end_layout
+
+\begin_layout Itemize
+Pode treinar do zero ou usar modelos pré-treinados com base na ImageNet;
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+RecordIO ou formato de imagem (Jpg ou Png)
+\end_layout
+
+\begin_layout Itemize
+Com o formato de imagem, fornça um arquivo JSON para dados de anotação para
+ cada imagem;
+\end_layout
+
+\begin_layout Subsubsection*
+Como isso é usado?
+\end_layout
+
+\begin_layout Itemize
+Obtém uma imagem como entrada, produz todas as instâncias de objetos na
+ imagem com categorias e pontuações de confiança;
+\end_layout
+
+\begin_layout Itemize
+Usa uma CNN com o algoritmo Single Shot Multibox Detector (SSD);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+O CNN básico pode ser VGG-16 ou ResNet-50;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Transfer Learning/Treinamento Incremental;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Use um modelo pré-treinado para os pesos básicos da rede, em vez de pesos
+ iniciais aleatórios;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Usa flip, jitter e rescale internamente para evitar o overfitting;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Mini-batch_size
+\end_layout
+
+\begin_layout Itemize
+Learning_rate
+\end_layout
+
+\begin_layout Itemize
+Optimizer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sgd, adam, rmsprop, adadelta
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instâncias
+\end_layout
+
+\begin_layout Itemize
+Use instâncias de GPU para treinamento (multi-GPU e multi-máquina)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Use CPU para inferência;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+C5, M5, P2, P3 todos ok;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Classificação de imagens
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Atribuir um ou mais rótulos a uma imagem;
+\end_layout
+
+\begin_layout Itemize
+Não diz onde os objetos estão, apenas quais objetos estão na imagem;
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Apache MXNet RecordIO:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Não o protobuf;
+\end_layout
+
+\begin_layout Itemize
+Isso é para interoperabilidade com outras estruturas de aprendizado profundo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ou imagens jpg ou png;
+\end_layout
+
+\begin_layout Itemize
+O formato de imagem requer arquivos .lst para assosciar índice de imagem,
+ rótulo de classe e caminho para a imagem;
+\end_layout
+
+\begin_layout Itemize
+O formato 
+\begin_inset Quotes eld
+\end_inset
+
+Augmented Manifest Image
+\begin_inset Quotes erd
+\end_inset
+
+ habilita o modo Pipe;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usada?
+\end_layout
+
+\begin_layout Itemize
+ResNet CNN nos bastidores;
+\end_layout
+
+\begin_layout Itemize
+Modo de treinamento completo;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rede inicializada com pesos aleatórios;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modo de transferência de aprendizagem;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Inicializado com pesos pré-treinados;
+\end_layout
+
+\begin_layout Itemize
+A camada superior totalmente conectada é inicializada com pesos aleatórios;
+\end_layout
+
+\begin_layout Itemize
+A rede é ajustada com novos dados de treinamento;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+O tamanho padrão da imagem é de 3 canais 224x224 (conjunto de dados da imageNet)
+;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Os de costume para aprendizado profundo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Batch size, learning rate, optimizer
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Parâmetros específicos do otimizador
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Weight decay, beta 1, beta 2, eps, gamma;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Instâncias de GPU para treinamento (P2, P3) multi-GPU e multi-máquina OK;
+\end_layout
+
+\begin_layout Itemize
+CPU ou GPU para inferência (C4, P2, P3);
+\end_layout
+
+\begin_layout Subsection
+Segmentação semântica
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Classificação de objetos em nível de píxel;
+\end_layout
+
+\begin_layout Itemize
+Diferente da classificação de imagem, que atribui rótulos a imagens inteiras;
+\end_layout
+
+\begin_layout Itemize
+Diferente da detecção de objetos, que atribui rotulos a caixa delimitadoras;
+\end_layout
+
+\begin_layout Itemize
+Útil para veículos autônomos, diagnósticos por imagens médicas, detecção
+ de robôs;
+\end_layout
+
+\begin_layout Itemize
+Produz uma máscara de segmentação;
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Imagens JPG ou anotações PNG;
+\end_layout
+
+\begin_layout Itemize
+Para treinamento e validação;
+\end_layout
+
+\begin_layout Itemize
+Formato Augmented Manifest Imagem suportado para o modo Pipe;
+\end_layout
+
+\begin_layout Itemize
+Imagens JPG aceitas para inferência;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usada?
+\end_layout
+
+\begin_layout Itemize
+Construído em MXNet Gluon e Gluon CV;
+\end_layout
+
+\begin_layout Itemize
+Escolha entre 3 algoritmos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fully-conbolutional Network (FCN);
+\end_layout
+
+\begin_layout Itemize
+Pyramid Scene Parsing (PSP);
+\end_layout
+
+\begin_layout Itemize
+DeepLabV3;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Escolha entre backbones:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ResNet50;
+\end_layout
+
+\begin_layout Itemize
+ResNet101;
+\end_layout
+
+\begin_layout Itemize
+Ambos treinados na ImageNet;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Treinamento incremental, treinamento do zero também suportado;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Epochs, learning rate, batch size, optimizer, etc.;
+\end_layout
+
+\begin_layout Itemize
+Algoritmo;
+\end_layout
+
+\begin_layout Itemize
+Backbone;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Apenas GPU para treinamento (P2 ou P3) em uma única máquina apenas;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Especificamente ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge,
+ ml.p3.16xlarge;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Inferência na CPU (C5 ou M5) ou GPU (P2 ou P3);
+\end_layout
+
+\begin_layout Subsection
+Random Cut Forest
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Detecção de anomalia;
+\end_layout
+
+\begin_layout Itemize
+Não supervisionado;
+\end_layout
+
+\begin_layout Itemize
+Detecta picos inesperados nos dados de uma série temporal;
+\end_layout
+
+\begin_layout Itemize
+Divide em periodicidade;
+\end_layout
+
+\begin_layout Itemize
+Pontos de dados não classificáveis;
+\end_layout
+
+\begin_layout Itemize
+Atribui uma pontuação de anomalia a cada dado;
+\end_layout
+
+\begin_layout Itemize
+Baseado em um algoritmo desenvolvido pela Amazon (do qual eles se orgulham
+ muito!);
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento espera?
+\end_layout
+
+\begin_layout Itemize
+RecordIO/Protobuf ou CSV;
+\end_layout
+
+\begin_layout Itemize
+Pode usar modo File ou Pipe para ambos;
+\end_layout
+
+\begin_layout Itemize
+Canal de teste opcional para calcular acurácia, precisão, recall e F2 em
+ dados rotulados (anomalia ou não);
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Cria uma floresta de árvores onde cada árvore é uma partição dos dados de
+ treinamento; olha para a mudança esperada na complexidade da árvore como
+ resultado da adição de um dado nela;
+\end_layout
+
+\begin_layout Itemize
+Os dados são amostrados aleatoriamente;
+\end_layout
+
+\begin_layout Itemize
+Então é treinada;
+\end_layout
+
+\begin_layout Itemize
+O RCF também aparece no Kinesis Analytics, ele também pode funcionar em
+ streaming de dados;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Num_trees;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aumentar reduz o ruído;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Num_samples_per_tree;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Deve ser escolhido de forma que 1/num_samples_per_tree se aproxime da proporção
+ de dados entre anômalos e normais;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Não tem vantagem usar GPUs;
+\end_layout
+
+\begin_layout Itemize
+Use M4, C4 ou C5 para treinamento;
+\end_layout
+
+\begin_layout Itemize
+ml.c5.xl para inferência;
+\end_layout
+
+\begin_layout Subsection
+Neural Topic Model
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Organiza documentos em tópicos;
+\end_layout
+
+\begin_layout Itemize
+Classifica ou resume documentos com base em tópicos;
+\end_layout
+
+\begin_layout Itemize
+Não é apenas TF/IDF;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Bicicleta
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+carro
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+trem
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+quilometragem
+\begin_inset Quotes erd
+\end_inset
+
+ e 
+\begin_inset Quotes eld
+\end_inset
+
+velocidade
+\begin_inset Quotes erd
+\end_inset
+
+ podem classificar um documento como 
+\begin_inset Quotes eld
+\end_inset
+
+transporte
+\begin_inset Quotes erd
+\end_inset
+
+, por exemplo (embora não seja rotulado exatamente desta maneira);
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sem supervisão;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Algoritmo é 
+\begin_inset Quotes eld
+\end_inset
+
+Inferência Neural Variacional
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Quatro canais de dados:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Treinar
+\begin_inset Quotes erd
+\end_inset
+
+ é necessário;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Validação
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+teste
+\begin_inset Quotes erd
+\end_inset
+
+ e 
+\begin_inset Quotes eld
+\end_inset
+
+auxiliar
+\begin_inset Quotes erd
+\end_inset
+
+ opcional;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RecordIO/Protobuf ou CSV;
+\end_layout
+
+\begin_layout Itemize
+As palavras devem ser convertidas em números inteiros;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cada documento deve conter uma contagem para cada palavra do vocabulário
+ em CSV;
+\end_layout
+
+\begin_layout Itemize
+O canal 
+\begin_inset Quotes eld
+\end_inset
+
+auxiliar
+\begin_inset Quotes erd
+\end_inset
+
+ é para vocabulário;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modo file ou pipe;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Você define quantos tópicos deseja;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Isto é um hiperparâmetro que você define quando irá configurar o algoritmo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Esses tópicos são uma representação latente com base nas palavras mais bem
+ classificadas;
+\end_layout
+
+\begin_layout Itemize
+Um dos dois algoritmos de modelagem de tópicos no SageMaker - você pode
+ tentar os dois;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Reduzir mini_batch_size e learning_rate pode reduzir validation_loss
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+À custa do tempo de treinamento;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Num_topics;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instâncias
+\end_layout
+
+\begin_layout Itemize
+GPU ou CPU
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+GPU é recomendado para treinamento;
+\end_layout
+
+\begin_layout Itemize
+CPU para inferência;
+\end_layout
+
+\begin_layout Itemize
+CPU é mais barato;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+LDA
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Latent Dirichlet Allocation;
+\end_layout
+
+\begin_layout Itemize
+Outro algoritmo de modelagem de tópico;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Não é deep learning;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sem supervisão;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Os próprios tópicos não estão rotulados;
+\end_layout
+
+\begin_layout Itemize
+Eles são apenas agrupamentos de documentos com um subconjunto compartilhado
+ de palavras;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pode ser usado para outras coisas além de palavras;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Agrupar clientes baseados em suas compras;
+\end_layout
+
+\begin_layout Itemize
+Análise harmônica na música;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Canal de treinamento, canal de teste opcional;
+\end_layout
+
+\begin_layout Itemize
+RecordIO/Protobuf ou CSV;
+\end_layout
+
+\begin_layout Itemize
+Cada documento tem contagens para cada palavra do vocabulário (em formato
+ CSV);
+\end_layout
+
+\begin_layout Itemize
+Modo Pipe suportado apenas com RecordIO;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Sem supervisão: gera quantos tópicos você especificar;
+\end_layout
+
+\begin_layout Itemize
+O canal de teste opcional pode ser usado para pontuar os resultados;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Probabilidade de registro por palavra;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Funcionalmente semelhante ao NTM, mas baseado em CPU;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Portanto, pode ser mais barato/mais eficiente;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Num_topics;
+\end_layout
+
+\begin_layout Itemize
+Alpha0;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Estimativa inicial para o parâmetro de concentração;
+\end_layout
+
+\begin_layout Itemize
+Valores menores geram misturas de tópicos esparsos;
+\end_layout
+
+\begin_layout Itemize
+Valores maiores (>1.0) produzem misturas uniformes;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Treinamento de CPU de instância única;
+\end_layout
+
+\begin_layout Subsection
+KNN
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+K-Nearest-Neighbours;
+\end_layout
+
+\begin_layout Itemize
+Algoritmo de Classificação ou Regressão Simples;
+\end_layout
+
+\begin_layout Itemize
+Classificação;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Encontre os K pontos mais próximos de um ponto de amostra e retorne o rótulo
+ mais frequente;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Regressão;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Encontre os K pontos mias próximos de um ponto de amostra e retorne o valor
+ médio;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+O canal de treinamento contém seus dados;
+\end_layout
+
+\begin_layout Itemize
+O canal de teste mede acurácia ou MSE;
+\end_layout
+
+\begin_layout Itemize
+Treinamento com recordIO/protobuf ou CSV;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A primeira coluna é o rótulo;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modo file ou pipe em ambos;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Os dados são primeiro amostrados;
+\end_layout
+
+\begin_layout Itemize
+O SageMaker inclui um estágio de redução de dimensionalidade;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Evita dados esparsos (
+\begin_inset Quotes eld
+\end_inset
+
+maldição da dimensionalidade
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+A custo de ruído/precisão;
+\end_layout
+
+\begin_layout Itemize
+Métodos de 
+\begin_inset Quotes eld
+\end_inset
+
+sign
+\begin_inset Quotes erd
+\end_inset
+
+ ou 
+\begin_inset Quotes eld
+\end_inset
+
+fjlt
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Cria um índice para procurar vizinhos;
+\end_layout
+
+\begin_layout Itemize
+Serializa o modelo;
+\end_layout
+
+\begin_layout Itemize
+Consulta o modelo para um determinado K;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+K;
+\end_layout
+
+\begin_layout Itemize
+Sample_size;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Treinamento de CPU ou GPU;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ml.m5.2xlarge;
+\end_layout
+
+\begin_layout Itemize
+ml.p2.xlarge;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Inferência;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CPU para menor latência;
+\end_layout
+
+\begin_layout Itemize
+GPU para maior rendimento em grandes batchs;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+K-Means
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Agrupamento não supervisionado;
+\end_layout
+
+\begin_layout Itemize
+Divida os dados em K grupos, onde os membros de um grupo são semelhantes
+ quanto possível entre si;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Você define o que 
+\begin_inset Quotes eld
+\end_inset
+
+semelhante
+\begin_inset Quotes erd
+\end_inset
+
+ significa;
+\end_layout
+
+\begin_layout Itemize
+Medida pela distância euclideana;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Clustering K-Means em escala da web;
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Canal de treinamento, teste opcional;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Treino ShardedByS3Key, teste FullyReplicated;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RecordIO/protobuf ou CSV;
+\end_layout
+
+\begin_layout Itemize
+File ou Pipe em qualquer um;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Cada observação mapeada para o espaço n-dimensional (n=número de características
+);
+\end_layout
+
+\begin_layout Itemize
+Trabalha para otimizar o centro dos k clusters;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Centros dos clusters extras
+\begin_inset Quotes erd
+\end_inset
+
+ podem ser especificados para melhorar a precisão (que acabam sendo reduzidos
+ para k);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $K=k*x$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Algoritmo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Determina os centros de cluster iniciais;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Abordagem aleatória ou k-means ++
+\end_layout
+
+\begin_layout Itemize
+K-means ++ tenta separar os clusters iniciais;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Execute interação nos dados de treinamento e calcule os centros de cluster;
+\end_layout
+
+\begin_layout Itemize
+Reduza os clusters de K para k;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Usando o método Lloyd's com kmeans ++;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+K
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Escolher K é complicado;
+\end_layout
+
+\begin_layout Itemize
+Use o método elbow;
+\end_layout
+
+\begin_layout Itemize
+Plotar a soma dos quadrados dentro do cluster em função de K;
+\end_layout
+
+\begin_layout Itemize
+Otimiza as dimensões dos clusters;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Mini_batch_size;
+\end_layout
+
+\begin_layout Itemize
+Extra_center_factor;
+\end_layout
+
+\begin_layout Itemize
+Init_method;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+CPU ou GPU, mas CPU é recomendada;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Apenas uma GPU por instância usada na GPU;
+\end_layout
+
+\begin_layout Itemize
+Portanto, use p*.xlarge se for usar GPU;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+PCA
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Principal Component Analysis;
+\end_layout
+
+\begin_layout Itemize
+Redução de dimensionalidade;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Projete dados com alta dimensionalidade (muitos atributos) em dimensões
+ inferiores (como um gráficos 2D) enquanto minimiza a perda de informações;
+\end_layout
+
+\begin_layout Itemize
+As dimensões reduzidas são chamadas de componentes;
+\end_layout
+
+\begin_layout Itemize
+O primeiro componente tem a maior variabilidade possível;
+\end_layout
+
+\begin_layout Itemize
+O segundo componente tem a próxima maior e assim por diante;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sem supervisão;
+\end_layout
+
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+RecordIO/Protobuf ou CSV;
+\end_layout
+
+\begin_layout Itemize
+File ou Pipe ou ambos;
+\end_layout
+
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Matriz de covariância é criada, então usa uma técnica de singular value
+ decomposition (SVD);
+\end_layout
+
+\begin_layout Itemize
+Dois modos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Regular:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Para dados esparsos e número moderado de observações e recursos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Randomizado:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Para um grande número de observações e atributos;
+\end_layout
+
+\begin_layout Itemize
+Usa algoritmo de aproximação;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Algorithm_mode;
+\end_layout
+
+\begin_layout Itemize
+Subtract_mean;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dados não-enviesados;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+GPU ou CPU
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Depende 
+\begin_inset Quotes eld
+\end_inset
+
+das especificações dos dados de entrada
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Factorization Machines
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Lida com dados esparsos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Previsão de clique;
+\end_layout
+
+\begin_layout Itemize
+Recomendações de itens;
+\end_layout
+
+\begin_layout Itemize
+Como um usuário individual não interage com a maioria das págainas / produtos,
+ os dados são esparsos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Supervisionado
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Classificação ou regressão
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Limitado a interação em pares;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Usuário -> item por exemplo;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipos de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+RecordIO/Protobuf com Float32;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dados esparsos significam que CSV não é prático;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Encontra fatores que podemos usar para prever uma classificação (clique
+ ou não? Compra ou não?) ou valor (avaliação prevista?).
+ Dada uma matriz que representa algumas coisas (usuários e itens?);
+\end_layout
+
+\begin_layout Itemize
+Normalmente usado no contexto de sistemas de recomendação;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Métodos de inicialização para bias, fatores e termos lineares;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Uniforme, normal ou constante;
+\end_layout
+
+\begin_layout Itemize
+Pode ajustar as propriedades de cada método;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+CPU ou GPU
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CPU é recomendado;
+\end_layout
+
+\begin_layout Itemize
+GPU só funciona com dados densos;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+IP Insights
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Aprendizagem não supervisionada de padrões de uso de endereço IP;
+\end_layout
+
+\begin_layout Itemize
+Identifica comportamento suspeito de endereços IP;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Identifica logins de IPs anômalos;
+\end_layout
+
+\begin_layout Itemize
+Identifique contas que criam recursos de IPs anômalos;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Nomes de usuários e IDs de contas podem ser inseridos diretamente;
+\end_layout
+
+\begin_layout Itemize
+Não há necessidade de pré-processamento;
+\end_layout
+
+\begin_layout Itemize
+Canal de treinamento, validação opcional (calcula a pontuação AUC);
+\end_layout
+
+\begin_layout Itemize
+CSV apenas;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Entity, IP;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Usa uma rede neural para aprender representações vetoriais latentes de entidades
+ e endereços IP;
+\end_layout
+
+\begin_layout Itemize
+Entidades são transformadas em hashs;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hash devem ter um tamanho grande o suficiente;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gera automaticamente amostras negativas durante o treinamento, pareando
+ aleatoriamente entidades e IPs;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Num_entity_vectors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tamanho do hash;
+\end_layout
+
+\begin_layout Itemize
+Definido para duas vezes o número de identificadores de entidade exclusivos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vector_dim;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tamanho dos vetores de incorporação;
+\end_layout
+
+\begin_layout Itemize
+Ajusta o tamanho do modelo;
+\end_layout
+
+\begin_layout Itemize
+Muito grande gera overfitting;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Epochs, learning rate, batch size, etc.;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+CPU ou GPU
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+GPU é recomendado;
+\end_layout
+
+\begin_layout Itemize
+ml.p3.2xlarge ou superior;
+\end_layout
+
+\begin_layout Itemize
+Pode usar várias GPUs;
+\end_layout
+
+\begin_layout Itemize
+O tamanho da instância da CPU depende de vector_dim e num_entity_vectors;
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
