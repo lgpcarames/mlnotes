@@ -2522,46 +2522,7 @@ Desta maneira podemos conectar apenas os containers que optarmos;
 E podemos definir drivers diferentes também;
 \end_layout
 
-\begin_layout Subsection
-Build no compose
-\end_layout
 
-\begin_layout Itemize
-Podemos gerar o build durante o compose também;
-\end_layout
-
-\begin_layout Itemize
-Isso vai eliminar o processo de gerar o build da imagem a cada atualização;
-\end_layout
-
-\begin_layout Subsection
-Bind mount no compose
-\end_layout
-
-\begin_layout Itemize
-O volume de bind mount garante atualização em tempo real dos arquivos do
- container;
-\end_layout
-
-\begin_layout Itemize
-Podemos configurar nosso projeto de compose para utilizar esta funcionalidade
- também;
-\end_layout
-
-\begin_layout Subsection
-Verificando o que tem no compose
-\end_layout
-
-\begin_layout Itemize
-Podemos fazer a verificação do compose com: docker-compose ps;
-\end_layout
-
-\begin_layout Itemize
-Receberemos um resumo dos serviços que sobem ao rodar o compose;
-\end_layout
-
-\begin_layout Itemize
-Desta maneira podemos avaliar rapidamente o projeto;
 \end_layout
 
 \end_body

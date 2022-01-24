@@ -2386,12 +2386,11 @@ Não muito preciso;
 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \end_layout
 
-\end_deeper
+\begin_deeper
 \begin_layout Itemize
 
 \end_layout
@@ -2428,12 +2427,6 @@ Não muito preciso;
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
 
 \end_layout
@@ -2444,27 +2437,19 @@ Não muito preciso;
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection*
+\end_deeper
+\begin_layout Itemize
 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
+
+\begin_layout Itemize
+Classificação de sentenças;
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection*
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
 
 \end_layout
 
@@ -2478,11 +2463,23 @@ Não muito preciso;
 
 \end_layout
 
+\begin_layout Itemize
+
+\end_layout
+
+\begin_layout Itemize
+
+\end_layout
+
 \begin_deeper
 \begin_layout Itemize
 
 \end_layout
 
 \end_deeper
+\begin_layout Subsection*
+
+\end_layout
+
 \end_body
 \end_document
