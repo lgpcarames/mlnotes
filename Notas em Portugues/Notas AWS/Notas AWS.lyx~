@@ -6848,7 +6848,153 @@ GPU só funciona com dados densos;
 \end_layout
 
 \end_deeper
-\begin_layout Subsection*
+\begin_layout Subsection
+IP Insights
+\end_layout
+
+\begin_layout Subsubsection*
+Para que serve?
+\end_layout
+
+\begin_layout Itemize
+Aprendizagem não supervisionada de padrões de uso de endereço IP;
+\end_layout
+
+\begin_layout Itemize
+Identifica comportamento suspeito de endereços IP;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Identifica logins de IPs anômalos;
+\end_layout
+
+\begin_layout Itemize
+Identifique contas que criam recursos de IPs anômalos;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Que tipo de treinamento ele espera?
+\end_layout
+
+\begin_layout Itemize
+Nomes de usuários e IDs de contas podem ser inseridos diretamente;
+\end_layout
+
+\begin_layout Itemize
+Não há necessidade de pré-processamento;
+\end_layout
+
+\begin_layout Itemize
+Canal de treinamento, validação opcional (calcula a pontuação AUC);
+\end_layout
+
+\begin_layout Itemize
+CSV apenas;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Entity, IP;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Como é usado?
+\end_layout
+
+\begin_layout Itemize
+Usa uma rede neural para aprender representações vetoriais latentes de entidades
+ e endereços IP;
+\end_layout
+
+\begin_layout Itemize
+Entidades são transformadas em hashs;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hash devem ter um tamanho grande o suficiente;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gera automaticamente amostras negativas durante o treinamento, pareando
+ aleatoriamente entidades e IPs;
+\end_layout
+
+\begin_layout Subsubsection*
+Hiperparâmetros importantes
+\end_layout
+
+\begin_layout Itemize
+Num_entity_vectors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tamanho do hash;
+\end_layout
+
+\begin_layout Itemize
+Definido para duas vezes o número de identificadores de entidade exclusivos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vector_dim;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tamanho dos vetores de incorporação;
+\end_layout
+
+\begin_layout Itemize
+Ajusta o tamanho do modelo;
+\end_layout
+
+\begin_layout Itemize
+Muito grande gera overfitting;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Epochs, learning rate, batch size, etc.;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+CPU ou GPU
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+GPU é recomendado;
+\end_layout
+
+\begin_layout Itemize
+ml.p3.2xlarge ou superior;
+\end_layout
+
+\begin_layout Itemize
+Pode usar várias GPUs;
+\end_layout
+
+\begin_layout Itemize
+O tamanho da instância da CPU depende de vector_dim e num_entity_vectors;
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Aprendizagem por reforço
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 

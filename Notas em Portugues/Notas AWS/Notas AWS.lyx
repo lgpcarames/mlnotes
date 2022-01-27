@@ -6990,5 +6990,496 @@ O tamanho da instância da CPU depende de vector_dim e num_entity_vectors;
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+Aprendizagem por reforço
+\end_layout
+
+\begin_layout Subsubsection*
+Introdução
+\end_layout
+
+\begin_layout Itemize
+Na aprendizagem por reforço, você tem um tipo de agente que 
+\begin_inset Quotes eld
+\end_inset
+
+explora
+\begin_inset Quotes erd
+\end_inset
+
+ algum espaço;
+\end_layout
+
+\begin_layout Itemize
+À medida que avança, aprende o valor de diferentes mudanças de estado em
+ diferentes condições;
+\end_layout
+
+\begin_layout Itemize
+Esses valores informam o comportamento subsequente do agente;
+\end_layout
+
+\begin_layout Itemize
+Exemplos: jogo Pac-Man, Cat & Mouse (Jogo AI);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gestão da cadeia de suprimento;
+\end_layout
+
+\begin_layout Itemize
+Sistema HVAC;
+\end_layout
+
+\begin_layout Itemize
+Robótica industrial;
+\end_layout
+
+\begin_layout Itemize
+Sistemas de diálogo;
+\end_layout
+
+\begin_layout Itemize
+Veículos autônomos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Leva a um desempenho on-line mais rápido depois que o espaço foi explorado;
+\end_layout
+
+\begin_layout Subsubsection*
+Q-Learning
+\end_layout
+
+\begin_layout Itemize
+Uma implementação específica de aprendizagem por reforço;
+\end_layout
+
+\begin_layout Itemize
+Você tem:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Um conjunto de estados do ambiente;
+\end_layout
+
+\begin_layout Itemize
+Um conjunto de ações possíveis nesses estados - s;
+\end_layout
+
+\begin_layout Itemize
+Um valor para cada estado / ação - Q
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Comece com valores 
+\begin_inset Formula $Q=0$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Explore o espaço;
+\end_layout
+
+\begin_layout Itemize
+Quando coisas ruins acontecerem após um determinado estado/ação, reduza
+ seu Q;
+\end_layout
+
+\begin_layout Itemize
+À medida que as recompensas acontecem após um determinado estado/ação, aumente
+ seu Q;
+\end_layout
+
+\begin_layout Itemize
+Quais são alguns estados/ações aqui?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pac-man tem um muro a esquerda;
+\end_layout
+
+\begin_layout Itemize
+Pac-man morre se der um passo para baixo;
+\end_layout
+
+\begin_layout Itemize
+Pac-man continua vivo se for para cima, ou direita;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Você pode 
+\begin_inset Quotes eld
+\end_inset
+
+olhar para frente
+\begin_inset Quotes erd
+\end_inset
+
+ mais de uma etapa usando um fator de desconto ao calcular Q (aqui 
+\begin_inset Formula $s$
+\end_inset
+
+ é o estado anterior, 
+\begin_inset Formula $s^{\prime}$
+\end_inset
+
+ é o estado atual);
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Q\left(s,a\right)+=\text{desconto}*\left(\text{recompensa}\left(s,a\right)+\text{max}\left(Q\left(s^{\prime}\right)\right)-Q\left(s,a\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+O problema da exploração
+\end_layout
+
+\begin_layout Itemize
+Como podemos explorar com eficiência todos os estados possíveis?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Abordagem simples: sempre escolha a ação para um determinado estado com
+ o 
+\begin_inset Formula $Q$
+\end_inset
+
+ mais alto.
+ Se houve empate, escolha aleatoriamente;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mas isso é realmente ineficiente, e você pode perder muitos caminhos dessa
+ forma;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Melhor maneira: introduza um elemento épsilon;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se um número aleatório for menor que épsilon, não siga o 
+\begin_inset Formula $Q$
+\end_inset
+
+ mais alto, mas escolha aleatoriamente;
+\end_layout
+
+\begin_layout Itemize
+Dessa forma, a exploração nunca para totalmente;
+\end_layout
+
+\begin_layout Itemize
+Escolher épsilon pode ser complicado;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Palavras complicadas
+\end_layout
+
+\begin_layout Itemize
+Markov Decision Process
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Da wikipedia: os processos de decisão de Markov (MDPs) fornecem uma estrutura
+ matemática para modelar a tomada de decisão em situações em que os resultados
+ são parcialmente aleatórios e parcialmente sob o controle de um tomador
+ de decisão;
+\end_layout
+
+\begin_layout Itemize
+Soa familiar? MDPs são apenas uma maneira de descrever o que acabamos de
+ ver usando notação matemática;
+\end_layout
+
+\begin_layout Itemize
+Os estados ainda são descritos como 
+\begin_inset Formula $s$
+\end_inset
+
+ e 
+\begin_inset Formula $s^{\prime}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+As funções de transição de estado são descritas como 
+\begin_inset Formula $P_{a}\left(s,s^{\prime}\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Nossos valores 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $Q$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ são descritos como uma função de recompensa 
+\begin_inset Formula $R_{a}\left(s,s^{\prime}\right)$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Uma MDP é um processo de controle estocástico de tempo discreto;
+\end_layout
+
+\begin_layout Subsubsection*
+Para recapitular
+\end_layout
+
+\begin_layout Itemize
+Você pode fazer um pac-man inteligente em algumas etapas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Faça com que ele explore de forma semi-aleatória diferentes opções de movimento
+ (ações) dadas as diferentes condições (estados);
+\end_layout
+
+\begin_layout Itemize
+Acompanhe a recompensa ou penalidade associada a cada escolha para um determinad
+o estado/ação (
+\begin_inset Formula $Q$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+Use esses valores 
+\begin_inset Formula $Q$
+\end_inset
+
+ armazenados para informar suas escolhas futuras;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Conceito muito simples.
+ Agora você pode dizer que compreende o aprendizado por reforço, o Q-learning,
+ os processos de decisão de Markov e a programação dinâmica;
+\end_layout
+
+\begin_layout Subsubsection*
+Aprendizagem por reforço no SageMaker
+\end_layout
+
+\begin_layout Itemize
+Usa uma estrutura de aprendizado profundo com Tensorflow e MXNet;
+\end_layout
+
+\begin_layout Itemize
+Suporta Intel Coach e Ray Rlib toolkits;
+\end_layout
+
+\begin_layout Itemize
+Suporta ambientes personalizados, de código aberto ou comerciais;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+MATLAB, Simulink;
+\end_layout
+
+\begin_layout Itemize
+EnergyPlus, RoboSchool, PyBullet;
+\end_layout
+
+\begin_layout Itemize
+Amazon Sumerian, AWS RoboMaker;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Treinamento distribuído com SageMaker RL
+\end_layout
+
+\begin_layout Itemize
+Pode distribuir treinamento e/ou implanatação de ambiente;
+\end_layout
+
+\begin_layout Itemize
+Multi-core e multi-instância;
+\end_layout
+
+\begin_layout Subsubsection*
+Termos chave
+\end_layout
+
+\begin_layout Itemize
+Ambiente: O layout do tabuleiro, labirinto, etc.
+\end_layout
+
+\begin_layout Itemize
+Estado: onde o jogador/peças estão;
+\end_layout
+
+\begin_layout Itemize
+Ação: Mova-se em uma determinada direção, etc.;
+\end_layout
+
+\begin_layout Itemize
+Recompensa: Valor associado à ação daquele estado;
+\end_layout
+
+\begin_layout Itemize
+Observação: ou seja, arredores em um labirinto, estado de tabuleiro de xadrez;
+\end_layout
+
+\begin_layout Subsubsection*
+Principais hiperparâmetros
+\end_layout
+
+\begin_layout Itemize
+Os parâmetros de sua escolha podem ser abstraídos;
+\end_layout
+
+\begin_layout Itemize
+O ajuste de hiperparâmetros no SageMaker pode otimizá-los;
+\end_layout
+
+\begin_layout Subsubsection*
+Tipos de instância
+\end_layout
+
+\begin_layout Itemize
+Nenhuma orientação específica fornecida no guia do desenvolvedor;
+\end_layout
+
+\begin_layout Itemize
+Mas é um aprendizado profundo, então as GPUs são melhores;
+\end_layout
+
+\begin_layout Itemize
+E sabemos que ele oferece suporte a várias instâncias e núcleos;
+\end_layout
+
+\begin_layout Subsection
+Ajuste automático de modelo no SageMaker
+\end_layout
+
+\begin_layout Subsubsection*
+Ajuste de hiperparâmetros
+\end_layout
+
+\begin_layout Itemize
+Como você sabe os melhores valores de learning rate, batch size, depth,
+ etc?
+\end_layout
+
+\begin_layout Itemize
+Frequentemente você tem que experimentar;
+\end_layout
+
+\begin_layout Itemize
+O problema cresce rapidamente quando você tem muitos hiperparâmetros diferentes;
+ precisa experimentar todas as combinações de todos os valores possíveis
+ de alguma forma, treinar modelo e avaliá-lo;
+\end_layout
+
+\begin_layout Subsubsection*
+Ajuste automático de modelo
+\end_layout
+
+\begin_layout Itemize
+Defina os hiperparâmetros de seu interesse, os intervalos que deseja testar
+ e as métricas para as quais está otimizando;
+\end_layout
+
+\begin_layout Itemize
+O SageMaker cria um 
+\begin_inset Quotes eld
+\end_inset
+
+Job de ajuste de parâmetros
+\begin_inset Quotes erd
+\end_inset
+
+ que treina quantas combinações você configurar;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Instâncias de treinamento são aceleradas conforme necessário, potencialmente
+ muitas delas;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+O conjunto de hiperparâmetros que produzir os melhores resultados pode então
+ ser implantados como um modelo;
+\end_layout
+
+\begin_layout Itemize
+Aprende à medida que avança, por isso, não tem de tentar todas as combinações
+ possíveis;
+\end_layout
+
+\begin_layout Subsubsection*
+Melhores práticas
+\end_layout
+
+\begin_layout Itemize
+Não otimize muitos hiperparâmetros de uma vez;
+\end_layout
+
+\begin_layout Itemize
+Limite seus intervalos ao menor intervalo possível;
+\end_layout
+
+\begin_layout Itemize
+Use escalas logarítimicas quando apropriado;
+\end_layout
+
+\begin_layout Itemize
+Não execute muitos jobs de treinamento simultaneamente;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Isso limita a capacidade do processo aprender à medida que avança;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Certifique-se de que os jobs de treinamento em execução em várias instâncias
+ gerem a métrica correta no final;
+\end_layout
+
 \end_body
 \end_document
