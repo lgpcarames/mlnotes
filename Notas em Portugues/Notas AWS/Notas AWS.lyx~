@@ -7481,5 +7481,937 @@ Certifique-se de que os jobs de treinamento em execução em várias instâncias
  gerem a métrica correta no final;
 \end_layout
 
+\begin_layout Subsection
+SageMaker e Spark
+\end_layout
+
+\begin_layout Subsubsection*
+Integrando o SageMaker e Spark
+\end_layout
+
+\begin_layout Itemize
+Pré-processe os dados normalmente com o Spark;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gerar DataFrames;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Use a biblioteca sagemaker-spark;
+\end_layout
+
+\begin_layout Itemize
+SageMakerEstimator;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+KMeans, PCA, XGBoost;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+SageMaker Model;
+\end_layout
+
+\begin_layout Itemize
+Conecte o notebook a um cluster EMR remoto executando Spark (ou use o Zeppelin);
+\end_layout
+
+\begin_layout Itemize
+O dataframe de treinamento deve ter:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Uma coluna de atributos que é um vetor de doubles;
+\end_layout
+
+\begin_layout Itemize
+Uma coluna opcional de rótulos de doubles;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Chame fit em seu SageMakerEstimator para obter um SageMakerModel;
+\end_layout
+
+\begin_layout Itemize
+Chame transform no SageMakerModel para fazer inferências;
+\end_layout
+
+\begin_layout Itemize
+Também funciona com Spark Pipelines;
+\end_layout
+
+\begin_layout Subsubsection*
+Por que se importar?
+\end_layout
+
+\begin_layout Itemize
+Permite combinar pré-processsamento de big data no Spark com treinamento
+ e inferência no SageMaker;
+\end_layout
+
+\begin_layout Subsection
+Novos Recursos do SageMaker
+\end_layout
+
+\begin_layout Subsubsection*
+SageMaker Studio
+\end_layout
+
+\begin_layout Itemize
+IDE visual para machine learning;
+\end_layout
+
+\begin_layout Itemize
+Integra muitos dos recursos que estamos prestes a abordar;
+\end_layout
+
+\begin_layout Subsubsection*
+SageMaker Notebooks
+\end_layout
+
+\begin_layout Itemize
+Crie e compartilhe notebooks Jupyter com SageMaker Studio;
+\end_layout
+
+\begin_layout Itemize
+Alterna entre as configurações de hardware (sem infraestrutura para gerenciar);
+\end_layout
+
+\begin_layout Subsubsection*
+SageMaker Experiments
+\end_layout
+
+\begin_layout Itemize
+Organiza, captura, compara e pesquisa seus Jobs de ML;
+\end_layout
+
+\begin_layout Subsubsection*
+SageMaker Debugger
+\end_layout
+
+\begin_layout Itemize
+Salva o estado do modelo interno em intervalos periódicos;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gradientes/tensores ao longo do tempo conforme um modelo é treinado;
+\end_layout
+
+\begin_layout Itemize
+Defina regras para detectar condições indesejadas durante o treinaamento;
+\end_layout
+
+\begin_layout Itemize
+Um trabalho de depuração é executado para cada regra que você configurar;
+\end_layout
+
+\begin_layout Itemize
+Registra e dispara um evento CloudWatch quando a regra é atingida;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+SageMaker Autopilot
+\end_layout
+
+\begin_layout Itemize
+Automatiza:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Seleção de algoritmo;
+\end_layout
+
+\begin_layout Itemize
+Pré-processamento de dados;
+\end_layout
+
+\begin_layout Itemize
+Ajuste de modelo;
+\end_layout
+
+\begin_layout Itemize
+Toda infraestrutura;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Faz todas as tentativas e erros para você;
+\end_layout
+
+\begin_layout Itemize
+Em geral, é conhecido como AutoML;
+\end_layout
+
+\begin_layout Subsubsection*
+SageMaker Model Monitor
+\end_layout
+
+\begin_layout Itemize
+Receba alertas sobre mudanças de qualidade em seus modelos implantados
+\end_layout
+
+\begin_layout Itemize
+Visualize as mudanças de dados;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exemplo: o modelo de empréstimo começa a dar às pessoas mais crédito devido
+ a desvios ou falta de recursos de entrada;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Nenhum código necessário;
+\end_layout
+
+\begin_layout Subsection
+Serviços de IA/ML de Alto Nível
+\end_layout
+
+\begin_layout Subsubsection*
+Amazon Comprehend
+\end_layout
+
+\begin_layout Itemize
+Processamento de linguage natural e análise de texto;
+\end_layout
+
+\begin_layout Itemize
+Insira mídias sociais, e-mails, páginas da web, documentos, transcrições,
+ registros médicos (Comprehend Medical);
+\end_layout
+
+\begin_layout Itemize
+Extrai 
+\begin_inset Quotes eld
+\end_inset
+
+frases-chave
+\begin_inset Quotes erd
+\end_inset
+
+, entidades, sentimentos, linguagem, sintaxe, tópicos e classificações de
+ documentos;
+\end_layout
+
+\begin_layout Itemize
+Pode treinar com seus próprios dados;
+\end_layout
+
+\begin_layout Subsubsection*
+Amazon Translate
+\end_layout
+
+\begin_layout Itemize
+Usa aprendizado profundo para tradução;
+\end_layout
+
+\begin_layout Itemize
+Suporta terminologia personalizada;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Em formato CSV ou TMX;
+\end_layout
+
+\begin_layout Itemize
+Apropriado para nomes próprios, marcas e etc.;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Amazon Transcribe
+\end_layout
+
+\begin_layout Itemize
+Fala para texto
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Entrada em FLAC, MP3, MP4 ou WAV, em um idioma específico;
+\end_layout
+
+\begin_layout Itemize
+Streaming de áudio compatível (HTTP/2 ou WebSocket);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Francês, inglês, espanhol, português e outros;
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Identificação do locutor;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Especifique o número de locutores;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Identificação de canal;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ou seja, dois locutores podem ser transcritos separadamente mesclando com
+ base no tempo de 
+\begin_inset Quotes eld
+\end_inset
+
+enunciados
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vocabulários personalizados;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Listas de vocabulário (uma lista de palavras especiais, nomes, acrônimos);
+\end_layout
+
+\begin_layout Itemize
+Tabelas de vocabulário (podem incluir 
+\begin_inset Quotes eld
+\end_inset
+
+SoundsLike
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+IPA
+\begin_inset Quotes erd
+\end_inset
+
+ e 
+\begin_inset Quotes eld
+\end_inset
+
+DisplayAs
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Amazon Polly
+\end_layout
+
+\begin_layout Itemize
+Transforma texto para fala neural, muitas vozes e idiomas;
+\end_layout
+
+\begin_layout Itemize
+Lexicons;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Personalize a pronúncia de palavras e frases específicas;
+\end_layout
+
+\begin_layout Itemize
+Exemplo: 
+\begin_inset Quotes eld
+\end_inset
+
+World Wide Web Consortium
+\begin_inset Quotes erd
+\end_inset
+
+ em vez de 
+\begin_inset Quotes eld
+\end_inset
+
+W3C
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+SSML;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Alternativa para texto simples;
+\end_layout
+
+\begin_layout Itemize
+Linguagem de marcação de síntese de fala;
+\end_layout
+
+\begin_layout Itemize
+Dá controle sobre a ênfase, a pronúncia, a respiração, o sussuro, a velocidade
+ da fala, o tom, as pausas;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Marcas de fala (Speech Marks);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pode codificar quandao a frase/palavra começa e termina no stream de áudio;
+\end_layout
+
+\begin_layout Itemize
+Útil para animação com sincronização labial;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Rekognition
+\end_layout
+
+\begin_layout Itemize
+Visão computacional;
+\end_layout
+
+\begin_layout Itemize
+Detecção de objeto e cena;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+POde usar sua própria coleção de rosto;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Moderação de imagem;
+\end_layout
+
+\begin_layout Itemize
+Análise facial;
+\end_layout
+
+\begin_layout Itemize
+Reconhecimento de celebridades;
+\end_layout
+
+\begin_layout Itemize
+Comparação de rosto;
+\end_layout
+
+\begin_layout Itemize
+Texto na imagem;
+\end_layout
+
+\begin_layout Itemize
+Análise de vídeo;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Objetos/pessoas/celebridades maracdos na linha do tempo;
+\end_layout
+
+\begin_layout Itemize
+People pathing;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+As imagens vêm do S3 ou fornecer bytes de imagens como parte da solicitação;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+S3 será mais rápido se a imagem já estiver lá;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+O reconhecimento facial depende de boa iluminação, ângulo, visibilidade
+ dos olhos, resolução;
+\end_layout
+
+\begin_layout Itemize
+O vídeo deve vir de Streams de vídeo Kinesis;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+H.264 H.264 encoded;
+\end_layout
+
+\begin_layout Itemize
+5-30 FPS;
+\end_layout
+
+\begin_layout Itemize
+Privilegiar a resolução em vez da taxa de quadros;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pode ser usado com labda para acionar análise de imagem durante o upload;
+\end_layout
+
+\begin_layout Itemize
+Rótulos personalizados do Rekognition;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Treine com um pequeno conjunto de imagens rotuladas;
+\end_layout
+
+\begin_layout Itemize
+Use seus próprios rótulos para itens exclusivos;
+\end_layout
+
+\begin_layout Itemize
+Exemplo: a NFL (National Football League nos EUA) usa rótulos personalizados
+ para identificar logotipos de times, postes e dedos de espuma em imagens;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Amazon Forecast
+\end_layout
+
+\begin_layout Itemize
+Seviço totalmente gerenciado para fornecer previsões altamente precisas
+ com ML;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+AutoML
+\begin_inset Quotes erd
+\end_inset
+
+ escolhe o melhor modelo para seus dados de série temporal;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ARIMA, DeepAR, ETS, NPTS, Profeta;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Funciona com qualquer série temporal;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Preço, promoções, performance econômica, etc.;
+\end_layout
+
+\begin_layout Itemize
+Pode combinar com dados associados para encontrar relacionamentos;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Planejamento de estoque, planejamento financeiro, planejamento de recursos;
+\end_layout
+
+\begin_layout Itemize
+Com base em 
+\begin_inset Quotes eld
+\end_inset
+
+grupos de conjuntos de dados
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+preditores
+\begin_inset Quotes erd
+\end_inset
+
+ e 
+\begin_inset Quotes eld
+\end_inset
+
+previsões
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Subsubsection*
+Amazon Lex
+\end_layout
+
+\begin_layout Itemize
+Motor chatbot de linguagem natural;
+\end_layout
+
+\begin_layout Itemize
+Um bot é construído em torno de intents;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enunciados invocam intenções (
+\begin_inset Quotes eld
+\end_inset
+
+Eu quero pedir uma pizza
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+As funções Lambda são invocadas para cumprir a intenção;
+\end_layout
+
+\begin_layout Itemize
+Os slots especificam informações extras necessárias para a intenção;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tamanho da pizza, coberturas, tipo de crosta, aonde entregar, etc.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Pode implantar no AWS Mobile SDK, Facebook Messenger, Slack e Twilio;
+\end_layout
+
+\begin_layout Subsubsection*
+Outros serviços de ML
+\end_layout
+
+\begin_layout Itemize
+Amazon Personalize;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sistema de recomendação;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Amazon Textract;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+OCR com suporte a formulários, campos e tabelas;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+AWS DeepRacer;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aprendizado por reforço com carro de corrida em escala 1/18;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+DeepLens;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Câmera de vídeo habilitada para aprendizado profundo;
+\end_layout
+
+\begin_layout Itemize
+Integrado com Rekognition, SageMaker, Polly, Tensorflow, MXNet, Caffe;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+AWS DeepComposer
+\end_layout
+
+\begin_layout Itemize
+Teclado alimentado por IA;
+\end_layout
+
+\begin_layout Itemize
+Compõe uma melodia em uma música inteira;
+\end_layout
+
+\begin_layout Itemize
+Para fins educacionais;
+\end_layout
+
+\begin_layout Subsubsection*
+Amazon Fraud Detector
+\end_layout
+
+\begin_layout Itemize
+Carregue seus próprios dados históricos de fraude;
+\end_layout
+
+\begin_layout Itemize
+Constrói modelos personalizados a partir de um modelo que você escolher;
+\end_layout
+
+\begin_layout Itemize
+Dispõe uma API para seu aplicativo online;
+\end_layout
+
+\begin_layout Itemize
+Avalie o risco de:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Novas contas;
+\end_layout
+
+\begin_layout Itemize
+Check-out de convidado;
+\end_layout
+
+\begin_layout Itemize
+Abuso de 
+\begin_inset Quotes eld
+\end_inset
+
+Experimente antes de comprar
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Pagamentos online;
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Amazon CodeGuru
+\end_layout
+
+\begin_layout Itemize
+Revisões de código automatizadas;
+\end_layout
+
+\begin_layout Itemize
+Encontra linhas de código que afetam o desempenho;
+\end_layout
+
+\begin_layout Itemize
+Vazamentos de recursos;
+\end_layout
+
+\begin_layout Itemize
+Oferece recomendações específicas;
+\end_layout
+
+\begin_layout Itemize
+Implementado por ML;
+\end_layout
+
+\begin_layout Subsubsection*
+Contact Lens para Amazon Connect
+\end_layout
+
+\begin_layout Itemize
+Para centros de atendimento ao cliente;
+\end_layout
+
+\begin_layout Itemize
+Insere dados de áudio de chamadas gravadas;
+\end_layout
+
+\begin_layout Itemize
+Permite pesquisa em chamadas/chats;
+\end_layout
+
+\begin_layout Itemize
+Análise de sentimentos;
+\end_layout
+
+\begin_layout Itemize
+Encontre 
+\begin_inset Quotes eld
+\end_inset
+
+expressões
+\begin_inset Quotes erd
+\end_inset
+
+ que se correlacionam com chamadas bem-sucedidas;
+\end_layout
+
+\begin_layout Itemize
+Categorizar chamadas automaticamente;
+\end_layout
+
+\begin_layout Itemize
+Meça a velocidade da conversa e as interrupções;
+\end_layout
+
+\begin_layout Itemize
+Detecção de tema: descobre problemas emergentes;
+\end_layout
+
+\begin_layout Subsubsection*
+Amazon Kendra
+\end_layout
+
+\begin_layout Itemize
+Pesquisa corporativa com linguagem natural;
+\end_layout
+
+\begin_layout Itemize
+Por exemplo: 
+\begin_inset Quotes eld
+\end_inset
+
+Onde fica o balcão de suporte de TI?
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Como faço para conectar à minha VPN?
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Combina dados de sistemas de arquivos, SharePoint, Intranet, serviços de
+ compartilhamento (JDBC, S3) em um repositório pesquisável;
+\end_layout
+
+\begin_layout Itemize
+Com tecnologia ML - usa feedback positivo/negativo;
+\end_layout
+
+\begin_layout Itemize
+Ajuste de relevância - aumenta a intensidade da atualização do documento,
+ contagem de visualizações, etc.;
+\end_layout
+
+\begin_layout Subsubsection*
+Amazon Augmented AI (A2I)
+\end_layout
+
+\begin_layout Itemize
+Revisão humana das previsões de ML;
+\end_layout
+
+\begin_layout Itemize
+Cria fluxos de trabalho para revisar previsões de baixa confiança;
+\end_layout
+
+\begin_layout Itemize
+Acesse a Mechanical Turk;
+\end_layout
+
+\begin_layout Itemize
+Integrado ao Amazon Textract e Rekognition;
+\end_layout
+
+\begin_layout Itemize
+Integra-se com o SageMaker;
+\end_layout
+
+\begin_layout Itemize
+Muito semelhante ao Ground Truth;
+\end_layout
+
+\begin_layout Subsubsection*
+Juntando tudo
+\end_layout
+
+\begin_layout Itemize
+Construa sua própria Alexa;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transcribe -> Lex -> Polly!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Faça um tradutor universal;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transcribe -> Translate -> Polly
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Construa um detector de celebridades;
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DeepLens -> Rekognition;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+As pessoas ao telefone estão felizes?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Transcribe -> Compreender;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\end_layout
+
 \end_body
 \end_document
