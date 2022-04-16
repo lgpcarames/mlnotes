@@ -29,9 +29,10 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -44,6 +45,7 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -55,6 +57,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 3.5cm
+\bottommargin 3.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -136,15 +142,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename Tabela1.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -169,15 +166,6 @@ Podemos observar que o campo telefone e endereço são multivalorados.
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Tabela 2.png
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -220,15 +208,6 @@ Neste caso, a solução é criar uma nova tabela!
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Tabela3.png
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -313,15 +292,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename Tabela4.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -356,15 +326,6 @@ Qual é o problema aqui? Podemos analisar cada atributo: o primeiro atributo
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Tabela5.png
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -429,15 +390,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename tabela6.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -471,12 +423,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename tabela7.png
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -529,12 +475,6 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename tabela8.png
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -562,12 +502,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename tabela9.png
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -726,11 +660,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename tabela10.png
-
-\end_inset
-
 
 \end_layout
 

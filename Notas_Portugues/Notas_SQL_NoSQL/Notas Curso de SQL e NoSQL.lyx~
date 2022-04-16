@@ -1,0 +1,838 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Notas Curso SQL
+\end_layout
+
+\begin_layout Section
+Normalização de dados
+\end_layout
+
+\begin_layout Standard
+Chamamos de normalização de dados o processo formal e passo a passo que
+ examina o documento descritivo gerado pelos analistas de sistemas durante
+ a análise de requisitos em busca de definir as entidades, atributos, relacionam
+entos, chaves primárias e chaves estrangeiras do banco de dados a ser modelado.
+\end_layout
+
+\begin_layout Standard
+Este processo é realizado utilizando regras bem estabelecidas conhecidas
+ como Formas Normais, definidas por Edgar Frank Codd em seu artigo.
+\end_layout
+
+\begin_layout Standard
+Um dos objetivos principais da normalização é evitar ou pelo menos amenizar
+ anomalias e inconsistências que podem ocorrer durante a inclusão, exclusão,
+ alteração e consulta de registros em um banco de dados.
+\end_layout
+
+\begin_layout Standard
+Um banco de dados normalizado dentro dos padrões reduz o trabalho de manutenção
+ e ajuda a evitar o desperdício de espaço de armazenamento, dentre outros
+ benefícios.
+\end_layout
+
+\begin_layout Subsection
+Primeira forma normal (1FN)
+\end_layout
+
+\begin_layout Standard
+O processo de normalização aplica uma série de regras sobre as tabelas de
+ um banco de dados para verificar se estas estão corretamente projetadas.
+\end_layout
+
+\begin_layout Standard
+Embora existam cinco formas normais (ou regras de normalização), na prática
+ usamos um conjunto de três formas normais, ou seja, um banco de dados é
+ considerado normalizado se nele foram aplicadas as regras destas três formas
+ normais.
+\end_layout
+
+\begin_layout Standard
+Uma entidade, ou tabela, estará na primeira forma normal (1FN) se todos
+ os campos forem atômicos (simples) e não multivaloreados (com múltiplos
+ valores).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Podemos observar que o campo telefone e endereço são multivalorados.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Podemos observar que os campos telefone e endereço são multivalores, enquanto
+ que os demais são definidos como atômicos.
+ Segundo a 1FN, todos campos devem ser atômicos e não multivalorados.
+ Mas como resolver isto? Devemos criar novos campos que irão agregar estas
+ informações que estão sobrando.
+ Com isso, a nossa tabela ficará como
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Nova tabela, agora, com os campos atômicos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ponto importante: devemos evitar ao máximo criar colunas que levarão à campos
+ vazios.
+ Seguindo essa lógica, como vamos tratar a coluna dos telefones? Pois podemos
+ observa que alguns elementos possuem dois telefones, enquanto que outros
+ possuem apenas um.
+ Se formos pela para a criação de dois colunas telefone1 e telefone2, algumas
+ colunas ficarão vazias, já que alguns clientes possuem apenas 1 telefone
+ e uma tabela que aceita valores vazios é uma tabela problemática.
+ Todos os campos devem ser importantes para estar na tabela e campos importantes
+ não podem ficar vazios.
+ Da mesma forma, imagina que o cliente possui 3 telefones? Ou até mesmo
+ nenhum? Como seriam armazenados?
+\end_layout
+
+\begin_layout Standard
+Neste caso, a solução é criar uma nova tabela!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tabela normalizada de acordo com a 1FN
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Agora, temos que a nossa tabela está normalizada com a 1FN, agora seguiremos
+ com a segunda forma normal 2FN.
+ Vale lembrar que para aplicar a 2FN, devemos obrigatoriamente ter passado
+ pela 1FN primeiro.
+\end_layout
+
+\begin_layout Standard
+Quais os problemas de uma tabela não normalizada com a 1FN?
+\end_layout
+
+\begin_layout Standard
+São vários.
+ A primeira forma normal tenta resolver um dos maiores problemas de bancos
+ de dados que é a repetição (redundância de dados) e a desorganização deles.
+\end_layout
+
+\begin_layout Standard
+Imagine um campo de telefone que permita a entrada de mais de um valor (dois
+ números de telefone) por exemplo.
+ Como faríamos uma busca em um dos valores apenas?
+\end_layout
+
+\begin_layout Standard
+Mesma coisa em um campo endereço onde as partes não estivessem desmembradas,
+ da seguinte forma:
+\end_layout
+
+\begin_layout Standard
+Rua das Oliveiras, 256, Parque Novo Mundo, São Paulo, SP.
+\end_layout
+
+\begin_layout Standard
+Como seria possível fazer uma busca de todos os clientes que morassem no
+ Parque Novo Mundo? Ou na cidade de São Paulo? Ou no estado de São Paulo?
+\end_layout
+
+\begin_layout Standard
+Outra pergunta é se toda a tabela precisa obrigatoriamente ser normalizada
+ com a 1FN?
+\end_layout
+
+\begin_layout Standard
+Não, a normalização é um processo corretivo que deve ser aplicado em casos
+ específicos onde o problema for identificado.
+ Tudo irá depender de como a análise dos dados foi feita.
+ De início você terá muita dificuldade em aplicar as regras de normalização
+ e somente o tempo e o acúmulo de experiência farão esse processo ser natural
+ para você.
+ Um analista experiente aplica a normalização de dados por padrão, pois
+ ele olha para uma tabela e já sabe que tem algo errado ali e aplica a correção
+ para tal.
+\end_layout
+
+\begin_layout Subsection
+Segunda forma normal (2FN)
+\end_layout
+
+\begin_layout Standard
+Uma entidade estará na 2FN se ela já se encontrar na 1FN e todos os atributos
+ não chave foram totalmente dependentes da chave primária.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exemplo: Tabela pedidos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Qual é o problema aqui? Podemos analisar cada atributo: o primeiro atributo
+ que é a chave primária da tabela é o nº do pedido, o segundo é o código
+ do produto, o terceiro é o produto, o quarto é a quantidade de produto,
+ o quinto o valor unitário do produto e, por último, o sexto é o subtotal
+ (quantidade*valor_unitário).
+ Podemos observar o seguinte problema, o nome do produto não parece estar
+ totalmente associado com o n° do pedido, mas sim com o código do produto,
+ o que fere o princípio para a entidade estar na 2FN.
+ Então, para resolver este problema, basta que criemos uma outra tabela
+ separada, que se relaciona com a primeira, como mostrado abaixo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Criada a tabela de produtos a partir da tabela pedidos, onde ambas obecem
+ a 2FN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pronto! Nossa tabela está dentro da 2FN e pronta para ser validade com a
+ 3FN.
+\end_layout
+
+\begin_layout Standard
+Veja que a partir deste momento, o código do produto da tabela de pedidos
+ faz referência à chave primária da tabela de produtos, portanto há um relaciona
+mento entre as tabelas.
+\end_layout
+
+\begin_layout Standard
+Outro ponto é que o valor unitário deveria/poderia estar na tabela produtos
+ e não na tabela pedidos, mas resolveremos isso posteriormente estudando
+ a 3FN.
+\end_layout
+
+\begin_layout Subsection
+Terceira forma normal (3FN)
+\end_layout
+
+\begin_layout Standard
+Cada uma das formas normais tende a ir refinando a modelagem e deixando
+ a estrutura de dados mais íntegra e exclusiva, evitando repetições desnecessári
+as e possíveis sobrecarga no gerenciador de banco de dados.
+\end_layout
+
+\begin_layout Standard
+Uma tabela estará na 3FN se ela estive na 2FN e se nenhuma coluna não-chave
+ depender de outra coluna não-chave.
+ Ou seja, na 3FN temos simplesmente que eliminar os campos que podem ser
+ obtidos pela equação de outros campos na mesma tabela.
+ Podemos visualizar novamente na tabela pedidos, o atributo Subtotal é completam
+ente desnecessário de ser mantido, pois ele é simplesmente o produto entre
+ o valor unitário e a quantidade do produto solicitada, portanto, devendo
+ ser eliminado.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exemplo: Tabela pedidos normalizada de acordo com a 3FN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+O valor unitário também é um atributo associado à chave código_produto,
+ portanto, ele deve estar associado a tabela produtos e não a tabela pedidos.
+ Resolvendo isso, teremos
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tabela pedidos e tabela produtos normarlizadas de acordo com as 3 formas
+ normais.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Outras formas normais
+\end_layout
+
+\begin_layout Subsubsection
+Quarta forma normal (4FN)
+\end_layout
+
+\begin_layout Standard
+Uma entidade estará na 4FN se estiver na 3FN e na tabela não conter múltiplas
+ entradas multivaloradas (valores repetidos em diferentes colunas), ou seja,
+ a presença de uma ou mais linhas em uma tabela implica na presença de uma
+ ou mais outras linhas na mesma tabela.
+\end_layout
+
+\begin_layout Standard
+Exemplo 1: Considere uma tabela que armazene informações sobre planos de
+ saúde e exames de um paciente: Paciente; Plano; Exame;
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tabela Paciente.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ Separando as tabelas, de modo a evitar a repetição, temos
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tabela Paciente de acordo com as 4FN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+logo, a tabela paciente se encontrará com a quatro formas normais.
+\end_layout
+
+\begin_layout Subsubsection
+Quinta forma normal (5FN):
+\end_layout
+
+\begin_layout Standard
+Uma entidade estará na 5FN se estiver na 4FN e quando um atributo está em
+ outra tabela sem a necessidade de estar na tabella pesquisada e pode ser
+ removido sem a perda de nenhuma informação.
+\end_layout
+
+\begin_layout Section
+Linguagem SQL
+\end_layout
+
+\begin_layout Standard
+Já sabemos que SQL significa Structured Query Language ou Linguagem de Consulta
+ Estruturada.
+ Mais importante que isso, é que a SQL é a linguagem padrão dos Bancos de
+ Dados Relacionais.
+ Não por acaso, grande parte dos bancos de dados utilizam a sigla da linguagem
+ no seu próprio nome:
+\end_layout
+
+\begin_layout Enumerate
+MySQL
+\end_layout
+
+\begin_layout Enumerate
+PostgreSQL
+\end_layout
+
+\begin_layout Enumerate
+Microsoft SQL Server;
+\end_layout
+
+\begin_layout Enumerate
+SQLite;
+\end_layout
+
+\begin_layout Enumerate
+Dentro outros..
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A linguagem SQL foi inspirada na álgebra relacional e ela se subdivide em
+ 5 subgrupos:
+\end_layout
+
+\begin_layout Standard
+DQL, DML, DDL, DCL, DTL.
+ Todos são subgrupos da linguagem SQL.
+ Mas mais à frente teremos um pouco mais de contato com cada um deles.
+ Mas aqui, teremos uma pequena introdução sobre:
+\end_layout
+
+\begin_layout Standard
+DQL: Data Query Language: ou Linguagem de Consulta de Dados, ou os comandos
+ utilizados para fazer pesquisa em SQL.
+\end_layout
+
+\begin_layout Standard
+DML: Data Manipulation Language, ou Linguagem de Manipulação de Dados, ou
+ os comandos para alterar os dados.
+\end_layout
+
+\begin_layout Standard
+DDL: Data Definition Language, ou Linguagem de Definição de Dados, ou os
+ comandos para definir os tipos de dados que trabalharemos.
+\end_layout
+
+\begin_layout Standard
+DCL: Data Control Language, ou Linguagem de Controle de Dados, ou os comandos
+ utilizados para controlar o acesso aos dados.
+\end_layout
+
+\begin_layout Standard
+DTL: Data Transaction Language, ou Linguagem de Transação de Dados, os comandos
+ que compreende tudo em relação à transação dos dados no banco de dados.
+\end_layout
+
+\begin_layout Standard
+Cada subgrupo SQL possui comandos próprios de execução e ao executar estes
+ comandos sempre temos como resultado duas coisas:
+\end_layout
+
+\begin_layout Enumerate
+O resultado da execução do comando;
+\end_layout
+
+\begin_layout Enumerate
+Uma mensagem de execução pode ser de sucesso ou de erro.
+\end_layout
+
+\begin_layout Standard
+OBS: Apesar de não ser obtrigatório, costumamos a escrever os comandos SQL
+ todos em letra maiúscula, o que ajuda a entender melhor o nosso código
+ já que o que for referente aos comandos SQL estarão destacados em maiúsculos
+ e o que for referente aos dados/tabelas e etc estarão em minúsculo.
+\end_layout
+
+\begin_layout Subsection
+Data Query Language
+\end_layout
+
+\begin_layout Standard
+No subgrupo DQL nós temos apenas 1 comando SQL: Select.
+\end_layout
+
+\begin_layout Standard
+Este comando é utilizado para realizar consultas no banco de dados.
+\end_layout
+
+\begin_layout Standard
+Embora tenha apenas um comando, a DQL é a parte da SQL mais utilizada.
+ O comando SELECT permite ao usuário especificar uma consulta (query) como
+ uma descrição do resultado esperado.
+ Este comando é composto de várias cláusulas e opções, possibilitando elaborar
+ consultas das mais simples às mais complexas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tabela produto e tipo de produto utilizado no exemplo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ A exemplo de como fazer estas pesquisas, podemos considerar a tabela acima.
+\end_layout
+
+\begin_layout Itemize
+SELECT * FROM tipos_produto;
+\end_layout
+
+\begin_layout Standard
+Neste caso, estamos selecionando todos os dados da tabela 
+\begin_inset Quotes eld
+\end_inset
+
+tipos_produto
+\begin_inset Quotes erd
+\end_inset
+
+.
+ O asterisco indica que queremos os dados de todos os campos da tabela.
+\end_layout
+
+\begin_layout Itemize
+SELECT codigo, descricao FROM tipos_produto;
+\end_layout
+
+\begin_layout Standard
+Neste caso, funcionará da mesma forma que utilizando o asterisco.
+\end_layout
+
+\begin_layout Itemize
+SELECT codigo, descricao, codigo_tipo FROM produtos;
+\end_layout
+
+\begin_layout Standard
+No exemplo acima, estamos selecionando todos os dados de apenas 3 colunas
+ da tabela 'produtos'.
+ Vej aque não especificamos a coluna 'preco'.
+ Desta forma, não teremos estes dados.
+\end_layout
+
+\begin_layout Itemize
+SELECt cod, desc, pre, ctp FROM produtos;
+\end_layout
+
+\begin_layout Standard
+Neste caso, estamos selecionando dados de colunas inexistentes na tabela
+ 'produtos', isso além de não trazer, como resultado, nenhum dado, ainda
+ nos apresentará erro pois as colunas solicitadas não existem na tabela.
+\end_layout
+
+\begin_layout Standard
+Podemos colocar um alias (apelido) em nome de tabela e campos.
+\end_layout
+
+\begin_layout Itemize
+SELECT p.codigo AS cod, p.descricao AS desc, p.preco AS pre, p.codigo_produto
+ AS ctp FROM produtos AS p;
+\end_layout
+
+\begin_layout Standard
+Neste caso, estamos realizando uma busca especificando os campos que queremos
+ da tabela 'produtos' e adicionando um alias tanto para o nome da tabela
+ quanto para o nome dos campos.
+\end_layout
+
+\begin_layout Subsection
+Data Manipulation Language
+\end_layout
+
+\begin_layout Standard
+Os comando presentes neste subgrupo é definido como: INSERT, UPDATE e DELETE.
+\end_layout
+
+\begin_layout Standard
+INSERT: Usado para inserir um registro a uma tabela existente.
+\end_layout
+
+\begin_layout Standard
+UPDATE: Usado para alterar valores de dados em um ou mais registros de uma
+ tabela.
+\end_layout
+
+\begin_layout Standard
+DELETE: Usado para remover registros de uma tabela.
+\end_layout
+
+\begin_layout Subsubsection*
+Entendendo o funcionamento do comando Insert.
+\end_layout
+
+\begin_layout Standard
+Considerando o caso da tabela produtos e tipos_produtos anteriormente, considera
+mos
+\end_layout
+
+\begin_layout Itemize
+INSERT INTO tipos_produto (descricao) VALUES ('Notebook');
+\end_layout
+
+\begin_layout Standard
+Com isso, um novo registro será inserido na tabela e uma mensagem de sucesso
+ será retornada.
+\end_layout
+
+\begin_layout Itemize
+INSERT INTO produtos (descricao, preco, codigo_tipo_produto) VALUES ('Notebook',
+ 1200, 1);
+\end_layout
+
+\begin_layout Standard
+No exemplo acima, estamos inserindo os valores 'Notebook, 1200 e 1' na tabela
+ 'produtos'.
+ O campo 'codigo' do produto é chave primária e auto incremento, então será
+ inserido automaticamente.
+\end_layout
+
+\begin_layout Subsubsection*
+Entendendo o funcionamento do comando Update.
+\end_layout
+
+\begin_layout Itemize
+UPDATE tipos_produto set descricao='Nobreak' WHERE codigo=3;
+\end_layout
+
+\begin_layout Standard
+Com isso, o registro com código=3 será atualizado com o novo valor para
+ o campo 'descricao'.
+\end_layout
+
+\begin_layout Itemize
+UPDATE produtos set descricao='Notebook', preco=2800 WHERE codigo 20;
+\end_layout
+
+\begin_layout Standard
+No exemplo acima, estamos atualizando um registro na tabela 'produtos' e
+ note que estamos utilizando o filtro com a cláusula WHERE especificando
+ qual registro queremos atualilzar.
+ Além disso, estamos atualizando dois campos da tabela.
+ Desta forma, o registro será atualilzado e o novo valor será mantido na
+ tabela.
+\end_layout
+
+\begin_layout Subsubsection*
+Entendendo o funcionamento do comando Delete
+\end_layout
+
+\begin_layout Standard
+DELETE FROM tipos_produto WHERE codigo=3;
+\end_layout
+
+\begin_layout Standard
+O registro será removido da tabela, sem chances de recuperação.
+\end_layout
+
+\begin_layout Standard
+ATENÇÃO: É importante lembrar da importância da utilização do WHERE na utilizaçã
+o dos comando DELETE e UPDATE, tendo em vista que caso esses sejam realizados
+ sem a especificação, eles tendem a aplicar o comando para toda a base de
+ dados.
+ Logo, se você fizer uma substituição pelo comando UPDATE, sem especificar
+ com o WHERE, ele substituirá todos os dados na base de dados, assim como
+ o DELETE irá deleter todos os dados na base de dados.
+\end_layout
+
+\end_body
+\end_document
