@@ -85,6 +85,10 @@
 Notas sobre o Docker
 \end_layout
 
+\begin_layout Author
+Lucas Caramês
+\end_layout
+
 \begin_layout Section
 Containers
 \end_layout
@@ -2656,5 +2660,673 @@ Docker Labs: gratuito também, roda no navegador, porém expira a cada 4 horas;
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+Iniciando o Swarm
+\end_layout
+
+\begin_layout Itemize
+Podemos iniciar o Swarm com o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker swarm init
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Em alguns casos, quando trabalhamos com aplicativos web, precisaremos declarar
+ o IP do servidor com a flag: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+--advertise-addr
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Isso fará com que a instância/máquina vire um Node;
+\end_layout
+
+\begin_layout Itemize
+E também transforma o Node em um Manager;
+\end_layout
+
+\begin_layout Subsection
+Listando Nodes Ativos
+\end_layout
+
+\begin_layout Itemize
+Podemos verificar quais Nodes estão ativos com: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker node ls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma os serviços serão exibidos no terminal;
+\end_layout
+
+\begin_layout Itemize
+Podemos assim monitorar o que o Swarm está orquestrando;
+\end_layout
+
+\begin_layout Itemize
+Este comando será de grande utilidade a medida que formos adicionando serviços
+ no Swarm;
+\end_layout
+
+\begin_layout Subsection
+Adicionando Novos Nodes
+\end_layout
+
+\begin_layout Itemize
+Podemos adicionar um novo serviço com o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker swarm join --token <TOKEN> <IP>:<PORTA>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma duas máquinas estarão conectadas;
+\end_layout
+
+\begin_layout Itemize
+Esta nova máquina entra na hierarquia como Worker;
+\end_layout
+
+\begin_layout Itemize
+Todas as ações (Tasks) utilizadas na Manager serão replicadas em Nodes que
+ foram adicionado com join;
+\end_layout
+
+\begin_layout Subsection
+Subindo um Novo Serviço
+\end_layout
+
+\begin_layout Itemize
+Podemos iniciar um serviço com o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service create --name <nome> <imagem>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma teremos um container novo sendo adicionado ao nosso Manager;
+\end_layout
+
+\begin_layout Itemize
+E este serviço estará sendo gerenciado pelo Swarm;
+\end_layout
+
+\begin_layout Itemize
+Podemos testar com o nginx, liberando a porta 80 o container já pode ser
+ acessado;
+\end_layout
+
+\begin_layout Subsection
+Listando Serviços
+\end_layout
+
+\begin_layout Itemize
+Podemos listar os serviços que estão rodando com: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service ls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira todos os serviços que iniciamos serão exibidos;
+\end_layout
+
+\begin_layout Itemize
+Algumas informações importantes sobre eles estão na tabela: nome, replicas,
+ imagem, porta;
+\end_layout
+
+\begin_layout Subsection
+Removendo Serviços
+\end_layout
+
+\begin_layout Itemize
+Podemos remover um serviço com:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service rm <nome>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira o seviço para de rodar;
+\end_layout
+
+\begin_layout Itemize
+Isso pode significar parar um container que está rodando e outras consequências
+ devido a parada do mesmo;
+\end_layout
+
+\begin_layout Itemize
+Checamos a remoção com: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service ls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Aumentando o Número de Réplicas
+\end_layout
+
+\begin_layout Itemize
+Podemos criar um serviço com um número maior de réplicas: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service create --name <NOME> --replicas <NUMERO> <IMAGEM>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta maneira uma task será emitida, replicando este serviço nos Workers;
+\end_layout
+
+\begin_layout Itemize
+Agora iniciamos de fato a orquestração;
+\end_layout
+
+\begin_layout Itemize
+Podemos checar o status com: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service ls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Verificando a Orquestração
+\end_layout
+
+\begin_layout Itemize
+Vamos remover um container de um Node Worker;
+\end_layout
+
+\begin_layout Itemize
+Isso fará com que o Swarm reinicie este container novamente;
+\end_layout
+
+\begin_layout Itemize
+Pois o serviço ainda está rodando no Manager, e isto é uma de suas atribuições:
+ garantir que os serviços estejam sempre disponíveis;
+\end_layout
+
+\begin_layout Itemize
+Obs: precisamos utilizar a flag force (-f);
+\end_layout
+
+\begin_layout Subsection
+Checando Token do Swarm
+\end_layout
+
+\begin_layout Itemize
+As vezes vamos precisar checar o token do Swarm, para dar join em alguma
+ outra instância futuramente;
+\end_layout
+
+\begin_layout Itemize
+Então temos o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker sawrm join-token manager
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma recebemos o token pelo terminal;
+\end_layout
+
+\begin_layout Subsection
+Checando o Swarm
+\end_layout
+
+\begin_layout Itemize
+Podemos verificar detalhes do Swarm que o Docker está utilizando;
+\end_layout
+
+\begin_layout Itemize
+Utilizamos o comando:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker info
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma recebemos informações como: ID do Node, número de Nodes, número
+ de managers e muito mais.
+\end_layout
+
+\begin_layout Subsection
+Removendo Instância do Swarm
+\end_layout
+
+\begin_layout Itemize
+Podemos parar de executar o Swarm em uma determinada instância também;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker swarm leave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A partir deste momento, a instância não é contada mais como um Node para
+ o Swarm;
+\end_layout
+
+\begin_layout Subsection
+Removendo um Node
+\end_layout
+
+\begin_layout Itemize
+Podemos também remover um Node do nosso ecossistema do Swarm;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker node rm <ID>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma a instância não será considerada mais um Node, saindo do Swarm;
+\end_layout
+
+\begin_layout Itemize
+O container continuará rodando na instância;
+\end_layout
+
+\begin_layout Itemize
+Precisamos utilizar a flag -f;
+\end_layout
+
+\begin_layout Subsection
+Inspecionando Serviços
+\end_layout
+
+\begin_layout Itemize
+Podemos ver e m mais detalhes o que um serviço possui;
+\end_layout
+
+\begin_layout Itemize
+O comando é: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service inspect <ID>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vamos receber informações como: nome, data de criação, portas e muito mais.
+\end_layout
+
+\begin_layout Subsection
+Verificar Containers Ativados pelo Service
+\end_layout
+
+\begin_layout Itemize
+Podemos ver quais containers um serviço já rodou;
+\end_layout
+
+\begin_layout Itemize
+O comando é:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service ps <ID>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Receberemos uma lista de containers que estão rodando e também dos que já
+ receberam baixa;
+\end_layout
+
+\begin_layout Itemize
+Este comando é semelhante ao
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker ps -a
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Rodando Compose com Swarm
+\end_layout
+
+\begin_layout Itemize
+Para rodar o Compose com o Swarm vamos utilizar os comandos de stack;
+\end_layout
+
+\begin_layout Itemize
+O comando é:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker stack deploy -c <ARQUIVO.yaml> <NOME>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Teremos então o arquivo compose sendo executado;
+\end_layout
+
+\begin_layout Itemize
+Porém agora estamos em modo Swarm e podemos utilizar os Nodes como réplicas;
+\end_layout
+
+\begin_layout Subsection
+Aumentando réplicas do Stack
+\end_layout
+
+\begin_layout Itemize
+Podemos criar novas réplicas nos Worker Nodes;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service scale <NOME>=<REPLICAS>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta forma as outras máquinas receberão as tasks a serem executadas;
+\end_layout
+
+\begin_layout Subsection
+Fazer Serviço não Receber mais Tasks
+\end_layout
+
+\begin_layout Itemize
+Podemos fazer com que um serviço não receba mais 'ordens' do Manager;
+\end_layout
+
+\begin_layout Itemize
+Para isso vamos utilizar o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker node update --availability drain <ID>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+O status de drain é o que não recebe tasks;
+\end_layout
+
+\begin_layout Itemize
+Podemos voltar para active, e ele volta ao normal.
+\end_layout
+
+\begin_layout Subsection
+Atualizar parâmetro
+\end_layout
+
+\begin_layout Itemize
+Podemos atualizar as configurações dos nosso nodes;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service update --image <IMAGEM> <SERVICO>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Desta froma apenas os nodes que estão com o status active receberão atualizações
+;
+\end_layout
+
+\begin_layout Subsection
+Criando Rede para Swarm
+\end_layout
+
+\begin_layout Itemize
+A conexão entre instâncias usa um driver diferente, o overlay;
+\end_layout
+
+\begin_layout Itemize
+Podemos criar primeiramente a rede com 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker network create
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+E depois ao criar um service, adicionar a flag 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+--network <REDE>
+\end_layout
+
+\end_inset
+
+ para inserir as instâncias na nossa nova rede;
+\end_layout
+
+\begin_layout Subsection
+Conectar Serviço a uma Rede
+\end_layout
+
+\begin_layout Itemize
+Podemos também conectar serviços que já estão em execução em uma rede;
+\end_layout
+
+\begin_layout Itemize
+Vamos utilizar o comando de update: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+docker service update --network <REDE> <NOME>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Depois checamos o resultado com inspect;
+\end_layout
+
 \end_body
 \end_document
