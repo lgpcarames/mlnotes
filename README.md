@@ -10,11 +10,11 @@ Neste repositório estão armazenados algumas notas de aula, scripts e notebooks
   - Regressão;
 - Amazon AWS;
 - Docker;
-- Docker Swarm;
-- Kubernetes;
+- Docker Swarm <sup>[1](#myfootnote1)</sup>;
+- Kubernetes <sup>[1](#myfootnote1)</sup>;
 - Mineração de Dados;
-- SQL;
-- NoSQL;
+- SQL <sup>[1](#myfootnote1)</sup>;
+- NoSQL <sup>[1](#myfootnote1)</sup>;
 - Padrões de Projeto em Python:
   - Criação:
     - Abstract Factory;
@@ -33,5 +33,10 @@ Neste repositório estão armazenados algumas notas de aula, scripts e notebooks
     - State;
     - Strategy;
     - Template Method;
-  - Estrutural (construção);
-- R;
+  - Estrutural <sup>[1](#myfootnote1)</sup>;
+- R <sup>[1](#myfootnote1)</sup>;
+
+
+
+
+<a name="myfootnote1">1</a>: Em construção.
